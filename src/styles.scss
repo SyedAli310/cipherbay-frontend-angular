@@ -1,1 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap");
+
+@import "./scss-partials/variables";
+
+body,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+body {
+  background-color: $MAIN__BG__COLOR;
+}
+
+::selection {
+  background-color: $MAIN__ACCENT__COLOR;
+  color: $WHITE__COLOR;
+}
+/* width */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+/* Track */
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  background-color: $SECONDARY__GREY__COLOR;
+  transition: all ease 0.3s;
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+  background: $MAIN__ACCENT__COLOR;
+}
+
+ion-icon {
+  pointer-events: none;
+}
+
+// general/reusable styles
+.container {
+  width: 90vw;
+  height: 100%;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .container {
+    width: 95vw;
+  }
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: all ease 0.3s;
+}
+.btn-sm {
+  font-size: 0.5rem;
+  padding: 0.125rem 0.5rem;
+}
+.btn-md {
+  font-size: 1rem;
+  padding: 0.25rem 0.75rem;
+}
+.btn-lg {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn:active {
+  transform: translateY(2.5px);
+}
+
+.anchor-reset {
+  text-decoration: none !important;
+  color: inherit;
+}

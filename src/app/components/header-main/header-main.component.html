@@ -1,0 +1,20 @@
+<div class="header-main">
+  <div class="container">
+    <div class="hamburger" (click)="openSideNav()">
+      <span class="hamburger-line line-1"></span>
+      <span class="hamburger-line line-2"></span>
+      <span class="hamburger-line line-3"></span>
+    </div>
+    <div class="logo">cipherbay</div>
+    <div class="mode-toggle">
+      <button class="btn btn-md color-mode-toggle-btn">
+        <ion-icon name="moon-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-side-navbar
+  [isSidebarOpen]="isSidebarOpen"
+  (closeSidebarEvent)="closeSideNav()"
+></app-side-navbar>
