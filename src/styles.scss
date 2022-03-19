@@ -48,11 +48,26 @@ ion-icon {
   height: 100%;
   margin: 0 auto;
 }
-// @media (max-width: 768px) {
-//   .container {
-//     width: 95vw;
-//   }
-// }
+
+.logo {
+  // width: 100%;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  & a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $WHITE__COLOR;
+    font-weight: bold;
+  }
+}
+
+.logo-img {
+  width: 25px;
+  height: auto;
+  aspect-ratio: 1/1;
+}
 
 .btn {
   border: none;
