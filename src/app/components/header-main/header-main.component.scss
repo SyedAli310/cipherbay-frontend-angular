@@ -2,7 +2,7 @@
 
 .header-main {
   width: 100%;
-  min-height: 3rem;
+  min-height: 4rem;
   height: auto;
   display: flex;
   align-items: center;
@@ -18,18 +18,13 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      &:hover > .hamburger-line {
-        background-color: $MAIN__ACCENT__COLOR;
+      & ion-icon {
+        font-size: 2.5rem;
+        color: $WHITE__COLOR;
+        transition: all ease 0.3s;
       }
-      & .hamburger-line {
-        width: 25px;
-        height: 2px;
-        background-color: $WHITE__COLOR;
-        border-radius: 2px;
-        margin-bottom: 0.325rem;
-      }
-      & .hamburger-line:last-child {
-        margin-bottom: 0;
+      &:hover > ion-icon {
+        color: $MAIN__ACCENT__COLOR;
       }
     }
   }

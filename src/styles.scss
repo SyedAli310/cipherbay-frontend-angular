@@ -11,7 +11,7 @@ body,
   font-family: "Quicksand", sans-serif;
 }
 body {
-  background-color: $MAIN__BG__COLOR;
+  background-color: $MAIN__BG__COLOR !important;
 }
 
 ::selection {
