@@ -143,6 +143,16 @@
               color: $WHITE__COLOR;
               transform: scale(1.125);
             }
+            &.activePage {
+              background-color: $PRIMARY__GREY__COLOR;
+              color: $SUCCESS__COLOR;
+              border-bottom: 2px solid $SUCCESS__COLOR;
+              font-weight: bold;
+            }
+            &.activePage > ion-icon {
+              color: $WHITE__COLOR;
+              transform: scale(1.125);
+            }
           }
         }
       }
