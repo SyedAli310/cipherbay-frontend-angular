@@ -26,15 +26,19 @@ export class AppComponent {
       if (routerEvent instanceof NavigationStart) {
         this.loaderService.showLoader();
       } else if (routerEvent instanceof NavigationEnd) {
-        this.loaderService.hideLoader();
+        this.sleep(1000).then(() => this.loaderService.hideLoader());
       } else if (routerEvent instanceof NavigationCancel) {
-        this.loaderService.hideLoader();
+        this.sleep(1000).then(() => this.loaderService.hideLoader());
         // Handle cancel
       } else if (routerEvent instanceof NavigationError) {
-        this.loaderService.hideLoader();
+        this.sleep(1000).then(() => this.loaderService.hideLoader());
         // Handle error
       }
-      console.log(this.showLoader);
+      // console.log(this.showLoader);
     });
+  }
+
+  sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
