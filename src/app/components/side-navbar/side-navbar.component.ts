@@ -22,7 +22,7 @@ export class SideNavbarComponent implements OnInit {
     this.closeSidebarEvent.emit();
   }
 
-  routerChangeMethod(url: any) {
+  routerChangeMethod(url: string) {
     console.log('route changed to: ' + url);
     this.closeSidebar();
   }

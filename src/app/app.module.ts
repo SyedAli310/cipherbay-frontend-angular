@@ -9,6 +9,7 @@ import { HeaderMainComponent } from './components/header-main/header-main.compon
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { ConvertPageComponent } from './components/convert-page/convert-page.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { PreLoaderComponent } from './components/pre-loader/pre-loader.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NotFoundPageComponent } from './components/not-found-page/not-found-pag
     HeaderMainComponent,
     HomePageComponent,
     ConvertPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    PreLoaderComponent
   ],
   imports: [
     BrowserModule,
