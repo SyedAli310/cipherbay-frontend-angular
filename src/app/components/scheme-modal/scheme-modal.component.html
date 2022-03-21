@@ -1,0 +1,34 @@
+<div class="modal schemes-modal" [class.open]="isOpen">
+  <div class="modal-content">
+    <button class="modal-close-btn" (click)="closeModal()">
+      <fa-icon class="icon-lg" [icon]="faTimes"></fa-icon>
+    </button>
+    <div class="modal-header">
+      <h2>Select scheme to encode/decode</h2>
+    </div>
+    <div class="modal-body">
+      <p>
+        Selected :
+        <span id="dyn-selected-scheme" style="color: #48c78e">{{
+          selectedScheme.alias
+        }}</span>
+      </p>
+      <p>All Schemes :</p>
+      <div id="scheme-select-btns">
+        <button
+          *ngFor="let scheme of schemes"
+          class="btn scheme-select-btn"
+          [ngClass]="{ selected: scheme === selectedScheme }"
+          (click)="selectScheme(scheme)"
+        >
+          {{ scheme.alias }}
+        </button>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn modal-close-btn" (click)="closeModal()">
+        save & close
+      </button>
+    </div>
+  </div>
+</div>

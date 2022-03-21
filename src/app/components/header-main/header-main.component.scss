@@ -18,12 +18,11 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      & ion-icon {
-        font-size: 2.5rem;
+      & fa-icon {
         color: $WHITE__COLOR;
         transition: all ease 0.3s;
       }
-      &:hover > ion-icon {
+      &:hover > fa-icon {
         color: $MAIN__ACCENT__COLOR;
       }
     }

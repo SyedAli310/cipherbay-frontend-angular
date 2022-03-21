@@ -1,1 +1,122 @@
-<h1 style="text-align: center; color: white">cipherbay &bull; convert</h1>
+<div class="container">
+  <div class="selects">
+    <div class="scheme-selection-div">
+      <h2>
+        Set scheme&nbsp;<button
+          class="btn btn-sm info-modal-btn"
+          title="know more about scheme"
+        >
+          <fa-icon class="icon-lg" [icon]="faInfo"></fa-icon>
+        </button>
+      </h2>
+      <button class="btn schemes-modal-btn" (click)="openSchemeModal()">
+        Change scheme
+      </button>
+    </div>
+
+    <div class="conversion-selection-div">
+      <h2>Set conversion</h2>
+      <div class="conversion-select-btns">
+        <button
+          class="btn conversion-select-btn"
+          [ngClass]="{ selected: conversionMethod === 'encode' }"
+          conversion="encode"
+          (click)="setConversion('encode')"
+        >
+          encode
+        </button>
+        <button
+          class="btn conversion-select-btn"
+          [ngClass]="{ selected: conversionMethod === 'decode' }"
+          conversion="decode"
+          (click)="setConversion('decode')"
+        >
+          decode
+        </button>
+      </div>
+    </div>
+  </div>
+  <form
+    id="main-form"
+    [formGroup]="mainConversionForm"
+    (ngSubmit)="handleSubmit()"
+  >
+    <fieldset class="input-div">
+      <legend>
+        <span id="dyn-legend-method">{{ conversionMethod }}</span>
+        <span style="color: white" id="dyn-inp-div-scheme">
+          {{ conversionMethod === "decode" ? "" : " / " + selectedAlias }}</span
+        >
+      </legend>
+      <input
+        id="input-text"
+        name="input-text"
+        formControlName="inputText"
+        placeholder="enter {{
+          conversionMethod === 'encode' ? 'string' : 'cipher'
+        }} to {{ conversionMethod }}"
+        autocomplete="off"
+      />
+
+      <button type="submit">
+        <fa-icon class="icon-lg" [icon]="faArrowRight"></fa-icon>
+      </button>
+    </fieldset>
+    <p
+      style="color: red; text-align: start; width: 100%"
+      [class.d-none]="inputText?.valid || inputText?.untouched"
+    >
+      please provide
+      {{ conversionMethod === "encode" ? "string" : "cipher" }} to
+      {{ conversionMethod }}
+    </p>
+  </form>
+  <!-- ---------------------------------------OUTPUT------------------------------------------------ -->
+  <fieldset id="output">
+    <legend>
+      output
+      <span style="color: white" id="dyn-legend-scheme">
+        {{
+          conversionMethod === "decode"
+            ? ""
+            : " / " + getSchemeAliasFromCode(conversionOutput.schemeUsed)
+        }}
+      </span>
+    </legend>
+    <div id="text-inp">
+      <h3 id="text-inp-head">
+        Text
+        <span style="font-size: small; color: royalblue">to decode</span>
+      </h3>
+      <div id="text-inp-body">
+        <span>{{
+          conversionMethod === "encode"
+            ? conversionOutput.text
+            : conversionOutput.code
+        }}</span>
+      </div>
+    </div>
+    <div id="text-out">
+      <h3 id="text-out-head">
+        Cipher
+        <span style="font-size: small; color: royalblue">from text</span>
+      </h3>
+      <div id="text-out-body">
+        <span>
+          {{
+            conversionMethod === "encode"
+              ? conversionOutput.encoded
+              : conversionOutput.decoded
+          }}
+        </span>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<app-scheme-modal
+  [isOpen]="isSchemeModalOpen"
+  [schemes]="schemes"
+  (closeModalEvent)="handleModalClose()"
+  (selectSchemeEvent)="handleSelectScheme($event)"
+></app-scheme-modal>

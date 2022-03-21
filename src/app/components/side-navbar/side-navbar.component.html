@@ -1,8 +1,12 @@
-<div class="nav-wrapper" [class.open]="isSidebarOpen">
+<div
+  class="nav-wrapper"
+  [class.open]="isSidebarOpen"
+  (click)="onOutClick($event)"
+>
   <nav class="navbar navbar-side" role="navigation">
     <div class="nav-title">
       <button class="btn btn-sm nav-close" (click)="closeSidebar()">
-        <ion-icon name="close-outline"></ion-icon>
+        <fa-icon class="icon-lg" [icon]="faTimes"></fa-icon>
       </button>
       <div class="logo">
         <a href="/" class="anchor-reset">
@@ -23,7 +27,7 @@
             routerLinkActive="activePage"
             class="anchor-reset"
           >
-            <ion-icon name="home-outline"></ion-icon>
+            <fa-icon class="icon-lg" [icon]="faHome"></fa-icon>
             <span>home</span>
           </a>
         </li>
@@ -33,7 +37,7 @@
             routerLinkActive="activePage"
             class="anchor-reset"
           >
-            <ion-icon name="repeat-outline"></ion-icon>
+            <fa-icon class="icon-lg" [icon]="faCode"></fa-icon>
             <span>convert</span>
           </a>
         </li>
@@ -43,7 +47,8 @@
             routerLinkActive="activePage"
             class="anchor-reset"
           >
-            <ion-icon name="compass-outline"></ion-icon>
+            <fa-icon class="icon-lg" [icon]="faCompass"></fa-icon>
+
             <span>explore</span>
           </a>
         </li>
@@ -53,7 +58,8 @@
             routerLinkActive="activePage"
             class="anchor-reset"
           >
-            <ion-icon name="documents-outline"></ion-icon>
+            <fa-icon class="icon-lg" [icon]="faFileAlt"></fa-icon>
+
             <span>docs</span>
           </a>
         </li>
@@ -63,7 +69,8 @@
             routerLinkActive="activePage"
             class="anchor-reset"
           >
-            <ion-icon name="information-circle-outline"></ion-icon>
+            <fa-icon class="icon-lg" [icon]="faInfoCircle"></fa-icon>
+
             <span>about</span>
           </a>
         </li>
@@ -73,7 +80,8 @@
             routerLinkActive="activePage"
             class="anchor-reset"
           >
-            <ion-icon name="mail-outline"></ion-icon>
+            <fa-icon class="icon-lg" [icon]="faCommentDots"></fa-icon>
+
             <span>feedback</span>
           </a>
         </li>

@@ -1,0 +1,34 @@
+@import "../../../scss-partials/variables";
+
+#scheme-select-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-block: 1rem;
+  width: 100%;
+
+  & .scheme-select-btn.selected,
+  & .conversion-select-btn.selected {
+    position: relative;
+    color: $SUCCESS__COLOR;
+    border: 1px solid $SUCCESS__COLOR !important;
+    overflow: hidden;
+    transition: all ease 300ms;
+  }
+  & .scheme-select-btn.selected::before,
+  & .conversion-select-btn.selected::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 5px;
+    background-color: $SUCCESS__COLOR;
+    /* box-shadow: 1px 1px 6px $SUCCESS__COLOR; */
+    overflow: hidden;
+    transition: all ease 300ms;
+  }
+}

@@ -12,6 +12,8 @@ body,
 }
 body {
   background-color: $MAIN__BG__COLOR !important;
+  position: relative !important;
+  height: auto !important;
 }
 
 ::selection {
@@ -38,8 +40,12 @@ body::-webkit-scrollbar-thumb:hover {
   background: $MAIN__ACCENT__COLOR;
 }
 
-ion-icon {
+fa-icon {
   pointer-events: none;
+}
+
+.d-none {
+  display: none;
 }
 
 // general/reusable styles
@@ -70,24 +76,33 @@ ion-icon {
 }
 
 .btn {
-  border: none;
-  cursor: pointer;
-  border-radius: 0.25rem;
-  transition: all ease 0.3s;
-}
-.btn-sm {
-  font-size: 0.5rem;
-  padding: 0.125rem 0.5rem;
-}
-.btn-md {
-  font-size: 1rem;
-  padding: 0.25rem 0.75rem;
-}
-.btn-lg {
-  font-size: 1.2rem;
+  position: relative;
+  background-color: $SECONDARY__GREY__COLOR;
   padding: 0.5rem 1rem;
+  color: $WHITE__COLOR;
+  border: 1px solid $SECONDARY__GREY__COLOR;
+  /* border: none; */
+  border-radius: 5px;
+  font-size: larger;
+  cursor: pointer;
+  transition: all ease 300ms;
+}
+.btn.btn-sm {
+  padding: 0.125rem 0.5rem;
+  font-size: smaller;
+}
+.btn.btn-md {
+  padding: 0.25rem 0.725rem;
+  font-size: medium;
+}
+.btn:hover {
+  border: 1px solid $WHITE__COLOR;
 }
 
+.btn:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
 .btn:active {
   transform: translateY(2.5px);
 }
@@ -96,3 +111,167 @@ ion-icon {
   text-decoration: none !important;
   color: inherit;
 }
+
+.icon-lg {
+  font-size: large;
+  width: 1.75rem;
+}
+
+/* modal styles start  */
+.modal {
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+.modal::-webkit-scrollbar {
+  display: none;
+}
+.modal.open {
+  display: flex;
+}
+.modal-content {
+  position: relative;
+  background-color: $MAIN__BG__COLOR;
+  padding: 1rem;
+  margin: 5rem auto;
+  width: 60%;
+  min-height: 70vh;
+  height: auto;
+  border-radius: 5px;
+  border: 1px solid $WHITE__COLOR;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation: modalAppear 0.5s ease;
+}
+@media (max-width: 768px) {
+  .modal-content {
+    width: 85vw;
+  }
+  .modal-body {
+    height: 70vh;
+  }
+  .error-modal .modal-content {
+    width: 90vw !important;
+  }
+}
+@media (max-width: 550px) {
+  .sort-and-info .container {
+    padding-top: 1rem;
+  }
+}
+@-webkit-keyframes modalAppear {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes modalAppear {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  position: relative;
+  border-bottom: 1.5px solid $WHITE__COLOR;
+  color: $MAIN__ACCENT__COLOR;
+}
+.modal-header h2 {
+  display: flex;
+  align-items: center;
+  font-size: 2em;
+  padding: 0.5rem 0;
+}
+.modal-close-btn {
+  height: 2.25rem;
+  width: 2.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  background-color: $ERROR__COLOR;
+  color: $BLACK__COLOR;
+  outline: none;
+  border: 1.5px solid $WHITE__COLOR;
+  font-size: x-large;
+  border-radius: 100%;
+  z-index: 9999;
+  transition: all ease 300ms;
+}
+.modal-close-btn:hover {
+  background-color: $WHITE__COLOR;
+  color: $ERROR__COLOR;
+}
+.modal-close-btn:active {
+  transform: scale(0.95);
+}
+.modal-close-btn > fa-icon {
+  transition: all ease 300ms;
+}
+.modal-close-btn:hover > fa-icon {
+  transform: rotate(180deg);
+}
+
+.modal-body {
+  height: 50vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  color: $WHITE__COLOR;
+  padding: 0.75rem;
+  margin-top: 1rem;
+}
+.modal-body::-webkit-scrollbar {
+  background-color: transparent;
+  width: 5px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+  background-color: $BLACK__COLOR;
+  border-radius: 10px;
+}
+.modal-footer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  background-color: inherit;
+  padding-top: 1rem;
+  width: 100%;
+  color: $WHITE__COLOR;
+}
+.modal-footer .modal-close-btn {
+  position: relative;
+  top: unset;
+  right: unset;
+  width: 100%;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: $SECONDARY__GREY__COLOR;
+  color: $ERROR__COLOR;
+  font-weight: bold;
+  z-index: auto;
+}
+.modal-footer .modal-close-btn:hover {
+  background-color: $ERROR__COLOR;
+  color: $WHITE__COLOR;
+}
+/* modal styles end  */

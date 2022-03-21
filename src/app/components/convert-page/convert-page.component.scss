@@ -1,0 +1,281 @@
+@import "../../../scss-partials/variables";
+
+body {
+  background-color: $MAIN__BG__COLOR !important;
+  position: relative !important;
+  height: auto !important;
+}
+
+.selects {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  color: $MAIN__ACCENT__COLOR;
+  & .scheme-selection-div,
+  & .conversion-selection-div {
+    flex-grow: 0;
+    flex-shrink: 1;
+  }
+  & .scheme-selection-div h2,
+  & .conversion-selection-div h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  & .conversion-select-btns,
+  & .scheme-select-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  & .scheme-selection-div .info-modal-btn {
+    background: transparent;
+  }
+  & .scheme-selection-div .schemes-modal-btn.blocked {
+    opacity: 0.25;
+    user-select: none;
+  }
+  & .scheme-selection-div .schemes-modal-btn.blocked {
+    cursor: not-allowed;
+  }
+  & .scheme-selection-div .schemes-modal-btn {
+    transition: all 0.3s ease;
+  }
+  & .scheme-selection-div .schemes-modal-btn.blocked:hover {
+    color: $ERROR__COLOR;
+    filter: none;
+    outline: 1px solid $ERROR__COLOR;
+  }
+
+  & .scheme-select-btn:focus-visible,
+  & .schemes-modal-btn:focus-visible,
+  & .conversion-select-btn:focus-visible {
+    outline: 1.5px solid cyan;
+    outline-offset: 2px;
+  }
+  & .scheme-select-btn.selected,
+  & .conversion-select-btn.selected {
+    position: relative;
+    color: $SUCCESS__COLOR;
+    border: 1px solid $SUCCESS__COLOR !important;
+    overflow: hidden;
+    transition: all ease 300ms;
+  }
+  & .scheme-select-btn.selected::before,
+  & .conversion-select-btn.selected::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 5px;
+    background-color: $SUCCESS__COLOR;
+    /* box-shadow: 1px 1px 6px $SUCCESS__COLOR; */
+    overflow: hidden;
+    transition: all ease 300ms;
+  }
+}
+
+#main-form {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  //   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $WHITE__COLOR;
+  background-color: $MAIN__BG__COLOR;
+  /* border-radius: 8px; */
+  padding: 1rem 0;
+  transition: all ease 300ms;
+  z-index: 10;
+}
+#main-form::after,
+#main-form::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: $MAIN__BG__COLOR;
+  transition: all ease 300ms;
+}
+#main-form::before {
+  top: 0;
+  left: 0;
+}
+#main-form::after {
+  top: 0;
+  right: 0;
+}
+#main-form .input-div {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  border-radius: 8px;
+  border: 1.5px solid $WHITE__COLOR;
+  padding: 0 1rem;
+  background-color: $MAIN__BG__COLOR;
+  color: $WHITE__COLOR;
+  transition: all ease 300ms;
+}
+#main-form .input-div legend {
+  padding: 0 0.5rem;
+  text-transform: uppercase;
+  color: $MAIN__ACCENT__COLOR;
+}
+#main-form .input-div:focus-within {
+  border: 1.5px solid $MAIN__ACCENT__COLOR;
+}
+.spaced::-webkit-input-placeholder {
+  letter-spacing: 1.25px;
+  transform: translateX(10px);
+}
+@keyframes flip-flop {
+  0% {
+    transform: skew(0deg);
+  }
+  25% {
+    transform: skew(70deg);
+  }
+  50% {
+    transform: skew(0deg);
+  }
+  75% {
+    transform: skew(-70deg);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+#input-text {
+  width: 100%;
+  padding: 1rem 3rem 1rem 0.5rem;
+  font-size: 20px;
+  border: none;
+  color: $WHITE__COLOR;
+  background: transparent;
+  transition: all ease 300ms;
+}
+#input-text::placeholder {
+  transition: all ease 300ms;
+}
+
+#input-text:focus-visible {
+  outline: none;
+}
+#input-text:focus-visible::placeholder {
+  color: rosybrown;
+}
+
+#main-form .input-div button[type="submit"] {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-65%);
+  display: flex;
+  align-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0.25rem;
+  border-radius: 100%;
+  color: $WHITE__COLOR;
+  outline: 1.5px solid $WHITE__COLOR;
+  background: transparent;
+  border: none;
+  font-size: x-large;
+  cursor: pointer;
+  transition: all ease 300ms;
+}
+#main-form .input-div button:hover,
+#main-form .input-div button:focus,
+#main-form .input-div button:focus-visible {
+  outline: 1.5px solid $SUCCESS__COLOR;
+  color: $SUCCESS__COLOR;
+}
+
+#output {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: $WHITE__COLOR;
+  padding: 1rem;
+  margin-top: 2rem;
+  border: 1.5px solid $SUCCESS__COLOR;
+  border-radius: 8px;
+  transition: all ease 300ms;
+}
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  font-size: smaller;
+  border-radius: 4px;
+  margin: 0;
+  background-color: $MAIN__BG__COLOR;
+  outline: 1px solid $WHITE__COLOR;
+  color: $MAIN__ACCENT__COLOR;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(20%);
+}
+
+#output legend {
+  padding: 0 0.5rem;
+  text-transform: uppercase;
+  color: $SUCCESS__COLOR;
+}
+
+#output #text-inp,
+#output #text-out {
+  min-height: 53px;
+  height: auto;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+#output #text-inp #text-inp-head,
+#output #text-out #text-out-head {
+  font-size: 22px;
+  font-weight: bold;
+}
+#output #text-inp #text-inp-body,
+#output #text-out #text-out-body {
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  color: $WHITE__COLOR;
+  background-color: $PRIMARY__GREY__COLOR;
+  transition: all ease 300ms;
+}
+#output #text-inp #text-inp-body {
+  color: $MAIN__ACCENT__COLOR;
+}
+#output #text-out #text-out-body {
+  color: $SUCCESS__COLOR;
+}
+#output #text-inp #text-inp-body:hover > .copy-btn,
+#output #text-out #text-out-body:hover > .copy-btn {
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}

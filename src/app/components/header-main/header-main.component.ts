@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header-main',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header-main.component.scss'],
 })
 export class HeaderMainComponent implements OnInit {
+  hamburger = faBars;
+  caretDown = faCaretDown;
+
   isSidebarOpen: boolean = false;
   constructor() {}
 
