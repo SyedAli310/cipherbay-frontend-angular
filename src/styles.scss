@@ -14,6 +14,7 @@ body {
   background-color: $MAIN__BG__COLOR !important;
   position: relative !important;
   height: auto !important;
+  overflow-x: hidden !important;
 }
 
 ::selection {

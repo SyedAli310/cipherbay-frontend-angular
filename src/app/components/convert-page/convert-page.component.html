@@ -112,6 +112,57 @@
       </div>
     </div>
   </fieldset>
+
+  <!-- under development not useable yet -->
+  <div
+    #dev
+    style="
+      width: 300px;
+      position: fixed;
+      left: 2rem;
+      bottom: 2rem;
+      background-color: #1b1b1b;
+      padding: 0.75rem;
+      border-radius: 6px;
+      outline: 1px solid royalblue;
+      z-index: 999999999;
+    "
+  >
+    <button
+      class="btn btn-sm"
+      style="float: right; color: white; cursor: pointer"
+      (click)="closeDevMsg(dev)"
+    >
+      <fa-icon [icon]="faTimes"></fa-icon>
+    </button>
+    <b>
+      <span
+        style="
+          color: crimson;
+          font-size: large;
+          display: flex;
+          align-items: flex-start;
+          gap: 0.5rem;
+        "
+      >
+        <fa-icon [icon]="faInfo"></fa-icon>
+        DEVELOPMENT MODE
+      </span>
+      <i
+        style="
+          text-align: center;
+          color: peru;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 0.5rem;
+          margin-top: 0.5rem;
+        "
+      >
+        * not operational yet *
+      </i>
+    </b>
+  </div>
 </div>
 
 <app-scheme-modal

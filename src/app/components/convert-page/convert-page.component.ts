@@ -1,5 +1,9 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { faInfoCircle, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faInfoCircle,
+  faArrowRight,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons';
 import { CipherbayService } from 'src/app/services/cipherbay.service';
 import { SchemeView } from '../../SchemeView';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -12,6 +16,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class ConvertPageComponent implements OnInit {
   //Icons
   faInfo = faInfoCircle;
+  faTimes = faTimes;
   faArrowRight = faArrowRight;
 
   isSchemeModalOpen: boolean = false;
@@ -83,5 +88,9 @@ export class ConvertPageComponent implements OnInit {
       const scheme = this.schemes.find((scheme) => scheme.name === schemeCode);
       return scheme ? scheme.alias : 'not-found';
     }
+  }
+
+  closeDevMsg(el: any) {
+    el.remove();
   }
 }

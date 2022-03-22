@@ -5,6 +5,7 @@ import {
   NavigationEnd,
   NavigationCancel,
   NavigationError,
+  RouterLink,
 } from '@angular/router';
 import { LoaderService } from './services/loader.service';
 
@@ -15,7 +16,7 @@ import { LoaderService } from './services/loader.service';
 })
 export class AppComponent {
   showLoader: boolean = false;
-
+  title: string = 'cipherbay';
   constructor(private loaderService: LoaderService, private router: Router) {}
 
   ngOnInit() {
@@ -24,6 +25,7 @@ export class AppComponent {
     );
     this.router.events.subscribe((routerEvent) => {
       if (routerEvent instanceof NavigationStart) {
+        this.routerChangeMethod(routerEvent.url);
         this.loaderService.showLoader();
       } else if (routerEvent instanceof NavigationEnd) {
         this.sleep(1000).then(() => this.loaderService.hideLoader());
@@ -40,5 +42,9 @@ export class AppComponent {
 
   sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  routerChangeMethod(url: string) {
+    this.title = 'cipherbay / ' + url.split('/')[1];
   }
 }

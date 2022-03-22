@@ -1,0 +1,168 @@
+@import "../../../scss-partials/variables";
+.hero-main {
+  position: relative;
+  min-height: 70vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  & .animated-text {
+    max-width: 550px;
+    white-space: nowrap;
+    background: $MAIN__BG__COLOR;
+  }
+  & .credits {
+    position: fixed;
+    bottom: 2rem;
+    background-color: $MAIN__BG__COLOR;
+    color: $WHITE__COLOR;
+    font-size: 0.925rem;
+    opacity: 0.75;
+    & a {
+      color: $MAIN__ACCENT__COLOR;
+      opacity: 0.5;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+.glitch {
+  color: $MAIN__ACCENT__COLOR;
+  position: relative;
+  font-size: 4em;
+  padding: 0.25rem 0;
+  animation: glitch 5s 5s infinite;
+}
+@media (max-width: 768px) {
+  .glitch {
+    font-size: 3em;
+  }
+}
+@media (max-width: 500px) {
+  .glitch {
+    font-size: 2em;
+  }
+}
+
+.glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  text-shadow: -5px 0 coral;
+  background: $MAIN__BG__COLOR;
+  overflow: hidden;
+  top: 0;
+  animation: noise-1 3s linear infinite alternate-reverse,
+    glitch 5s 5.05s infinite;
+}
+
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  text-shadow: -5px 0 lightgreen;
+  background: $MAIN__BG__COLOR;
+  overflow: hidden;
+  top: 0;
+  animation: noise-2 3s linear infinite alternate-reverse, glitch 5s 5s infinite;
+}
+
+@keyframes glitch {
+  1% {
+    transform: rotateX(10deg) skewX(90deg);
+  }
+  2% {
+    transform: rotateX(0deg) skewX(0deg);
+  }
+}
+
+@keyframes noise-1 {
+  $steps: 30;
+  @for $i from 1 through $steps {
+    #{percentage($i*(1/$steps))} {
+      $top: random(100);
+      $bottom: random(101 - $top);
+      clip-path: inset(#{$top}px 0 #{$bottom}px 0);
+    }
+  }
+}
+
+@keyframes noise-2 {
+  $steps: 30;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      $top: random(100);
+      $bottom: random(101 - $top);
+      clip-path: inset(#{$top}px 0 #{$bottom}px 0);
+    }
+  }
+}
+
+@keyframes fudge {
+  from {
+    transform: translate(0px, 0px);
+  }
+  to {
+    transform: translate(0px, 2%);
+  }
+}
+
+.glow {
+  @extend .glitch;
+  text-shadow: 0 0 1000px rgb(223, 191, 191);
+  color: transparent;
+  position: absolute;
+  top: 0;
+}
+
+.subtitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 0.625vw;
+  color: rgba(165, 141, 141, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1em;
+  line-height: 1.5;
+  text-align: start;
+  animation: glitch-2 5s 5.02s infinite,
+    color-animation 2.5s infinite alternate linear;
+}
+
+@keyframes glitch-2 {
+  1% {
+    transform: rotateX(10deg) skewX(3deg);
+  }
+  2% {
+    transform: rotateX(0deg) skewX(0deg);
+  }
+}
+
+@keyframes color-animation {
+  0% {
+    color: $ERROR__COLOR;
+  }
+
+  20% {
+    color: #ff8040;
+  }
+
+  40% {
+    color: #ffff00;
+  }
+
+  60% {
+    color: $SUCCESS__COLOR;
+  }
+
+  80% {
+    color: $MAIN__ACCENT__COLOR;
+  }
+
+  100% {
+    color: #8080ff;
+  }
+}
