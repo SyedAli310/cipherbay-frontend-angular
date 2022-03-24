@@ -276,3 +276,37 @@ fa-icon {
   color: $WHITE__COLOR;
 }
 /* modal styles end  */
+
+// dropdown styles/
+.dropdown-wrapper {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 12rem;
+  // outline: 1px solid red;
+  width: auto;
+  padding-top: 0.5rem;
+  overflow: hidden;
+  z-index: 9999;
+  &.open {
+    display: flex;
+  }
+  & .dropdown {
+    position: relative;
+    width: 100%;
+    padding: 1rem;
+    background-color: $PRIMARY__GREY__COLOR;
+    border-radius: 6px;
+    opacity: 0;
+    transform: translateY(5%);
+    animation: appear-dropdown 0.2s ease forwards;
+    transition: all 0.3s ease;
+  }
+  @keyframes appear-dropdown {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

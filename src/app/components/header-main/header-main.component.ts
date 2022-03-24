@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  Renderer2,
+} from '@angular/core';
 import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -11,7 +17,21 @@ export class HeaderMainComponent implements OnInit {
   caretDown = faCaretDown;
 
   isSidebarOpen: boolean = false;
-  constructor() {}
+  isDropdownOpen: boolean = false;
+
+  @ViewChild('dropdownToggle') dropdownToggle?: ElementRef;
+  @ViewChild('dropdownWraper') dropdownWraper?: ElementRef;
+  constructor(private renderer: Renderer2) {
+    this.renderer.listen('window', 'click', (e: Event) => {
+      if (
+        e.target !== this.dropdownToggle?.nativeElement &&
+        e.target !== this.dropdownWraper?.nativeElement &&
+        !this.dropdownWraper?.nativeElement.contains(e.target)
+      ) {
+        this.isDropdownOpen = false;
+      }
+    });
+  }
 
   ngOnInit(): void {}
 
@@ -20,5 +40,9 @@ export class HeaderMainComponent implements OnInit {
   }
   closeSideNav() {
     this.isSidebarOpen = false;
+  }
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 }

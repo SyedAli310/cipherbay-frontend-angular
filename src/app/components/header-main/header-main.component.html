@@ -10,9 +10,29 @@
       </a>
     </div>
     <div class="mode-toggle">
-      <button class="btn btn-md color-mode-toggle-btn">
+      <button
+        #dropdownToggle
+        class="btn btn-md color-mode-toggle-btn"
+        (click)="toggleDropdown()"
+      >
         <fa-icon class="icon-lg" [icon]="caretDown"></fa-icon>
       </button>
+      <div
+        class="dropdown-wrapper"
+        [class.open]="isDropdownOpen"
+        #dropdownWraper
+      >
+        <div class="dropdown header-dropdown">
+          hello from dropdown in the header section
+          <br />
+          this is a test
+          <br />
+          this is a test
+          <br />
+          this is a test
+          <button class="btn btn-sm">hello</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

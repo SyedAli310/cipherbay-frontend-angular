@@ -86,7 +86,7 @@ export class ConvertPageComponent implements OnInit {
   getSchemeAliasFromCode(schemeCode: string): any {
     if (this.schemes) {
       const scheme = this.schemes.find((scheme) => scheme.name === schemeCode);
-      return scheme ? scheme.alias : 'not-found';
+      return scheme ? scheme.alias : ' scheme used';
     }
   }
 

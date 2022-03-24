@@ -4,16 +4,23 @@
       <div class="glitch" [attr.data-text]="animatedText">
         {{ animatedText }}
       </div>
-      <div class="glow">
-        {{ animatedText }}
-      </div>
+      <p class="subtitle">CIPHER BAY</p>
     </div>
-    <p class="subtitle">NONSENSICAL TWEAKS</p>
+    <div class="cta-btns">
+      <a class="btn btn-lg anchor-reset" [routerLink]="['/login']">
+        <fa-icon class="user-icon" [icon]="faUser"></fa-icon>
+        login
+      </a>
+      <a class="btn btn-lg anchor-reset" [routerLink]="['/convert']">
+        get started
+        <fa-icon [icon]="faArrowRight"></fa-icon>
+      </a>
+    </div>
     <small class="credits">
       animation by
       <a href="https://codepen.io/elisabethdiang" target="_blank">Elisabéth</a>
       &bull; modified by
-      <a href="https:github.com/SyedAli310" target="_blank">syedali</a>
+      <a href="https://github.com/SyedAli310" target="_blank">syedali</a>
     </small>
   </div>
 </div>

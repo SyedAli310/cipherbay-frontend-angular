@@ -26,5 +26,8 @@
         color: $MAIN__ACCENT__COLOR;
       }
     }
+    & .mode-toggle {
+      position: relative;
+    }
   }
 }

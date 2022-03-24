@@ -45,6 +45,6 @@ export class AppComponent {
   }
 
   routerChangeMethod(url: string) {
-    this.title = 'cipherbay / ' + url.split('/')[1];
+    this.title = 'cipherbay / ' + (url.split('/')[1] || 'home');
   }
 }

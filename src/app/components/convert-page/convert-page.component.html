@@ -78,8 +78,10 @@
       <span style="color: white" id="dyn-legend-scheme">
         {{
           conversionMethod === "decode"
-            ? ""
-            : " / " + getSchemeAliasFromCode(conversionOutput.schemeUsed)
+            ? " "
+            : getSchemeAliasFromCode(conversionOutput.schemeUsed) === undefined
+            ? " "
+            : "/ " + getSchemeAliasFromCode(conversionOutput.schemeUsed)
         }}
       </span>
     </legend>
