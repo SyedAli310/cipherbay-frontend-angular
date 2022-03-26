@@ -3,6 +3,7 @@ import {
   faInfoCircle,
   faArrowRight,
   faTimes,
+  faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
 import { CipherbayService } from 'src/app/services/cipherbay.service';
 import { SchemeView } from '../../SchemeView';
@@ -18,18 +19,25 @@ export class ConvertPageComponent implements OnInit {
   faInfo = faInfoCircle;
   faTimes = faTimes;
   faArrowRight = faArrowRight;
+  faSpinner = faSpinner;
 
   isSchemeModalOpen: boolean = false;
-  selectedAlias: string = 'alpha';
+  selectedScheme: SchemeView = JSON.parse(
+    localStorage.getItem('selectedScheme')!
+  ) || { alias: 'alpha', name: 'scheme_zevqnm-wavv' };
   selectedSchemeCode: string = 'scheme_zevqnm-wavv';
   conversionMethod: string = 'encode';
-  schemes?: SchemeView[];
-  conversionOutput: any = '';
+  schemes: SchemeView[];
+  conversionOutput: any = {};
+  isLoading: boolean = false;
+  hasError: boolean = false;
   constructor(
     private el: ElementRef,
     private cipherBayService: CipherbayService,
     private formBuilder: FormBuilder
-  ) {}
+  ) {
+    this.schemes = [];
+  }
 
   ngOnInit(): void {
     this.cipherBayService.getSchemes().subscribe((data: any) => {
@@ -45,21 +53,70 @@ export class ConvertPageComponent implements OnInit {
     inputText: ['', Validators.required],
   });
 
-  handleSubmit() {
-    const input = this.mainConversionForm.get('inputText')?.value;
-    const scheme = this.selectedSchemeCode;
+  handleSubmit(outputLoader: HTMLDivElement) {
+    const input = this.mainConversionForm.get('inputText')?.value.trim();
+    if (!input) {
+      alert('Please enter some text to convert');
+      return;
+    }
+    const scheme = this.selectedScheme.name;
+    console.log(this.selectedSchemeCode);
+    let errorToShow = '';
+    this.isLoading = true;
     switch (this.conversionMethod) {
       case 'encode':
-        this.cipherBayService.encode(scheme, input).subscribe((data: any) => {
-          console.log(data);
-          this.conversionOutput = data;
-        });
+        this.cipherBayService.encode(scheme, input).subscribe(
+          (data: any) => {
+            this.isLoading = false;
+            this.hasError = false;
+            console.log(data);
+            this.conversionOutput = data;
+          },
+          (error: any) => {
+            this.isLoading = false;
+            this.hasError = true;
+
+            console.log(error);
+
+            if (error.status === 0) {
+              errorToShow = 'Server is not responding, please try again later';
+              this.conversionOutput = { encoded: errorToShow, text: input };
+            } else {
+              errorToShow = error.error.msg;
+              this.conversionOutput = { encoded: errorToShow, text: input };
+            }
+            console.log(errorToShow);
+            return;
+          }
+        );
         break;
       case 'decode':
-        this.cipherBayService.decode(input).subscribe((data: any) => {
-          console.log(data);
-          this.conversionOutput = data;
-        });
+        this.cipherBayService.decode(input).subscribe(
+          (data: any) => {
+            this.isLoading = false;
+            this.hasError = false;
+
+            console.log(data);
+            this.conversionOutput = data;
+          },
+          (error: any) => {
+            this.isLoading = false;
+            this.hasError = true;
+
+            console.log(error);
+            if (error.status === 0) {
+              errorToShow = 'Server is not responding, please try again later';
+
+              this.conversionOutput = { decoded: errorToShow, code: input };
+            } else {
+              errorToShow = error.error.msg;
+              this.conversionOutput = { decoded: errorToShow, code: input };
+            }
+            console.log(errorToShow);
+
+            return;
+          }
+        );
         break;
       default:
         break;
@@ -79,14 +136,14 @@ export class ConvertPageComponent implements OnInit {
     this.isSchemeModalOpen = false;
   }
   handleSelectScheme(scheme: SchemeView) {
-    this.selectedAlias = scheme.alias;
-    this.selectedSchemeCode = scheme.name;
+    this.selectedScheme = scheme;
+    localStorage.setItem('selectedScheme', JSON.stringify(scheme));
   }
 
   getSchemeAliasFromCode(schemeCode: string): any {
-    if (this.schemes) {
+    if (this.schemes.length > 0) {
       const scheme = this.schemes.find((scheme) => scheme.name === schemeCode);
-      return scheme ? scheme.alias : ' scheme used';
+      return scheme ? scheme.alias : ' scheme';
     }
   }
 

@@ -13,6 +13,7 @@ import { NotFoundPageComponent } from './components/not-found-page/not-found-pag
 import { PreLoaderComponent } from './components/pre-loader/pre-loader.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SchemeModalComponent } from './components/scheme-modal/scheme-modal.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SchemeModalComponent } from './components/scheme-modal/scheme-modal.com
     NotFoundPageComponent,
     PreLoaderComponent,
     SchemeModalComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

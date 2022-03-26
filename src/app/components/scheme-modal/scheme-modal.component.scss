@@ -32,3 +32,34 @@
     transition: all ease 300ms;
   }
 }
+.dyn-selected-scheme {
+  margin-bottom: 1rem;
+  & span {
+    color: $SUCCESS__COLOR;
+  }
+}
+.modal-footer {
+  & .modal-close-btn {
+    background-color: unset;
+    color: $SUCCESS__COLOR;
+    &:hover {
+      background-color: $PRIMARY__GREY__COLOR;
+      color: $SUCCESS__COLOR;
+      border-color: $SUCCESS__COLOR;
+    }
+  }
+}
+
+.scheme-modal-res {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block: auto;
+  width: 100%;
+  & .msg-res {
+    font-weight: 600;
+    color: $ERROR__COLOR;
+  }
+}

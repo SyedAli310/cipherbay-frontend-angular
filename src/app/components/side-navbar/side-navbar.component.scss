@@ -26,12 +26,14 @@
   }
   & .navbar-side {
     position: fixed;
-    background-color: $SECONDARY__GREY__COLOR;
+    background-color: $BLACK__COLOR;
     width: 20rem;
     height: 100vh;
     transform: translateX(-100%);
     visibility: hidden;
     pointer-events: none;
+    border-right: 1px solid $PRIMARY__GREY__COLOR;
+
     transition: all ease 0.3s;
 
     & .nav-title {
@@ -42,27 +44,34 @@
       align-items: center;
       padding: 0.75rem;
       margin-bottom: 2rem;
-      background-color: $PRIMARY__GREY__COLOR;
-      border-bottom: 1px solid $BLACK__COLOR;
+      background-color: $BLACK__COLOR;
+      border-bottom: 1px solid $PRIMARY__GREY__COLOR;
       & .nav-close {
-        width: 2.5rem;
-        height: 2.5rem;
+        width: 2rem;
+        height: 2rem;
         display: none;
         align-items: center;
         justify-content: center;
         position: absolute;
-        top: 100%;
-        right: -1rem;
+        top: 50%;
+        right: 1rem;
+        border: none;
         transform: translateY(-50%);
         border-radius: 100%;
         font-size: 1.5rem;
         background-color: $ERROR__COLOR;
         // outline: 1px solid $BLACK__COLOR;
-        color: $BLACK__COLOR;
+        color: $WHITE__COLOR;
+      }
+      & .nav-close > fa-icon {
+        font-weight: lighter;
+        transition: all ease 0.3s;
       }
       & .nav-close:hover {
-        color: $WHITE__COLOR;
-        // outline: 1px solid $WHITE__COLOR;
+        filter: brightness(1.25);
+      }
+      & .nav-close:hover > fa-icon {
+        transform: scale(1.125);
       }
     }
     & .nav-content {
@@ -70,10 +79,9 @@
       width: 100%;
       display: flex;
       align-items: flex-start;
-      // padding-inline: 0.75rem;
       padding-bottom: 2.5rem;
       overflow-y: scroll;
-      // overflow-x: hidden;
+      overflow-x: hidden;
       &::-webkit-scrollbar {
         width: 8px;
       }
@@ -114,8 +122,8 @@
               transition: all ease 0.2s;
             }
             &:hover {
-              background-color: $PRIMARY__GREY__COLOR;
-              color: $MAIN__ACCENT__COLOR;
+              background-color: $MAIN__BG__COLOR;
+              color: $WHITE__COLOR;
               border-bottom: 2px solid $MAIN__ACCENT__COLOR;
               font-weight: bold;
               letter-spacing: 1px;
@@ -126,7 +134,7 @@
               transform: scale(1.125);
             }
             &.activePage {
-              background-color: $PRIMARY__GREY__COLOR;
+              // background-color: $PRIMARY__GREY__COLOR;
               color: $SUCCESS__COLOR;
               border-bottom: 2px solid $SUCCESS__COLOR;
               font-weight: bold;
