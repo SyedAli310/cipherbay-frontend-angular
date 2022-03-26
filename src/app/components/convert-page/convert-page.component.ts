@@ -4,6 +4,7 @@ import {
   faArrowRight,
   faTimes,
   faSpinner,
+  faCopy,
 } from '@fortawesome/free-solid-svg-icons';
 import { CipherbayService } from 'src/app/services/cipherbay.service';
 import { SchemeView } from '../../SchemeView';
@@ -20,12 +21,12 @@ export class ConvertPageComponent implements OnInit {
   faTimes = faTimes;
   faArrowRight = faArrowRight;
   faSpinner = faSpinner;
+  faCopy = faCopy;
 
   isSchemeModalOpen: boolean = false;
   selectedScheme: SchemeView = JSON.parse(
     localStorage.getItem('selectedScheme')!
   ) || { alias: 'alpha', name: 'scheme_zevqnm-wavv' };
-  selectedSchemeCode: string = 'scheme_zevqnm-wavv';
   conversionMethod: string = 'encode';
   schemes: SchemeView[];
   conversionOutput: any = {};
@@ -43,6 +44,7 @@ export class ConvertPageComponent implements OnInit {
     this.cipherBayService.getSchemes().subscribe((data: any) => {
       this.schemes = data.schemes;
     });
+    console.log(this.conversionOutput);
   }
 
   get inputText() {
@@ -60,7 +62,6 @@ export class ConvertPageComponent implements OnInit {
       return;
     }
     const scheme = this.selectedScheme.name;
-    console.log(this.selectedSchemeCode);
     let errorToShow = '';
     this.isLoading = true;
     switch (this.conversionMethod) {
@@ -149,5 +150,20 @@ export class ConvertPageComponent implements OnInit {
 
   closeDevMsg(el: any) {
     el.remove();
+  }
+
+  copyToClipboard(value: string, el: HTMLButtonElement) {
+    let x = null;
+    if (x) {
+      clearTimeout(x);
+    }
+    navigator.clipboard.writeText(value).then(() => {
+      el.innerHTML = '&#x2713; copied';
+      el.classList.add('success');
+      x = setTimeout(() => {
+        el.classList.remove('success');
+        el.innerHTML = 'copy';
+      }, 2000);
+    });
   }
 }

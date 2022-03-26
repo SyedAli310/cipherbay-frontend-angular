@@ -249,17 +249,20 @@ body {
   right: 0.5rem;
   display: flex;
   align-items: center;
-  padding: 0.25rem;
-  font-size: smaller;
+  font-size: small;
   border-radius: 4px;
   margin: 0;
   background-color: $MAIN__BG__COLOR;
-  outline: 1px solid $WHITE__COLOR;
-  color: $MAIN__ACCENT__COLOR;
+  color: $WHITE__COLOR;
+  border-color: $WHITE__COLOR;
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
   transform: translateX(20%);
+  &.success {
+    color: $SUCCESS__COLOR;
+    border-color: $SUCCESS__COLOR;
+  }
 }
 
 #output legend {

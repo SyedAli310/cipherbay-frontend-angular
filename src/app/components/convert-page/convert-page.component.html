@@ -90,6 +90,20 @@
             ? conversionOutput.text
             : conversionOutput.code
         }}</span>
+        <button
+          #cpy_btn
+          class="btn btn-sm copy-btn"
+          title="copy"
+          *ngIf="conversionOutput.text || conversionOutput.code"
+          (click)="
+            copyToClipboard(
+              conversionOutput.text || conversionOutput.code,
+              cpy_btn
+            )
+          "
+        >
+          copy
+        </button>
       </div>
     </div>
     <div id="text-out">
@@ -102,6 +116,20 @@
               : conversionOutput.decoded
           }}
         </span>
+        <button
+          #cpy_btn
+          class="btn btn-sm copy-btn"
+          title="copy"
+          *ngIf="conversionOutput.encoded || conversionOutput.decoded"
+          (click)="
+            copyToClipboard(
+              conversionOutput.encoded || conversionOutput.decoded,
+              cpy_btn
+            )
+          "
+        >
+          copy
+        </button>
       </div>
     </div>
   </fieldset>
