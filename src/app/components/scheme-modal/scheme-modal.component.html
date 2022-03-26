@@ -11,7 +11,28 @@
         Selected :
         <span>{{ selectedScheme.alias || "none" }}</span>
       </p>
-      <p style="margin-bottom: 1rem">All Schemes :</p>
+      <div class="all-schemes-title">
+        <p>All Schemes</p>
+        <fa-icon [icon]="faSearch" (click)="toggleSearchForm()"></fa-icon>
+      </div>
+      <form
+        [formGroup]="searchSchemeForm"
+        class="search-scheme-form"
+        (ngSubmit)="searchScheme()"
+        *ngIf="isSearchSchemeFormVisible"
+      >
+        <fieldset class="input-div">
+          <legend>Search scheme</legend>
+          <input
+            formControlName="search"
+            type="search"
+            name="searchScheme"
+            id="searchScheme"
+            (input)="searchScheme()"
+            autocomplete="off"
+          />
+        </fieldset>
+      </form>
       <div
         id="scheme-select-btns"
         *ngIf="schemes.length > 0; else other_content"

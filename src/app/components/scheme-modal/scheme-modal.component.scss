@@ -38,6 +38,11 @@
     color: $SUCCESS__COLOR;
   }
 }
+.modal-content {
+  width: 80%;
+  min-height: 75vh;
+  height: auto;
+}
 .modal-footer {
   & .modal-close-btn {
     background-color: unset;
@@ -61,5 +66,23 @@
   & .msg-res {
     font-weight: 600;
     color: $ERROR__COLOR;
+  }
+}
+
+.all-schemes-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+  & fa-icon {
+    color: $MAIN__ACCENT__COLOR;
+    cursor: pointer;
+    pointer-events: all;
+    transition: all ease 300ms;
+    &:hover {
+      color: $WHITE__COLOR;
+    }
   }
 }
