@@ -309,6 +309,7 @@ fa-icon {
     // overflow: hidden;
     animation: appear-dropdown 0.2s ease forwards;
     transition: all 0.3s ease;
+    z-index: 100;
     &::before {
       // creates a triangle
       content: "";
