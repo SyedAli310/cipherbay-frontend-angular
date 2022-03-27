@@ -1,6 +1,10 @@
 @import "../../../scss-partials/variables";
 
 .header-main {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   min-height: 4rem;
   height: auto;
@@ -8,6 +12,7 @@
   align-items: center;
   background-color: $BLACK__COLOR;
   color: $WHITE__COLOR;
+  z-index: 10;
   & .container {
     display: flex;
     justify-content: space-between;
@@ -17,17 +22,56 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding-inline: 0.325rem;
+      background-color: transparent;
       cursor: pointer;
       & fa-icon {
         color: $WHITE__COLOR;
-        transition: all ease 0.3s;
-      }
-      &:hover > fa-icon {
-        color: $MAIN__ACCENT__COLOR;
       }
     }
     & .mode-toggle {
       position: relative;
+      & .dropdown-toggle-btn {
+        background-color: transparent;
+      }
+      & .dropdown {
+        padding: 1rem 1.25rem;
+        & ul {
+          width: 100%;
+          font-size: large;
+          & li {
+            position: relative;
+            width: 100%;
+            margin-bottom: 0.75rem;
+            & a {
+              display: block;
+              width: 100%;
+              color: $LIGHT__WHITE__COLOR;
+              transition: all 0.2s ease;
+              &:hover {
+                color: $WHITE__COLOR;
+                text-decoration: underline !important;
+              }
+            }
+          }
+          & .btns {
+            width: 100%;
+            margin-top: 1.75rem;
+            & button {
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-color: $MAIN__ACCENT__COLOR;
+              font-size: inherit;
+              &:hover {
+                background-color: $MAIN__ACCENT__COLOR;
+                border-color: $WHITE__COLOR;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
