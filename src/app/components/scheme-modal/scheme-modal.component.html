@@ -4,16 +4,20 @@
       <fa-icon class="icon-lg" [icon]="faTimes"></fa-icon>
     </button>
     <div class="modal-header">
-      <h2>Select scheme to encode/decode</h2>
+      <h2>
+        Set scheme
+        <span class="dyn-scheme"> {{ selectedScheme.alias || "none" }}</span>
+      </h2>
     </div>
     <div class="modal-body">
-      <p class="dyn-selected-scheme">
-        Selected :
-        <span>{{ selectedScheme.alias || "none" }}</span>
-      </p>
       <div class="all-schemes-title">
         <p>All Schemes</p>
-        <fa-icon [icon]="faSearch" (click)="toggleSearchForm()"></fa-icon>
+        <fa-icon
+          class="btn btn-md"
+          [class.open]="isSearchSchemeFormVisible"
+          [icon]="faSearch"
+          (click)="toggleSearchForm()"
+        ></fa-icon>
       </div>
       <form
         [formGroup]="searchSchemeForm"
