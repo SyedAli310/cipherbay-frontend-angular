@@ -1,4 +1,8 @@
 <title>{{ title }}</title>
-<app-header-main></app-header-main>
+<app-header-main (loginClick)="handleLoginClick()"></app-header-main>
 <app-pre-loader *ngIf="showLoader"></app-pre-loader>
-<router-outlet></router-outlet>
+<app-body-main (loginClick)="handleLoginClick()"></app-body-main>
+<app-login-popup
+  [isOpen]="isLoginPopupOpen"
+  (closeLoginPopup)="handleLoginPopupClose()"
+></app-login-popup>

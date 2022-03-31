@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { faArrowRight, faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,6 +19,8 @@ export class HomePageComponent implements OnInit {
     'ciphers are sexy',
     'ciphers are trendy',
   ];
+
+  @Output() loginClick = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {
@@ -41,5 +43,9 @@ export class HomePageComponent implements OnInit {
   }
   changeText(): string {
     return this.textArray[Math.floor(Math.random() * this.textArray.length)];
+  }
+
+  onLoginClick() {
+    this.loginClick.emit();
   }
 }

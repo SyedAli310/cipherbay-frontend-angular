@@ -14,6 +14,8 @@ import { PreLoaderComponent } from './components/pre-loader/pre-loader.component
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SchemeModalComponent } from './components/scheme-modal/scheme-modal.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { LoginPopupComponent } from './components/login-popup/login-popup.component';
+import { BodyMainComponent } from './components/body-main/body-main.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     PreLoaderComponent,
     SchemeModalComponent,
     SpinnerComponent,
+    LoginPopupComponent,
+    BodyMainComponent,
   ],
   imports: [
     BrowserModule,

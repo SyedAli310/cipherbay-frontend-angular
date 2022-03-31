@@ -4,6 +4,8 @@ import {
   ViewChild,
   ElementRef,
   Renderer2,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,6 +20,8 @@ export class HeaderMainComponent implements OnInit {
 
   isSidebarOpen: boolean = false;
   isDropdownOpen: boolean = false;
+
+  @Output() loginClick = new EventEmitter();
 
   @ViewChild('dropdownToggle') dropdownToggle?: ElementRef;
   @ViewChild('dropdownWraper') dropdownWraper?: ElementRef;
@@ -44,5 +48,10 @@ export class HeaderMainComponent implements OnInit {
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  onLoginClick() {
+    this.loginClick.emit();
+    this.toggleDropdown()
   }
 }
