@@ -18,7 +18,7 @@
       position: relative;
       font-size: 4em;
       padding: 0.25rem 0;
-      animation: glitch 5s 5s infinite;
+      animation: glitch 10s 5s infinite;
     }
     @media (prefers-reduced-motion: reduce) {
       & .glitch {
@@ -47,8 +47,8 @@
       background: $MAIN__BG__COLOR;
       overflow: hidden;
       top: 0;
-      animation: noise-1 3s linear infinite alternate-reverse,
-        glitch 5s 5.05s infinite;
+      animation: noise-1 5s linear infinite alternate-reverse,
+        glitch 10s 5.05s infinite;
     }
 
     & .glitch::after {
@@ -59,8 +59,8 @@
       background: $MAIN__BG__COLOR;
       overflow: hidden;
       top: 0;
-      animation: noise-2 3s linear infinite alternate-reverse,
-        glitch 5s 5s infinite;
+      animation: noise-2 5s linear infinite alternate-reverse,
+        glitch 10s 5s infinite;
     }
     & .subtitle {
       font-family: Arial, Helvetica, sans-serif;
@@ -96,11 +96,12 @@
       font-size: 1.25rem;
       font-weight: 600;
       display: flex;
-      gap: 1rem;
+      align-items: center;
+      gap: 0.5rem;
       border-color: $MAIN__ACCENT__COLOR;
       letter-spacing: 0.1em;
       transition: all 0.3s ease;
-      & fa-icon {
+      & i.fi {
         color: $MAIN__ACCENT__COLOR;
         transition: all 0.3s ease;
       }
@@ -108,10 +109,10 @@
         background: $MAIN__ACCENT__COLOR;
         border-color: $WHITE__COLOR;
       }
-      &:hover > fa-icon {
+      &:hover > i.fi {
         color: $WHITE__COLOR;
       }
-      &:hover > fa-icon:not(.user-icon) {
+      &:hover > i.fi:not(.user-icon) {
         display: inline-block;
         transform: translateX(2.5px);
       }

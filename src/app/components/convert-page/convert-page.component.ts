@@ -5,6 +5,7 @@ import {
   faTimes,
   faSpinner,
   faCopy,
+  faExchangeAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { CipherbayService } from 'src/app/services/cipherbay.service';
 import { SchemeView } from '../../SchemeView';
@@ -22,6 +23,7 @@ export class ConvertPageComponent implements OnInit {
   faArrowRight = faArrowRight;
   faSpinner = faSpinner;
   faCopy = faCopy;
+  faExchangeAlt = faExchangeAlt;
 
   isSchemeModalOpen: boolean = false;
   selectedScheme: SchemeView = JSON.parse(

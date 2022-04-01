@@ -61,6 +61,7 @@
   }
   & .modal-footer {
     & .modal-close-btn {
+      max-width: 130px;
       background-color: unset;
       color: $SUCCESS__COLOR;
       &:hover {

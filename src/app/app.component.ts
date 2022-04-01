@@ -18,8 +18,6 @@ export class AppComponent {
   showLoader: boolean = false;
   title: string = 'cipherbay';
 
-  isLoginPopupOpen: boolean = false;
-
   constructor(private loaderService: LoaderService, private router: Router) {}
 
   ngOnInit() {
@@ -49,14 +47,5 @@ export class AppComponent {
 
   routerChangeMethod(url: string) {
     this.title = 'cipherbay / ' + (url.split('/')[1] || 'home');
-  }
-
-  handleLoginClick() {
-    console.log('login clicked');
-    this.isLoginPopupOpen = true;
-  }
-
-  handleLoginPopupClose() {
-    this.isLoginPopupOpen = false;
   }
 }

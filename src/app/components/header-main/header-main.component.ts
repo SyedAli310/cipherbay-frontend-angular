@@ -8,6 +8,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-header-main',
@@ -21,11 +22,12 @@ export class HeaderMainComponent implements OnInit {
   isSidebarOpen: boolean = false;
   isDropdownOpen: boolean = false;
 
-  @Output() loginClick = new EventEmitter();
+  logoId: string = '1';
+  logoCrawl: any;
 
   @ViewChild('dropdownToggle') dropdownToggle?: ElementRef;
   @ViewChild('dropdownWraper') dropdownWraper?: ElementRef;
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, private uiService: UiService) {
     this.renderer.listen('window', 'click', (e: Event) => {
       if (
         e.target !== this.dropdownToggle?.nativeElement &&
@@ -39,6 +41,19 @@ export class HeaderMainComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  startCrawl() {
+    if (this.logoCrawl) {
+      this.stopCrawl();
+    }
+    this.logoCrawl = setInterval(() => {
+      this.logoId = this.logoId === '1' ? '2' : '1';
+    }, 250);
+  }
+
+  stopCrawl() {
+    clearInterval(this.logoCrawl);
+  }
+
   openSideNav() {
     this.isSidebarOpen = true;
   }
@@ -51,7 +66,7 @@ export class HeaderMainComponent implements OnInit {
   }
 
   onLoginClick() {
-    this.loginClick.emit();
-    this.toggleDropdown()
+    this.uiService.openLoginPopup();
+    this.toggleDropdown();
   }
 }

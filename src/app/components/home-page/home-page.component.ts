@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { faArrowRight, faUser } from '@fortawesome/free-solid-svg-icons';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-home-page',
@@ -20,8 +21,7 @@ export class HomePageComponent implements OnInit {
     'ciphers are trendy',
   ];
 
-  @Output() loginClick = new EventEmitter();
-  constructor() {}
+  constructor(private uiService: UiService) {}
 
   ngOnInit(): void {
     this.textLoop();
@@ -46,6 +46,6 @@ export class HomePageComponent implements OnInit {
   }
 
   onLoginClick() {
-    this.loginClick.emit();
+    this.uiService.openLoginPopup();
   }
 }

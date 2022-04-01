@@ -66,23 +66,29 @@
             & .tab{
                 position: relative;
                 flex: 1;
-                text-align: center;
-                // outline: 1px solid red;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+               gap: 0.5rem;
                 font-size: 18px;
                 font-weight: 500;
                 color: $WHITE__COLOR;
                 opacity: 0.625;
                 padding-block: 6px;
-                border-bottom: 2px solid $SECONDARY__GREY__COLOR;
+                border-bottom: 1.5px solid $SECONDARY__GREY__COLOR;
                 transition: all 0.3s ease;
                 cursor: pointer;
+                & i.fi{
+                    font-size: smaller;
+                }
                 &:active{
                     transform: scale(0.95);
                 }
                 &.active{
+                    color: $SUCCESS__COLOR;
                     opacity: 1;
                     background-color: $SECONDARY__GREY__COLOR;
-                    border-bottom: 2px solid $MAIN__ACCENT__COLOR;
+                    border-bottom: 1.5px solid $WHITE__COLOR;
                 }
             }
         }

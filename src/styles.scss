@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap");
-
+@import url('https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css');
 @import "./scss-partials/variables";
 
 body,
@@ -39,6 +39,11 @@ body::-webkit-scrollbar-thumb {
 /* Handle on hover */
 body::-webkit-scrollbar-thumb:hover {
   background: $MAIN__ACCENT__COLOR;
+}
+
+i.fi{
+  height: 15px;
+  pointer-events: none;
 }
 
 fa-icon {
@@ -111,6 +116,12 @@ fa-icon {
 .anchor-reset {
   text-decoration: none !important;
   color: inherit;
+}
+
+.ul-reset{
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .icon-lg {
@@ -283,7 +294,7 @@ fa-icon {
   position: absolute;
   top: 100%;
   right: 0;
-  min-width: 12rem;
+  min-width: 14rem;
   width: auto;
   background-color: transparent;
   // outline: 1px solid saddlebrown;

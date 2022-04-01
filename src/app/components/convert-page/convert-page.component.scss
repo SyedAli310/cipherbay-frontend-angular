@@ -68,7 +68,13 @@ body {
     cursor: not-allowed;
   }
   & .scheme-selection-div .schemes-modal-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     transition: all 0.3s ease;
+    & small{
+      color: $SUCCESS__COLOR;
+    }
   }
   & .scheme-selection-div .schemes-modal-btn.blocked:hover {
     color: $ERROR__COLOR;

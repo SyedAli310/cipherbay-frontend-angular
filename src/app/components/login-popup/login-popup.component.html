@@ -12,7 +12,7 @@
         [class.active]="currentViewedTab === 'login'"
         (click)="activateTab(login_tab)"
       >
-        login
+        <i class="fi fi-rr-sign-in-alt"></i> login
       </div>
       <div
         class="tab join-tab"
@@ -21,7 +21,7 @@
         [class.active]="currentViewedTab === 'join'"
         (click)="activateTab(join_tab)"
       >
-        join
+        <i class="fi fi-rr-user-add"></i> join
       </div>
     </div>
     <div class="tab-view-wrap" [attr.data-viewed]="currentViewedTab">
@@ -30,7 +30,7 @@
         [class.active]="currentViewedTab === 'login'"
       >
         <div class="dev-msg">
-          <small><i>coming soon</i></small>
+          <small><i>coming soon (login)</i></small>
         </div>
       </div>
       <div
@@ -38,7 +38,7 @@
         [class.active]="currentViewedTab === 'join'"
       >
         <div class="dev-msg">
-          <small><i>coming soon</i></small>
+          <small><i>coming soon (join)</i></small>
         </div>
       </div>
     </div>

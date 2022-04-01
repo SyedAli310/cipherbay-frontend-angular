@@ -58,20 +58,11 @@
         border: none;
         transform: translateY(-50%);
         border-radius: 100%;
-        font-size: 1.5rem;
-        background-color: $ERROR__COLOR;
-        // outline: 1px solid $BLACK__COLOR;
-        color: $WHITE__COLOR;
-      }
-      & .nav-close > fa-icon {
-        font-weight: lighter;
-        transition: all ease 0.3s;
+        color: $ERROR__COLOR;
+        background-color: transparent;
       }
       & .nav-close:hover {
-        filter: brightness(1.25);
-      }
-      & .nav-close:hover > fa-icon {
-        transform: scale(1.125);
+        outline: 2px double $ERROR__COLOR;
       }
     }
     & .nav-content {

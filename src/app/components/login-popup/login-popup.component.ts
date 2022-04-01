@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-login-popup',
@@ -8,9 +10,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class LoginPopupComponent implements OnInit {
   currentViewedTab: string = 'login';
 
-  @Input() isOpen!: boolean;
+  // @Input() isOpen!: boolean;
+  isOpen: boolean = false;
   @Output() closeLoginPopup = new EventEmitter();
-  constructor() {}
+  constructor(private uiService: UiService) {
+    this.uiService.isLoginPopupOpen.subscribe(
+      (isLoginPopupOpen) => (this.isOpen = isLoginPopupOpen)
+    );
+  }
 
   ngOnInit(): void {}
 
@@ -24,9 +31,7 @@ export class LoginPopupComponent implements OnInit {
       el.classList.contains('open') &&
       !el.classList.contains('login-popup')
     ) {
-   
-      this.closeLoginPopup.emit();
-    
+      this.uiService.closeLoginPopup();
     }
   }
 }

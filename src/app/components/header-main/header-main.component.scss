@@ -19,51 +19,78 @@
     align-items: center;
     & .hamburger {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding-inline: 0.325rem;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 40px;
       background-color: transparent;
       cursor: pointer;
-      & fa-icon {
-        color: $WHITE__COLOR;
-      }
     }
     & .mode-toggle {
       position: relative;
       & .dropdown-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 40px;
         background-color: transparent;
       }
-      & .dropdown {
-        padding: 1rem 1.25rem;
+      & .header-dropdown {
+        padding-block: 1rem;
+        padding-inline: 0;
         & ul {
           width: 100%;
-          font-size: large;
+          & .header-dropdown-title{
+            font-size: 1.25rem;
+            font-weight: unset !important;
+            padding-bottom: 0.5rem;
+            padding-inline: 0.5rem;
+            // margin-bottom: 0.5rem;
+            border-bottom: 1px solid $LIGHT__WHITE__COLOR;
+            color: $SUCCESS__COLOR;
+          }
           & li {
             position: relative;
             width: 100%;
-            margin-bottom: 0.75rem;
+            font-size: 16px;
             & a {
               display: block;
               width: 100%;
               color: $LIGHT__WHITE__COLOR;
-              transition: all 0.2s ease;
+              padding: 0.75rem 0.75rem;
+              transition: all 0.25s ease;
               &:hover {
-                color: $WHITE__COLOR;
-                text-decoration: underline !important;
+              color: $WHITE__COLOR;
+              background-color: $SECONDARY__GREY__COLOR;
+              }
+              & .fi-rr-paper-plane{
+                opacity: 0;
+                transform: translateX(2.5%);
+                font-size: small;
+                color: $MAIN__ACCENT__COLOR;
+                transition: all 0.25s ease;
+              }
+              &:hover > .fi-rr-paper-plane{
+                opacity: 1;
+                transform: translateX(0%);
               }
             }
           }
-          & .btns {
+          & .header-dropdown-btns {
             width: 100%;
-            margin-top: 1.75rem;
+            padding-inline: 0.75rem;            
+            padding-top: 0.75rem;            
+            &:last-child{
+              border-top: 1px solid $LIGHT__WHITE__COLOR;
+            }
             & button {
               width: 100%;
               display: flex;
               justify-content: center;
               align-items: center;
               border-color: $MAIN__ACCENT__COLOR;
-              font-size: inherit;
+              font-size: 1.025rem;
               &:hover {
                 background-color: $MAIN__ACCENT__COLOR;
                 border-color: $WHITE__COLOR;
