@@ -15,15 +15,15 @@ import { LoaderService } from './services/loader.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  showLoader: boolean = false;
+  // showLoader: boolean = false;
   title: string = 'cipherbay';
 
   constructor(private loaderService: LoaderService, private router: Router) {}
 
   ngOnInit() {
-    this.loaderService.isLoaderShown.subscribe(
-      (isLoaderShown) => (this.showLoader = isLoaderShown)
-    );
+    // this.loaderService.isLoaderShown.subscribe(
+    //   (isLoaderShown) => (this.showLoader = isLoaderShown)
+    // );
     this.router.events.subscribe((routerEvent) => {
       if (routerEvent instanceof NavigationStart) {
         this.routerChangeMethod(routerEvent.url);

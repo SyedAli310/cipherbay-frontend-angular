@@ -73,6 +73,9 @@
     <div class="loader" [class.d-none]="!isLoading" #output_loader>
       <app-spinner [text]="'converting'"></app-spinner>
     </div>
+    <button class="btn btn-md output-reset-btn" (click)="resetOutput($event)">
+      reset
+    </button>
     <legend>
       output
       <span style="color: white" id="dyn-legend-scheme">

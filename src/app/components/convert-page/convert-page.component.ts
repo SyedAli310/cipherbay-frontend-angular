@@ -8,6 +8,7 @@ import {
   faExchangeAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { CipherbayService } from 'src/app/services/cipherbay.service';
+import { LoaderService } from 'src/app/services/loader.service';
 import { SchemeView } from '../../SchemeView';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -37,15 +38,24 @@ export class ConvertPageComponent implements OnInit {
   constructor(
     private el: ElementRef,
     private cipherBayService: CipherbayService,
+    private loaderService: LoaderService,
     private formBuilder: FormBuilder
   ) {
     this.schemes = [];
   }
 
   ngOnInit(): void {
-    this.cipherBayService.getSchemes().subscribe((data: any) => {
-      this.schemes = data.schemes;
-    });
+    this.loaderService.showLoader();
+    this.cipherBayService.getSchemes().subscribe(
+      (data: any) => {
+        this.schemes = data.schemes;
+        this.loaderService.hideLoader();
+      },
+      (error: any) => {
+        console.log(error);
+        this.loaderService.hideLoader();
+      }
+    );
     console.log(this.conversionOutput);
   }
 
@@ -167,5 +177,15 @@ export class ConvertPageComponent implements OnInit {
         el.innerHTML = 'copy';
       }, 2000);
     });
+  }
+
+  resetOutput(e: Event) {
+    const resetBtn = e.target as HTMLButtonElement;
+    this.conversionOutput = {};
+    // show success message
+    resetBtn.classList.add('success');
+    setTimeout(() => {
+      resetBtn.classList.remove('success');
+    }, 2000);
   }
 }

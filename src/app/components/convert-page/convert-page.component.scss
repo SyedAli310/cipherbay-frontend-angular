@@ -46,7 +46,7 @@ body {
   }
   & .scheme-selection-div h2,
   & .conversion-selection-div h2 {
-    text-align: center;
+    text-align: start;
     margin-bottom: 1rem;
   }
   & .conversion-select-btns,
@@ -245,6 +245,19 @@ body {
   border: 1.5px solid $SUCCESS__COLOR;
   border-radius: 8px;
   transition: all ease 300ms;
+}
+.output-reset-btn{
+  position: absolute;
+  right: 1rem;
+  top: 0.25rem;
+  &.success::before{
+    content: '\2713';
+    position: absolute;
+    right: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $SUCCESS__COLOR;
+  }
 }
 .red-border {
   border: 1.5px solid $ERROR__COLOR !important;
