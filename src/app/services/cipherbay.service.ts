@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CipherbayService {
-  BASE_URL: string = 'http://cipherbay-dev.herokuapp.com/api/v1/';
+  BASE_URL: string = 'https://cipherbay-dev.herokuapp.com/api/v1/';
   API_KEY: string = 'nRwgKaP8GVzSybkzriiTCxRuQaRJ59kj';
   constructor(private _http: HttpClient) {}
 
