@@ -52,11 +52,11 @@ export class ConvertPageComponent implements OnInit {
         this.loaderService.hideLoader();
       },
       (error: any) => {
-        console.log(error);
+        // console.log(error);
         this.loaderService.hideLoader();
       }
     );
-    console.log(this.conversionOutput);
+    // console.log(this.conversionOutput);
   }
 
   get inputText() {
@@ -82,14 +82,14 @@ export class ConvertPageComponent implements OnInit {
           (data: any) => {
             this.isLoading = false;
             this.hasError = false;
-            console.log(data);
+            // console.log(data);
             this.conversionOutput = data;
           },
           (error: any) => {
             this.isLoading = false;
             this.hasError = true;
 
-            console.log(error);
+            // console.log(error);
 
             if (error.status === 0) {
               errorToShow = 'Server is not responding, please try again later';
@@ -98,7 +98,7 @@ export class ConvertPageComponent implements OnInit {
               errorToShow = error.error.msg;
               this.conversionOutput = { encoded: errorToShow, text: input };
             }
-            console.log(errorToShow);
+            // console.log(errorToShow);
             return;
           }
         );
@@ -109,14 +109,14 @@ export class ConvertPageComponent implements OnInit {
             this.isLoading = false;
             this.hasError = false;
 
-            console.log(data);
+            // console.log(data);
             this.conversionOutput = data;
           },
           (error: any) => {
             this.isLoading = false;
             this.hasError = true;
 
-            console.log(error);
+            // console.log(error);
             if (error.status === 0) {
               errorToShow = 'Server is not responding, please try again later';
 
@@ -125,7 +125,7 @@ export class ConvertPageComponent implements OnInit {
               errorToShow = error.error.msg;
               this.conversionOutput = { decoded: errorToShow, code: input };
             }
-            console.log(errorToShow);
+            // console.log(errorToShow);
 
             return;
           }

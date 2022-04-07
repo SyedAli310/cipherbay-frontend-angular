@@ -78,13 +78,17 @@
     </button>
     <legend>
       output
-      <span style="color: white" id="dyn-legend-scheme">
+      <span
+        style="color: white"
+        id="dyn-legend-scheme"
+        *ngIf="conversionOutput.schemeUsed || hasError"
+      >
         {{
           hasError
             ? " / Error"
-            : getSchemeAliasFromCode(conversionOutput.schemeUsed) === undefined
-            ? " "
-            : "/ " + getSchemeAliasFromCode(conversionOutput.schemeUsed)
+            : conversionOutput
+            ? "/ " + conversionOutput.schemeUsed.alias
+            : ""
         }}
       </span>
     </legend>
@@ -173,20 +177,20 @@
         "
       >
         <fa-icon [icon]="faInfo"></fa-icon>
-        DEVELOPMENT MODE
+        BETA VERSION
       </span>
       <i
         style="
-          text-align: center;
+          text-align: start;
           color: peru;
           display: flex;
           justify-content: flex-start;
-          align-items: center;
+          align-items: flex-start;
           gap: 0.5rem;
           margin-top: 0.5rem;
         "
       >
-        * not operational yet *
+        this is beta version of the app, so please use it with caution
       </i>
     </b>
   </div>

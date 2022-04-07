@@ -26,6 +26,23 @@
       background-color: transparent;
       cursor: pointer;
     }
+    & .logo{
+      position: relative;
+      &::after{
+        content: "beta";
+        position: absolute;
+        left: 105%;
+        top: 0;
+        display: block;
+        width: auto;
+        height: auto;
+        background-color: $SECONDARY__GREY__COLOR;
+        color: $SUCCESS__COLOR;
+        padding: 0.125rem 0.5rem;
+        border-radius: 6px;
+        font-size: small;
+      }
+    }
     & .mode-toggle {
       position: relative;
       & .dropdown-toggle-btn {
