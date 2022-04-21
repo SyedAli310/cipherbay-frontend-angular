@@ -8,6 +8,14 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'convert', component: ConvertPageComponent },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      new Promise(() => {
+        if (window.location.href.match(/admin/))
+          window.location.href = 'https://cipherbay-dev.herokuapp.com/panel';
+      }),
+  },
   { path: '**', component: NotFoundPageComponent },
 ];
 
