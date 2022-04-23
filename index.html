@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Convert your text to Ciphers and back with Cipher-Bay"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="icon" href="./img/encrypted.png" type="image/x-icon" />
+  </head>
+
+  <title>Cipher-Bay | Dash</title>
+
+  <body class="m-3 m-md-4 m-sm-4">
+
+    <div class="internet-status-container">
+      <div class="w-50 rounded my-auto p-4 text-center internet-status"></div>
+    </div>
+
+    <main>
+      <div class="copied-msg bg-warning text-white d-inline-block p-1 px-2 rounded">Copied!</div>
+      <div
+        class="header mb-4 d-flex justify-content-between align-items-center"
+      >
+        <div class="d-flex align-items-center">
+          <a id="logo" href="./index.html"
+            ><div
+              class="theme-change-div theme-change-text p-2 rounded bg-light"
+            >
+              <i class="fas fa-cannabis fa-lg px-2"></i></div
+          ></a>
+          <span
+            id="logo-text"
+            class="theme-change-div theme-change-text badge badge-light"
+            >Cipher Bay</span
+          >
+        </div>
+        <div
+          class="p-2 rounded-sm theme-change-text theme-change-div bg-light"
+          id="theme-info"
+        ></div>
+        <div class="d-flex align-items-center">
+          <button
+            class="theme-change-div theme-change-text bg-light py-2 btn btn-sm"
+            id="dark-mode-btn"
+            title="Change Theme"
+            style="position: relative"
+          >
+            <span class="px-1" id="sun-icon"
+              ><img
+                src="./img/light-mode.png"
+                alt="light-mode"
+                style="height: 22px; width: 22px"
+            /></span>
+            <span class="px-1" id="moon-icon"
+              ><img
+                src="./img/dark-mode.png"
+                alt="dark-mode"
+                style="height: 22px; width: 22px"
+            /></span>
+            <span
+              class="badge badge-pill badge-danger"
+              id="beta"
+              style="position: absolute; right: -15px; top: -10px"
+              >Beta</span
+            >
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="
+          theme-change-div
+          rounded
+          bg-light
+          d-flex
+          justify-content-between
+          align-items-center
+          mt-2
+          p-2
+        "
+      >
+        <span class="conversion-head h5 text-dark ml-3">
+          <span class="badge badge-dark p-2">Cipher</span>
+          <i class="theme-change-icon fas fa-arrow-right fa-md"></i>
+          <span class="badge badge-dark p-2">&nbsp;&nbsp;Text&nbsp;&nbsp;</span>
+        </span>
+
+        <span class="d-flex">
+          <input type="checkbox" id="switch" />
+          <label class="m-0" id="code-toggler" for="switch"></label>
+        </span>
+
+        <span class="conversion-head h5 text-dark mr-3">
+          <span class="badge badge-dark p-2">&nbsp;&nbsp;Text&nbsp;&nbsp;</span>
+          <i class="theme-change-icon fas fa-arrow-right fa-md"></i>
+          <span class="badge badge-dark p-2">Cipher</span>
+        </span>
+      </div>
+
+      <div class="theme-change-div dyn-view bg-light rounded-lg p-4 my-4">
+        <div
+          class="
+            intro
+            text-center
+            d-flex
+            flex-column
+            justify-content-center
+            align-items-center
+          "
+        >
+          <h2 class="theme-change-text text-center d-inline-block">
+            Ciphers are fun.
+          </h2>
+          <p class="text-center text-secondary">
+            Use the toggle above to select your conversion.
+          </p>
+          <p class="text-center text-secondary">Or</p>
+          <button class="cta btn btn-primary btn-md">
+            Get started <i class="fas fa-arrow-right fa-md" id="arr"></i>
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="
+          btn-container
+          d-flex
+          justify-content-between
+          align-items-baseline
+        "
+      >
+        <button
+          class="btn btn-primary btn-sm btn-block"
+          id="toggle"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseExample"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+        >
+          How it works <i class="fas fa-chevron-circle-down"></i>
+        </button>
+        &nbsp;
+        <button
+          class="btn btn-primary btn-sm btn-block"
+          id="toggle2"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseExample2"
+          aria-expanded="false"
+          aria-controls="collapseExample2"
+        >
+          Cipher Key <i class="fas fa-chevron-circle-down"></i>
+        </button>
+      </div>
+
+      <div
+        class="theme-change-div collapse temp bg-light text-dark p-4 rounded-lg"
+        id="collapseExample"
+      ></div>
+
+      <div
+        class="theme-change-div collapse key bg-light text-dark p-4 rounded-lg"
+        id="collapseExample2"
+      >
+        <h1 class="theme-change-text">Get the cipher key.</h1>
+        <p class="theme-change-text">
+          You can match your ciphers and text for verification purposes.
+        </p>
+        <form
+          class="
+            theme-change-text
+            d-flex
+            justify-content-start
+            align-items-center
+          "
+          method="GET"
+          action="./key/Cipher-Bay Key-signed-protected.pdf"
+          target="_blank"
+        >
+          <button
+            class="btn p-0"
+            type="submit"
+            style="border: none; outline: none"
+          >
+            <img
+              src="./img/download.png"
+              alt="Download"
+              title=" Download Key"
+              style="height: 25px; width: 25px"
+            />
+          </button>
+          &nbsp;
+          <button
+            class="theme-change-text text-dark btn p-0"
+            style="opacity: 0.925"
+          >
+            <span class="theme-change-text">Download</span>
+          </button>
+        </form>
+        <!-- <div class="d-flex justify-content-start align-items-center">
+          <a href="./table.html" class="btn p-0" target="_blank"><img src="./img/vision.png" alt="Download" title=" View Key" style="height: 25px; width: 25px;"></a>
+          &nbsp;
+          <button class="btn p-0 text-dark" disabled>View</button>
+        </div> -->
+      </div>
+
+      <div
+        class="my-auto modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="theme-change-div modal-content">
+            <div class="modal-header">
+              <h5 class="theme-change-text modal-title" id="exampleModalLabel">
+                Give Feedback
+              </h5>
+              <button
+                type="button"
+                class="theme-change-text close btn"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true"><i class="fas fa-times"></i></span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form
+                class="
+                  w-100
+                  text-center
+                  d-flex
+                  flex-column
+                  justify-content-center
+                  align-items-center
+                "
+                id="feedback-form"
+                name="feedback-form"
+                method="POST"
+                data-netlify="true"
+              >
+                <p>
+                  <label class="theme-change-text col-form-label"
+                    >Name<input
+                      class="form-control"
+                      type="text"
+                      name="name"
+                      required
+                  /></label>
+                </p>
+                <p>
+                  <label class="theme-change-text col-form-label"
+                    >Email
+                    <input
+                      class="form-control"
+                      type="email"
+                      name="email"
+                      required
+                  /></label>
+                </p>
+                <p>
+                  <label class="theme-change-text col-form-label"
+                    >Message
+                    <textarea
+                      class="form-control"
+                      name="message"
+                      required
+                    ></textarea>
+                  </label>
+                </p>
+                <p>
+                  <button
+                    class="btn btn-primary"
+                    id="feedback-submit"
+                    type="submit"
+                  >
+                    <i class="fas fa-paper-plane"></i> Send
+                  </button>
+                </p>
+              </form>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+              <p class="text-secondary">Your feedback is valuable to us.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br /><br />
+
+      <hr class="theme-change-div bg-secondary m-2 rounded" />
+      <footer
+        class="
+          mb-0
+          py-0
+          pt-2
+          text-center text-primary
+          rounded-lg
+          d-flex
+          flex-column
+          justify-content-center
+          align-items-center
+        "
+        style="opacity: 0.9; font-weight: lighter"
+      >
+        <p class="text-center align-self-center">
+          <i class="far fa-copyright"></i>All Rights Reserved -
+          <span
+            class="
+              badge badge-secondary
+              text-dark text-center
+              align-self-center
+            "
+          >
+            Cipher-Bay
+          </span>
+        </p>
+        <br />
+        <button
+          class="theme-change-div btn btn-secondary btn-sm align-self-center"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          data-whatever="@getbootstrap"
+          id="feedback-btn"
+        >
+          Feedback
+        </button>
+      </footer>
+    </main>
+  </body>
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script src="./main.js"></script>
+</html>
