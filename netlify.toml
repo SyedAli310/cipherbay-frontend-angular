@@ -1,3 +1,3 @@
-[context.legacy-view]
+[context.legacy]
  command = ""
  publish = "/legacy"
