@@ -47,7 +47,7 @@ const loader2 = `
 </div>
 `;
 
-const loader3= `
+const loader3 = `
 <div class="placeholder">
 	        <div class="loader-3">
 	          <div class="loader1 theme-change-div bg-dark"></div>
@@ -57,10 +57,10 @@ const loader3= `
 		</div>
 `;
 
-const loaderCustom=`  
+const loaderCustom = `  
 <div class="loader-container-1 my-2 p-2 px-3 text-primary rounded " id="custom-loader" style="width: fit-content !important;">
 <i class="fas fa-hourglass-start fa-2x"></i>
-</div>`
+</div>`;
 
 // {Hint} Code-Scheme => 2 6 12 20 30 42. . . .
 
@@ -166,7 +166,7 @@ function setConversion() {
 // And also handles respective conversions
 function showDynamicView() {
   var randomMsg =
-  randomMessages[Math.floor(Math.random() * randomMessages.length)];
+    randomMessages[Math.floor(Math.random() * randomMessages.length)];
   dynamicViewDiv.classList.add("no-before");
   dynamicViewDiv.classList.add("no-after");
   if (localStorage.getItem("conversionTo") == "text") {
@@ -230,35 +230,39 @@ function showDynamicView() {
 
                       <h3>Cipher</h3> 
                       <div class='my-2 rounded-lg bg-dark' >
-                      <h4 class='text-start text-info p-4' id='cpy-text-1'> ${localStorage.getItem("targetCipher")}</h4>
+                      <h4 class='text-start text-info p-4' id='cpy-text-1'> ${localStorage.getItem(
+                        "targetCipher"
+                      )}</h4>
                       </div>
 
                       <br>
 
                       <h3>Text</h3> 
                       <div class='my-2 rounded-lg bg-dark' >
-                      <h4 class='text-start text-info p-4' id='cpy-cipher-1'> ${decode(localStorage.getItem("targetCipher"))}</h4>
+                      <h4 class='text-start text-info p-4' id='cpy-cipher-1'> ${decode(
+                        localStorage.getItem("targetCipher")
+                      )}</h4>
                       </div>
 
                       </div>`;
-                      
-                      $('#cpy-text-1').on('click',(e)=>{
-                        //console.log(e.target.id);
-                        copyToClipboard(e.target.id)
-                        $('.copied-msg').css('animation','copied-msg 2s ease-out')
-                          setTimeout(()=>{
-                            $('.copied-msg').css('animation','none')
-                          },2100)
-                      });
 
-                      $('#cpy-cipher-1').on('click',(e)=>{
-                        //console.log(e.target.id);
-                        copyToClipboard(e.target.id)
-                        $('.copied-msg').css('animation','copied-msg 2s ease-out')
-                          setTimeout(()=>{
-                            $('.copied-msg').css('animation','none')
-                          },2100)
-                      });
+            $("#cpy-text-1").on("click", (e) => {
+              //console.log(e.target.id);
+              copyToClipboard(e.target.id);
+              $(".copied-msg").css("animation", "copied-msg 2s ease-out");
+              setTimeout(() => {
+                $(".copied-msg").css("animation", "none");
+              }, 2100);
+            });
+
+            $("#cpy-cipher-1").on("click", (e) => {
+              //console.log(e.target.id);
+              copyToClipboard(e.target.id);
+              $(".copied-msg").css("animation", "copied-msg 2s ease-out");
+              setTimeout(() => {
+                $(".copied-msg").css("animation", "none");
+              }, 2100);
+            });
           }, 2500);
         }
       });
@@ -324,34 +328,40 @@ function showDynamicView() {
 
                         <h3>Text</h3>  
                         <div class='my-2 rounded-lg bg-dark' >
-                        <h4 class='text-start text-info p-4' id='cpy-text-2'> ${localStorage.getItem("targetText")}</h4>
+                        <h4 class='text-start text-info p-4' id='cpy-text-2'> ${localStorage.getItem(
+                          "targetText"
+                        )}</h4>
                         </div>
                         
                         <br>
                         
                         <h3>Cipher</h3> 
                         <div class='my-2 rounded-lg bg-dark' >
-                        <h4 class='text-start text-info p-4' id='cpy-cipher-2'> ${encode(localStorage.getItem("targetText")).split(" ").join(' ')}</h4>
+                        <h4 class='text-start text-info p-4' id='cpy-cipher-2'> ${encode(
+                          localStorage.getItem("targetText")
+                        )
+                          .split(" ")
+                          .join(" ")}</h4>
                         </div> 
                         </div>`;
 
-                        $('#cpy-text-2').on('click',(e)=>{
-                          //console.log(e.target.id);
-                          copyToClipboard(e.target.id)
-                          $('.copied-msg').css('animation','copied-msg 2s ease-out')
-                          setTimeout(()=>{
-                            $('.copied-msg').css('animation','none')
-                          },2100)
-                        });
+            $("#cpy-text-2").on("click", (e) => {
+              //console.log(e.target.id);
+              copyToClipboard(e.target.id);
+              $(".copied-msg").css("animation", "copied-msg 2s ease-out");
+              setTimeout(() => {
+                $(".copied-msg").css("animation", "none");
+              }, 2100);
+            });
 
-                        $('#cpy-cipher-2').on('click',(e)=>{
-                          //console.log(e.target.id);
-                          copyToClipboard(e.target.id)
-                          $('.copied-msg').css('animation','copied-msg 2s ease-out')
-                          setTimeout(()=>{
-                            $('.copied-msg').css('animation','none')
-                          },2100)
-                        });
+            $("#cpy-cipher-2").on("click", (e) => {
+              //console.log(e.target.id);
+              copyToClipboard(e.target.id);
+              $(".copied-msg").css("animation", "copied-msg 2s ease-out");
+              setTimeout(() => {
+                $(".copied-msg").css("animation", "none");
+              }, 2100);
+            });
           }, 2500);
         }
       });
@@ -372,7 +382,9 @@ function exampleImplement() {
       <br>
       <h3>Cipher</h3>   
       <div class='my-2 rounded-lg bg-dark' >
-      <h4 class='text-start text-info p-4'> ${encode(str).split(" ").join(`&nbsp`)}</h4>
+      <h4 class='text-start text-info p-4'> ${encode(str)
+        .split(" ")
+        .join(`&nbsp`)}</h4>
       </div>
     </div>
     
@@ -410,7 +422,7 @@ window.onload = exampleImplement();
 // All click functionalities
 $("#toggle").on("click", () => {
   $("#toggle i").toggleClass("fa-chevron-circle-up");
-  $('#toggle').toggleClass('btn-primary btn-info');
+  $("#toggle").toggleClass("btn-primary btn-info");
   setTimeout(() => {
     if (document.getElementById("toggle").ariaExpanded == "true") {
       //console.log('disabled key')
@@ -427,7 +439,7 @@ $("#toggle").on("click", () => {
 
 $("#toggle2").on("click", () => {
   $("#toggle2 i").toggleClass("fa-chevron-circle-up");
-  $('#toggle2').toggleClass('btn-primary btn-info');
+  $("#toggle2").toggleClass("btn-primary btn-info");
   setTimeout(() => {
     if (document.getElementById("toggle2").ariaExpanded == "true") {
       //console.log('disabled example')
@@ -488,98 +500,93 @@ if (handleSubmit) {
     .addEventListener("submit", handleSubmit);
 }
 
+function changeTheme() {
+  const divs = document.querySelectorAll(".theme-change-div");
+  const texts = document.querySelectorAll(".theme-change-text");
+  const icons = document.querySelectorAll(".theme-change-icon");
 
+  $("body").toggleClass("body-bg-change");
 
-function changeTheme(){
-    const divs = document.querySelectorAll('.theme-change-div');
-    const texts = document.querySelectorAll('.theme-change-text');
-    const icons = document.querySelectorAll('.theme-change-icon');
-
-
-    $('body').toggleClass('body-bg-change')
-    
-    for(let i=0; i<divs.length;i++){
-       divs[i].classList.toggle('bg-dark');
-       divs[i].classList.toggle('bg-light');
-    }
-    for(let i=0; i<texts.length;i++){
-       texts[i].classList.toggle('text-light');
-        
-    }
-    for(let i=0; i<icons.length;i++){
-       icons[i].classList.toggle('text-light');
-        
-    }
+  for (let i = 0; i < divs.length; i++) {
+    divs[i].classList.toggle("bg-dark");
+    divs[i].classList.toggle("bg-light");
+  }
+  for (let i = 0; i < texts.length; i++) {
+    texts[i].classList.toggle("text-light");
+  }
+  for (let i = 0; i < icons.length; i++) {
+    icons[i].classList.toggle("text-light");
+  }
 }
 
- setTimeout(()=>{
-  $('#beta').css('display','block')
+setTimeout(() => {
+  $("#beta").css("display", "block");
   setTimeout(() => {
-    $('#beta').css('opacity','1')
+    $("#beta").css("opacity", "1");
   }, 500);
- },3000)
+}, 3000);
 
- $('#dark-mode-btn').on('click', ()=>{
-   
-     if($('#moon-icon').css('display')=='none'){ 
-       $('#moon-icon').css('display','block');
-       $('#sun-icon').css('display','none');
-       localStorage.setItem('isDark',true);
-       $('#theme-info').text('Dark-Mode');
-     }
-     else if($('#sun-icon').css('display')=='none'){
-       $('#sun-icon').css('display','block');
-       $('#moon-icon').css('display','none');
-       localStorage.setItem('isDark',false);
-       $('#theme-info').text('Light-Mode');
-     }
-     changeTheme();
- 
+$("#dark-mode-btn").on("click", () => {
+  if ($("#moon-icon").css("display") == "none") {
+    $("#moon-icon").css("display", "block");
+    $("#sun-icon").css("display", "none");
+    localStorage.setItem("isDark", true);
+    $("#theme-info").text("Dark-Mode");
+  } else if ($("#sun-icon").css("display") == "none") {
+    $("#sun-icon").css("display", "block");
+    $("#moon-icon").css("display", "none");
+    localStorage.setItem("isDark", false);
+    $("#theme-info").text("Light-Mode");
+  }
+  changeTheme();
 });
 
-
-function checkTheme(){
-  if(localStorage.getItem('isDark')=='true'){
-    const allDivs= document.querySelectorAll('div');
-    for(var i=0;i<allDivs.length;i++){
-      allDivs[i].style.transition='none';
-     }
+function checkTheme() {
+  if (localStorage.getItem("isDark") == "true") {
+    const allDivs = document.querySelectorAll("div");
+    for (var i = 0; i < allDivs.length; i++) {
+      allDivs[i].style.transition = "none";
+    }
 
     changeTheme();
-    $('#moon-icon').css('display','block');
-    $('#sun-icon').css('display','none');
-    $('#theme-info').text('Dark-Mode');
-  }else{
-    $('#sun-icon').css('display','block');
-    $('#moon-icon').css('display','none');
-    $('#theme-info').text('Light-Mode');
-  }
-  
-}
-
-window.onload=checkTheme();
-
-
-function updateStatus(){
-  if(navigator.onLine){
-    // $('main').css('display','none');
-    $('.internet-status-container').css('display','block');
-    $('.internet-status').css('color','green');
-    $('.internet-status').html('<img src="./img/online.png" style="height:50px; width=:50px; "/><h4>Back online</h4><br><button class="btn btn-success btn-sm"><a href="./index.html">Refresh</a></button>');
-  }else{
-    // $('main').css('display','none');
-    $('body').before('<div class="rounded-bottom bg-dark  mx-3 mx-md-4 mx-sm-4 mt-0 p-2 text-center text-danger">Your are currently offline</div>')
-    $('.internet-status-container').css('display','block');
-    $('.internet-status').css('color','red');
-    $('.internet-status').html('<img src="./img/offline.png" style="height:50px; width=:50px; "/><h4>You are offline</h4><br><button class="btn btn-secondary btn-sm"><a href="./index.html">Try again</a></button>');
+    $("#moon-icon").css("display", "block");
+    $("#sun-icon").css("display", "none");
+    $("#theme-info").text("Dark-Mode");
+  } else {
+    $("#sun-icon").css("display", "block");
+    $("#moon-icon").css("display", "none");
+    $("#theme-info").text("Light-Mode");
   }
 }
 
-window.addEventListener('online', updateStatus);
-window.addEventListener('offline', updateStatus);
+window.onload = checkTheme();
+
+function updateStatus() {
+  if (navigator.onLine) {
+    // $('main').css('display','none');
+    $(".internet-status-container").css("display", "block");
+    $(".internet-status").css("color", "green");
+    $(".internet-status").html(
+      '<img src="./img/online.png" style="height:50px; width=:50px; "/><h4>Back online</h4><br><button class="btn btn-success btn-sm"><a href="./index.html">Refresh</a></button>'
+    );
+  } else {
+    // $('main').css('display','none');
+    $("body").before(
+      '<div class="rounded-bottom bg-dark  mx-3 mx-md-4 mx-sm-4 mt-0 p-2 text-center text-danger">Your are currently offline</div>'
+    );
+    $(".internet-status-container").css("display", "block");
+    $(".internet-status").css("color", "red");
+    $(".internet-status").html(
+      '<img src="./img/offline.png" style="height:50px; width=:50px; "/><h4>You are offline</h4><br><button class="btn btn-secondary btn-sm"><a href="./index.html">Try again</a></button>'
+    );
+  }
+}
+
+window.addEventListener("online", updateStatus);
+window.addEventListener("offline", updateStatus);
 
 setInterval(() => {
-  $('#custom-loader i').toggleClass('fa-hourglass-start fa-hourglass-end') 
+  $("#custom-loader i").toggleClass("fa-hourglass-start fa-hourglass-end");
 }, 1500);
 
 // Handles *click to copy*
