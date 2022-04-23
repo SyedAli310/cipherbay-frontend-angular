@@ -1,0 +1,142 @@
+@import "../../../scss-partials/variables";
+
+.nav-wrapper {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  //   background-color: rgba($color: #000000, $alpha: 0.5);
+  &.open {
+    display: block;
+  }
+  &.open .navbar-side {
+    animation: slide-in 0.2s ease-in forwards;
+    & .nav-title .nav-close {
+      display: flex;
+    }
+    @keyframes slide-in {
+      to {
+        transform: translateX(0%);
+        visibility: visible;
+        pointer-events: all;
+      }
+    }
+  }
+  & .navbar-side {
+    position: fixed;
+    background-color: $BLACK__COLOR;
+    width: 20rem;
+    height: 100vh;
+    transform: translateX(-100%);
+    visibility: hidden;
+    pointer-events: none;
+    border-right: 1px solid $PRIMARY__GREY__COLOR;
+
+    transition: all ease 0.3s;
+
+    & .nav-title {
+      position: relative;
+      height: 4rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0.75rem;
+      margin-bottom: 2rem;
+      background-color: $BLACK__COLOR;
+      border-bottom: 1px solid $PRIMARY__GREY__COLOR;
+      & .nav-close {
+        width: 2rem;
+        height: 2rem;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        border: none;
+        transform: translateY(-50%);
+        border-radius: 100%;
+        color: $ERROR__COLOR;
+        background-color: transparent;
+      }
+      & .nav-close:hover {
+        outline: 2px double $ERROR__COLOR;
+      }
+    }
+    & .nav-content {
+      height: calc(100vh - 4rem);
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      padding-bottom: 2.5rem;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: $BLACK__COLOR;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background: $MAIN__ACCENT__COLOR;
+      }
+      & .nav-links {
+        width: 100%;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        & .nav-link {
+          width: 100%;
+          font-size: large;
+          & a {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1.025rem;
+            padding: 0.75rem 1rem;
+            background-color: transparent;
+            color: $LIGHT__WHITE__COLOR;
+            border-bottom: 2px solid transparent;
+            transition: all ease 0.2s;
+            & ion-icon {
+              font-size: larger;
+              transition: all ease 0.2s;
+            }
+            &:hover {
+              background-color: $MAIN__BG__COLOR;
+              color: $WHITE__COLOR;
+              border-bottom: 2px solid $MAIN__ACCENT__COLOR;
+              font-weight: bold;
+              letter-spacing: 1px;
+            }
+            &:hover > ion-icon {
+              margin-right: 1.5px;
+              color: $WHITE__COLOR;
+              transform: scale(1.125);
+            }
+            &.activePage {
+              // background-color: $PRIMARY__GREY__COLOR;
+              color: $SUCCESS__COLOR;
+              border-bottom: 2px solid $SUCCESS__COLOR;
+              font-weight: bold;
+            }
+            &.activePage > ion-icon {
+              color: $WHITE__COLOR;
+              transform: scale(1.125);
+            }
+          }
+        }
+      }
+    }
+  }
+}

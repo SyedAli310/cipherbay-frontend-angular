@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="hero-main">
+    <div class="animated-text">
+      <div class="glitch" [attr.data-text]="animatedText">
+        {{ animatedText }}
+      </div>
+      <p class="subtitle">CIPHER BAY</p>
+    </div>
+    <div class="cta-btns">
+      <a class="btn btn-lg anchor-reset" (click)="onLoginClick()">
+        <i class="fi fi-rr-user user-icon"></i>
+        login
+      </a>
+      <a class="btn btn-lg anchor-reset" [routerLink]="['/convert']">
+        get started
+        <i class="fi fi-rr-arrow-right"></i>
+      </a>
+    </div>
+    <small class="credits">
+      animation by
+      <a href="https://codepen.io/elisabethdiang/pen/WNbBxXq" target="_blank"
+        >Elisabéth</a
+      >
+      &bull; modified by
+      <a href="https://github.com/SyedAli310" target="_blank">syedali</a>
+    </small>
+  </div>
+</div>

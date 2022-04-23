@@ -1,0 +1,121 @@
+@import "../../../scss-partials/variables";
+
+.header-main {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  min-height: 4rem;
+  height: auto;
+  display: flex;
+  align-items: center;
+  background-color: $BLACK__COLOR;
+  color: $WHITE__COLOR;
+  z-index: 100;
+  & .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & .hamburger {
+      display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 40px;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    & .logo{
+      position: relative;
+      &::after{
+        content: "beta";
+        position: absolute;
+        left: 105%;
+        top: 0;
+        display: block;
+        width: auto;
+        height: auto;
+        background-color: $SECONDARY__GREY__COLOR;
+        color: $SUCCESS__COLOR;
+        padding: 0.125rem 0.5rem;
+        border-radius: 6px;
+        font-size: small;
+      }
+    }
+    & .mode-toggle {
+      position: relative;
+      & .dropdown-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 40px;
+        background-color: transparent;
+      }
+      & .header-dropdown {
+        padding-block: 1rem;
+        padding-inline: 0;
+        & ul {
+          width: 100%;
+          & .header-dropdown-title{
+            font-size: 1.25rem;
+            font-weight: unset !important;
+            padding-bottom: 0.5rem;
+            padding-inline: 0.5rem;
+            // margin-bottom: 0.5rem;
+            border-bottom: 1px solid $LIGHT__WHITE__COLOR;
+            color: $SUCCESS__COLOR;
+          }
+          & li {
+            position: relative;
+            width: 100%;
+            font-size: 16px;
+            & a {
+              display: block;
+              width: 100%;
+              color: $LIGHT__WHITE__COLOR;
+              padding: 0.75rem 0.75rem;
+              transition: all 0.25s ease;
+              &:hover {
+              color: $WHITE__COLOR;
+              background-color: $SECONDARY__GREY__COLOR;
+              }
+              & .fi-rr-paper-plane{
+                opacity: 0;
+                transform: translateX(2.5%);
+                font-size: small;
+                color: $MAIN__ACCENT__COLOR;
+                transition: all 0.25s ease;
+              }
+              &:hover > .fi-rr-paper-plane{
+                opacity: 1;
+                transform: translateX(0%);
+              }
+            }
+          }
+          & .header-dropdown-btns {
+            width: 100%;
+            padding-inline: 0.75rem;            
+            padding-top: 0.75rem;            
+            &:last-child{
+              border-top: 1px solid $LIGHT__WHITE__COLOR;
+            }
+            & button {
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-color: $MAIN__ACCENT__COLOR;
+              font-size: 1.025rem;
+              &:hover {
+                background-color: $MAIN__ACCENT__COLOR;
+                border-color: $WHITE__COLOR;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

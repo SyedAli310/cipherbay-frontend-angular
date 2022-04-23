@@ -1,0 +1,122 @@
+@import "../../../scss-partials/variables";
+
+#scheme-select-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-block: 1rem;
+  width: 100%;
+
+  & .scheme-select-btn.selected,
+  & .conversion-select-btn.selected {
+    position: relative;
+    color: $SUCCESS__COLOR;
+    border: 1px solid $SUCCESS__COLOR !important;
+    overflow: hidden;
+    transition: all ease 300ms;
+  }
+  & .scheme-select-btn.selected::before,
+  & .conversion-select-btn.selected::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 5px;
+    background-color: $SUCCESS__COLOR;
+    /* box-shadow: 1px 1px 6px $SUCCESS__COLOR; */
+    overflow: hidden;
+    transition: all ease 300ms;
+  }
+}
+.dyn-selected-scheme {
+  margin-bottom: 1rem;
+  & span {
+    color: $SUCCESS__COLOR;
+  }
+}
+.modal-content {
+  width: 80%;
+  min-height: 75vh;
+  height: auto;
+  & .modal-header {
+    & h2 {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      color: $WHITE__COLOR;
+    }
+    & .dyn-scheme {
+      font-size: small;
+      background-color: $SECONDARY__GREY__COLOR;
+      padding: 0.25rem 0.5rem;
+      border-radius: 20px;
+      color: $SUCCESS__COLOR;
+    }
+  }
+  & .modal-footer {
+    & .modal-close-btn {
+      max-width: 130px;
+      background-color: unset;
+      color: $SUCCESS__COLOR;
+      &:hover {
+        background-color: $PRIMARY__GREY__COLOR;
+        color: $SUCCESS__COLOR;
+        border-color: $SUCCESS__COLOR;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%;
+  }
+}
+
+.scheme-modal-res {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block: auto;
+  width: 100%;
+  & .msg-res {
+    font-weight: 600;
+    color: $ERROR__COLOR;
+  }
+}
+
+.all-schemes-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  & fa-icon {
+    color: $MAIN__ACCENT__COLOR;
+    cursor: pointer;
+    pointer-events: all;
+    transition: all ease 300ms;
+    &.open {
+      color: $SUCCESS__COLOR;
+      border-color: $SUCCESS__COLOR;
+      &:hover {
+        color: $SUCCESS__COLOR;
+      }
+    }
+    &:hover {
+      color: $WHITE__COLOR;
+    }
+  }
+}
+.search-scheme-form {
+  margin-bottom: 1rem;
+}
