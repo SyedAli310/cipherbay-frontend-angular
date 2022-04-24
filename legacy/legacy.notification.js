@@ -19,8 +19,7 @@ const legacyNotificationStyles = `
 }
 .legacy-info-panel-wrapper.expanded {
   top: 1.5rem;
-}
-
+} 
 .legacy-info-panel-wrapper .btn {
   cursor: pointer;
   color: royalblue;
@@ -53,16 +52,21 @@ const legacyNotificationStyles = `
   height: auto;
   margin: 0;
 }
+
 .legacy-info-panel-wrapper .legacy-info-panel-opener button {
   padding: 0;
   margin: 0;
+  color: royalblue;
+
+}
+.legacy-info-panel-wrapper .legacy-info-panel-opener button:hover{
+  color: white;
 }
 .legacy-info-panel-wrapper .legacy-info-panel-opener i {
   display: block;
   height: 100%;
   margin: 0;
   font-size: 2rem;
-  color: royalblue;
   animation: wobble 2s infinite alternate 1s;
 }
 @keyframes wobble {
@@ -162,10 +166,9 @@ class="legacy-info-panel-wrapper bg-dark text-light"
       <i class="fas fa-arrow-right"></i>
       <a
         href="https://cipherbay.netlify.com/"
-        target="_blank"
         class="legacy-info-panel-inner-text-a"
       >
-        Click here to visit the latest version.
+        Go to the latest version.
       </a>
     </div>
   </div>
