@@ -16,6 +16,14 @@ const routes: Routes = [
           window.location.href = 'https://cipherbay-api.vercel.app/panel';
       }),
   },
+  {
+    path: 'legacy',
+    loadChildren: () =>
+      new Promise(() => {
+        if (window.location.href.match(/legacy/))
+          window.location.href = 'https://legacy-cipherbay.vercel.app';
+      }),
+  },
   { path: '**', component: NotFoundPageComponent },
 ];
 
