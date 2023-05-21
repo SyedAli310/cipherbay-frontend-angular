@@ -4,7 +4,7 @@ const legacyNotificationStyles = `
   max-width: 25rem;
   height: auto;
   position: fixed;
-  top: 25%;
+  top: 90%;
   /* transform: translateY(100%); */
   right: 1rem;
   z-index: 9999;
