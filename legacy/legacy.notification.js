@@ -143,7 +143,7 @@ class="legacy-info-panel-wrapper bg-dark text-light"
     <div class="legacy-info-panel-header">
       <h4>
         This is the legacy version of
-        <a href="https://cipherbay.netlify.com" target="_blank"
+        <a href="https://cipherbay.vercel.app" target="_blank"
           >cipherbay</a
         >
       </h4>
@@ -165,7 +165,7 @@ class="legacy-info-panel-wrapper bg-dark text-light"
     <div class="legacy-info-panel-footer">
       <i class="fas fa-arrow-right"></i>
       <a
-        href="https://cipherbay.netlify.com/"
+        href="https://cipherbay.vercel.app/"
         class="legacy-info-panel-inner-text-a"
       >
         Go to the latest version.

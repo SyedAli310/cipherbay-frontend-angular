@@ -199,84 +199,6 @@
         </div> -->
       </div>
 
-      <div
-        class="my-auto modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="theme-change-div modal-content">
-            <div class="modal-header">
-              <h5 class="theme-change-text modal-title" id="exampleModalLabel">
-                Give Feedback
-              </h5>
-              <button
-                type="button"
-                class="theme-change-text close btn"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true"><i class="fas fa-times"></i></span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form
-                class="w-100 text-center d-flex flex-column justify-content-center align-items-center"
-                id="feedback-form"
-                name="feedback-form"
-                method="POST"
-                data-netlify="true"
-              >
-                <p>
-                  <label class="theme-change-text col-form-label"
-                    >Name<input
-                      class="form-control"
-                      type="text"
-                      name="name"
-                      required
-                  /></label>
-                </p>
-                <p>
-                  <label class="theme-change-text col-form-label"
-                    >Email
-                    <input
-                      class="form-control"
-                      type="email"
-                      name="email"
-                      required
-                  /></label>
-                </p>
-                <p>
-                  <label class="theme-change-text col-form-label"
-                    >Message
-                    <textarea
-                      class="form-control"
-                      name="message"
-                      required
-                    ></textarea>
-                  </label>
-                </p>
-                <p>
-                  <button
-                    class="btn btn-primary"
-                    id="feedback-submit"
-                    type="submit"
-                  >
-                    <i class="fas fa-paper-plane"></i> Send
-                  </button>
-                </p>
-              </form>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-              <p class="text-secondary">Your feedback is valuable to us.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <br /><br />
 
       <hr class="theme-change-div bg-secondary m-2 rounded" />
@@ -293,15 +215,6 @@
           </span>
         </p>
         <br />
-        <button
-          class="theme-change-div btn btn-secondary btn-sm align-self-center"
-          data-toggle="modal"
-          data-target="#exampleModal"
-          data-whatever="@getbootstrap"
-          id="feedback-btn"
-        >
-          Feedback
-        </button>
       </footer>
     </main>
   </body>
