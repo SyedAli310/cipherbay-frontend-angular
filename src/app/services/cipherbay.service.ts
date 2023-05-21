@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CipherbayService {
-  BASE_URL: string = 'https://cipher-bay-api.vercel.app/api/v1/';
+  BASE_URL: string = 'https://cipherbay-api.vercel.app/api/v1/';
   // BASE_URL: string = 'http://localhost:5000/api/v1/';
   API_KEY: string = 'nRwgKaP8GVzSybkzriiTCxRuQaRJ59kj';
   constructor(private _http: HttpClient) {}

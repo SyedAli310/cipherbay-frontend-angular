@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () =>
       new Promise(() => {
         if (window.location.href.match(/admin/))
-          window.location.href = 'https://cipherbay-dev.herokuapp.com/panel';
+          window.location.href = 'https://cipherbay-api.vercel.app/panel';
       }),
   },
   { path: '**', component: NotFoundPageComponent },
