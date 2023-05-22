@@ -469,36 +469,36 @@ $("#code-toggler").on("click", () => {
 });
 
 // Handles feedback submission and responses
-const handleSubmit = (e) => {
-  const modalBody = document.querySelector(".modal-body");
-  const modalHeader = document.querySelector(".modal-header h5");
-  const modalFooter = document.querySelector(".modal-footer p");
-  e.preventDefault();
-  let myForm = document.getElementById("feedback-form");
-  let formData = new FormData(myForm);
-  fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString(),
-  })
-    .then(() => {
-      //console.log("Form successfully submitted");
-      modalHeader.innerHTML = `Response`;
-      modalBody.innerHTML = `<h4 class='text-success text-center'>Successfully submitted</h4>`;
-      modalFooter.innerHTML = `Thank you for submitting your feedback.`;
-    })
-    .catch((error) => {
-      console.log(error);
-      modalHeader.innerHTML = `Response`;
-      modalBody.innerHTML = `<h4 class='text-danger text-center'>Error sending response</h4>`;
-      modalFooter.innerHTML = `Please try again later..`;
-    });
-};
-if (handleSubmit) {
-  document
-    .querySelector("#feedback-form")
-    .addEventListener("submit", handleSubmit);
-}
+// const handleSubmit = (e) => {
+//   const modalBody = document.querySelector(".modal-body");
+//   const modalHeader = document.querySelector(".modal-header h5");
+//   const modalFooter = document.querySelector(".modal-footer p");
+//   e.preventDefault();
+//   let myForm = document.getElementById("feedback-form");
+//   let formData = new FormData(myForm);
+//   fetch("/", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+//     body: new URLSearchParams(formData).toString(),
+//   })
+//     .then(() => {
+//       //console.log("Form successfully submitted");
+//       modalHeader.innerHTML = `Response`;
+//       modalBody.innerHTML = `<h4 class='text-success text-center'>Successfully submitted</h4>`;
+//       modalFooter.innerHTML = `Thank you for submitting your feedback.`;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//       modalHeader.innerHTML = `Response`;
+//       modalBody.innerHTML = `<h4 class='text-danger text-center'>Error sending response</h4>`;
+//       modalFooter.innerHTML = `Please try again later..`;
+//     });
+// };
+// if (handleSubmit) {
+//   document
+//     .querySelector("#feedback-form")
+//     .addEventListener("submit", handleSubmit);
+// }
 
 function changeTheme() {
   const divs = document.querySelectorAll(".theme-change-div");
