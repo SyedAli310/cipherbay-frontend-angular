@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UiService } from 'src/app/services/ui.service';
+import { UiService } from 'CipherbayApp/app/services/ui.service';
 
 @Component({
   selector: 'app-login-popup',

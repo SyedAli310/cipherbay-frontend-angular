@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { faArrowRight, faUser } from '@fortawesome/free-solid-svg-icons';
-import { UiService } from 'src/app/services/ui.service';
+import { UiService } from 'CipherbayApp/app/services/ui.service';
 
 @Component({
   selector: 'app-home-page',

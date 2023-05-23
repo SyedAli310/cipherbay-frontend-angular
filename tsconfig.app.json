@@ -6,10 +6,10 @@
     "types": []
   },
   "files": [
-    "src/main.ts",
-    "src/polyfills.ts"
+    "CipherbayApp/main.ts",
+    "CipherbayApp/polyfills.ts"
   ],
   "include": [
-    "src/**/*.d.ts"
+    "CipherbayApp/**/*.d.ts"
   ]
 }

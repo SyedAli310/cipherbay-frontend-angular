@@ -7,8 +7,8 @@ import {
   faCopy,
   faExchangeAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import { CipherbayService } from 'src/app/services/cipherbay.service';
-import { LoaderService } from 'src/app/services/loader.service';
+import { CipherbayService } from 'CipherbayApp/app/services/cipherbay.service';
+import { LoaderService } from 'CipherbayApp/app/services/loader.service';
 import { SchemeView } from '../../SchemeView';
 import { FormBuilder, Validators } from '@angular/forms';
 

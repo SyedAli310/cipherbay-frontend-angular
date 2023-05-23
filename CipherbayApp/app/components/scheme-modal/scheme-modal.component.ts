@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { SchemeView } from 'src/app/SchemeView';
+import { SchemeView } from 'CipherbayApp/app/SchemeView';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CipherbayService } from 'src/app/services/cipherbay.service';
+import { CipherbayService } from 'CipherbayApp/app/services/cipherbay.service';
 
 @Component({
   selector: 'app-scheme-modal',
