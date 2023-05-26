@@ -14,8 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-convert-page',
-  templateUrl: './convert-page.component.html',
-  styleUrls: ['./convert-page.component.scss'],
+  templateUrl: './convert-page.component.html'
 })
 export class ConvertPageComponent implements OnInit {
   //Icons

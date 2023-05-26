@@ -6,8 +6,7 @@ import { CipherbayService } from 'CipherbayApp/app/services/cipherbay.service';
 
 @Component({
   selector: 'app-scheme-modal',
-  templateUrl: './scheme-modal.component.html',
-  styleUrls: ['./scheme-modal.component.scss'],
+  templateUrl: './scheme-modal.component.html'
 })
 export class SchemeModalComponent implements OnInit {
   //icons

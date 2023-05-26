@@ -4,8 +4,7 @@ import { UiService } from 'CipherbayApp/app/services/ui.service';
 
 @Component({
   selector: 'app-login-popup',
-  templateUrl: './login-popup.component.html',
-  styleUrls: ['./login-popup.component.scss'],
+  templateUrl: './login-popup.component.html'
 })
 export class LoginPopupComponent implements OnInit {
   currentViewedTab: string = 'login';

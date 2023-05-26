@@ -12,8 +12,7 @@ import { UiService } from 'CipherbayApp/app/services/ui.service';
 
 @Component({
   selector: 'app-header-main',
-  templateUrl: './header-main.component.html',
-  styleUrls: ['./header-main.component.scss'],
+  templateUrl: './header-main.component.html'
 })
 export class HeaderMainComponent implements OnInit {
   hamburger = faBars;
