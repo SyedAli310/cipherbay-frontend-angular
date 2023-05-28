@@ -6,3 +6,13 @@
 @import 'card';
 @import 'forms';
 @import "accordion";
+
+
+legend {
+    float: unset; 
+    width: unset; 
+    padding: unset;
+    margin-bottom: unset; 
+    font-size: unset; 
+    line-height: unset;
+}

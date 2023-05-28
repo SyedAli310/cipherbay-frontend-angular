@@ -1,29 +1,16 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
-import {
-  faInfoCircle,
-  faArrowRight,
-  faTimes,
-  faSpinner,
-  faCopy,
-  faExchangeAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+
 import { CipherbayService } from 'CipherbayApp/app/services/cipherbay.service';
 import { LoaderService } from '../shared';
 import { SchemeView } from '../SchemeView';
 import { FormBuilder, Validators } from '@angular/forms';
+import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-convert-page',
   templateUrl: './convert-page.component.html'
 })
 export class ConvertPageComponent implements OnInit {
-  //Icons
-  faInfo = faInfoCircle;
-  faTimes = faTimes;
-  faArrowRight = faArrowRight;
-  faSpinner = faSpinner;
-  faCopy = faCopy;
-  faExchangeAlt = faExchangeAlt;
 
   isSchemeModalOpen: boolean = false;
   selectedScheme: SchemeView = JSON.parse(
@@ -34,6 +21,8 @@ export class ConvertPageComponent implements OnInit {
   conversionOutput: any = {};
   isLoading: boolean = false;
   hasError: boolean = false;
+  selectedSchemeName: string = 'scheme_zevqnm-wavv';
+
   constructor(
     private el: ElementRef,
     private cipherBayService: CipherbayService,
@@ -42,6 +31,8 @@ export class ConvertPageComponent implements OnInit {
   ) {
     this.schemes = [];
   }
+
+  @ViewChild('schemeNgSelect') schemeNgSelect: NgSelectComponent;
 
   ngOnInit(): void {
     this.loaderService.showLoader();
@@ -56,6 +47,8 @@ export class ConvertPageComponent implements OnInit {
       }
     );
     // console.log(this.conversionOutput);
+
+    this.selectedSchemeName = this.selectedScheme.name;
   }
 
   get inputText() {
@@ -186,5 +179,20 @@ export class ConvertPageComponent implements OnInit {
     setTimeout(() => {
       resetBtn.classList.remove('success');
     }, 2000);
+  }
+
+  onSchemeChange($event: any) {
+    this.handleSelectScheme($event)
+  }
+
+  openNgSelect(ngSelect: NgSelectComponent) {
+    if(ngSelect.isOpen) {
+      ngSelect.close();
+      return;
+    } 
+    if(!ngSelect.isOpen) {
+      ngSelect.open();
+      return;
+    }
   }
 }
