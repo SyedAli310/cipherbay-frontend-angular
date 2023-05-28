@@ -1,0 +1,12 @@
+.panel-group {
+    & .panel.card {
+        all: unset !important;
+        // border: 0 !important;
+        & .card-header {
+            border: unset !important;
+        }
+    }
+    & .panel-heading {
+        padding: 0 !important;
+    }
+}

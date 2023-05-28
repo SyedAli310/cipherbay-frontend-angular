@@ -1,0 +1,29 @@
+@import 'colors';
+
+::selection {
+    background-color: $primary;
+    color: $white;
+  }
+  /* width */
+  body::-webkit-scrollbar,
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  /* Track */
+  body::-webkit-scrollbar-track,
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: $black-sec;
+  }
+  
+  /* Handle */
+  body::-webkit-scrollbar-thumb,
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: $secondary;
+    border-radius: 2px;
+  }
+  
+  /* Handle on hover */
+  body::-webkit-scrollbar-thumb:hover,
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: $secondary-light;
+  }

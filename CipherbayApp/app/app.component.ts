@@ -7,7 +7,7 @@ import {
   NavigationError,
   RouterLink,
 } from '@angular/router';
-import { LoaderService } from './services/loader.service';
+import { LoaderService } from './shared';
 
 @Component({
   selector: 'app-root',
@@ -27,14 +27,14 @@ export class AppComponent {
     this.router.events.subscribe((routerEvent) => {
       if (routerEvent instanceof NavigationStart) {
         this.routerChangeMethod(routerEvent.url);
-        this.loaderService.showLoader();
+        // this.loaderService.showLoader();
       } else if (routerEvent instanceof NavigationEnd) {
-        this.sleep(1000).then(() => this.loaderService.hideLoader());
+        // this.sleep(1000).then(() => this.loaderService.hideLoader());
       } else if (routerEvent instanceof NavigationCancel) {
-        this.sleep(1000).then(() => this.loaderService.hideLoader());
+        // this.sleep(1000).then(() => this.loaderService.hideLoader());
         // Handle cancel
       } else if (routerEvent instanceof NavigationError) {
-        this.sleep(1000).then(() => this.loaderService.hideLoader());
+        // this.sleep(1000).then(() => this.loaderService.hideLoader());
         // Handle error
       }
       // console.log(this.showLoader);

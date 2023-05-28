@@ -1,0 +1,52 @@
+<div class="header-main">
+  <div class="container">
+    <button class="btn btn-md hamburger" (click)="openSideNav()">
+      <fa-icon class="icon-lg" [icon]="hamburger"></fa-icon>
+      <!--       <i class="fi fi-rr-menu-burger"></i> -->
+    </button>
+    <div class="logo" (mouseenter)="startCrawl()" (mouseleave)="stopCrawl()">
+      <a href="/" class="anchor-reset">
+        <img src="../../../assets/favicon{{ logoId }}.png" class="logo-img" alt="logo" />
+        <span>cipherbay</span>
+      </a>
+    </div>
+
+    <button class="btn py-0 border border-accent" (click)="onLoginClick()">
+      login
+    </button>
+
+    <!-- <div class="dropdown" placement="bottom right" dropdown>
+      <button class="btn btn-sm px-12" aria-label="Main Menu" aria-haspopup="true" aria-controls="dropdown-menu" dropdownToggle>
+        <fa-icon class="icon-lg" [icon]="caretDown"></fa-icon>
+      </button>
+      <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" style="width: 200px; font-size: smaller;" role="menu"
+        aria-labelledby="button-menu-dividers">
+        <li class="dropdown-item">
+          <a class="anchor-reset" href="https://github.com/SyedAli310/cipherbay-frontend-angular" target="_blank">github
+            repo <i class="fi fi-rr-paper-plane"></i></a>
+        </li>
+        <li class="dropdown-item">
+          <a class="anchor-reset" href="https://github.com/SyedAli310/cipher-bay-api" target="_blank">API github repo <i
+              class="fi fi-rr-paper-plane"></i></a>
+        </li>
+        <li class="dropdown-item">
+          <a class="anchor-reset" routerLink="/legacy" target="_blank">
+            visit legacy view <i class="fi fi-rr-paper-plane"></i>
+          </a>
+        </li>
+        <li class="dropdown-item">
+          <a class="anchor-reset" routerLink="/admin" target="_blank">admin panel <i class="fi fi-rr-paper-plane"></i>
+          </a>
+        </li>
+        <li class="divider dropdown-divider mb-0"></li>
+        <div class="header-dropdown-btns">
+          <button class="btn btn-md" (click)="onLoginClick()">
+            login / join
+          </button>
+        </div>
+      </ul>
+    </div> -->
+  </div>
+</div>
+
+<app-side-navbar [isSidebarOpen]="isSidebarOpen" (closeSidebarEvent)="closeSideNav()"></app-side-navbar>

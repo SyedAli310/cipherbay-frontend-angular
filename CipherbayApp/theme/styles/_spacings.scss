@@ -1,0 +1,48 @@
+$sizes: 0,4,6, 8,10,12,16,20,25,30,40,50,60,70,80,90,100,150,200,250,300;
+
+
+@each $size in $sizes {
+    .m-#{$size} {
+      margin: #{$size}px !important;
+    }
+    .mx-#{$size}{
+        margin-inline: #{$size}px !important; 
+    }
+    .my-#{$size}{
+        margin-block: #{$size}px !important; 
+    }
+    .mr-#{$size}{
+        margin-right: #{$size}px !important; 
+    }
+    .ml-#{$size}{
+        margin-left: #{$size}px !important; 
+    }
+    .mt-#{$size}{
+        margin-top: #{$size}px !important;
+    }
+    .mb-#{$size}{
+        margin-bottom: #{$size}px !important;
+    }
+
+    .p-#{$size} {
+        padding: #{$size}px !important;
+    }
+    .px-#{$size}{
+        padding-inline: #{$size}px !important; 
+    }
+    .py-#{$size}{
+        padding-block: #{$size}px !important; 
+    }
+    .pr-#{$size}{
+        padding-right: #{$size}px !important; 
+    }
+    .pl-#{$size}{
+        padding-left: #{$size}px !important; 
+    }
+    .pt-#{$size}{
+        padding-top: #{$size}px !important; 
+    }
+    .pb-#{$size}{
+        padding-bottom: #{$size}px !important; 
+    }
+}

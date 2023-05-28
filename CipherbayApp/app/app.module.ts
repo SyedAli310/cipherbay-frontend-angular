@@ -5,17 +5,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
-import { HeaderMainComponent } from './components/header-main/header-main.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { ConvertPageComponent } from './components/convert-page/convert-page.component';
-import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
-import { PreLoaderComponent } from './components/pre-loader/pre-loader.component';
+import { SideNavbarComponent } from './side-navbar';
+import { HeaderMainComponent } from './header-main';
+import { HomePageComponent } from './home-page';
+import { ConvertPageComponent } from './convert-page';
+import { PreLoaderComponent } from './pre-loader';
+import { NotFoundPageComponent } from './not-found-page';
+import { SchemeModalComponent } from './scheme-modal';
+import { LoginPopupComponent } from './login-popup';
+import { SpinnerComponent } from './spinner';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SchemeModalComponent } from './components/scheme-modal/scheme-modal.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
-import { LoginPopupComponent } from './components/login-popup/login-popup.component';
-import { BodyMainComponent } from './components/body-main/body-main.component';
+import { SharedModule } from './shared/modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,6 @@ import { BodyMainComponent } from './components/body-main/body-main.component';
     SchemeModalComponent,
     SpinnerComponent,
     LoginPopupComponent,
-    BodyMainComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +36,7 @@ import { BodyMainComponent } from './components/body-main/body-main.component';
     FontAwesomeModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent],

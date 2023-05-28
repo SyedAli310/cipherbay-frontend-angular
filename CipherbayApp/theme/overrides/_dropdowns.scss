@@ -1,0 +1,215 @@
+@import '../styles/colors';
+
+.dropdown {
+
+    &.disabled {
+        pointer-events: none;
+    }
+
+    .show .dropdown-menu {
+        opacity: 1;
+        transform-origin: top center;
+        background-color: $black-ter !important;
+    }
+
+    .dropdown-menu {
+        opacity: 0;
+        animation: menu-3 200ms 50ms forwards ease-in-out;
+        background-color: $black-ter !important;
+        @extend .mt-1;
+        border: 1px solid $secondary !important;
+        border-radius: 4px !important;
+        &.icon-dropdown-menu {
+            min-width: auto;
+        }
+    }
+
+    @keyframes menu-3 {
+        0% {
+            opacity: 0;
+            transform: translateY(-5%);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    }
+
+    .dropdown-menu, &.dropdown-menu {
+        @extend .text-white;
+        @extend .bg-black-ter;
+        box-shadow: 0 0 4px 0 rgba($black,0.12), 0 4px 4px 0 rgba($black,0.24);
+        border: 0;
+        border-radius: 4px;
+        margin-top: 1px;
+        z-index: 1050 !important;
+
+        .dropdown-title {
+            @extend .px-16;
+            @extend .py-8;
+            @extend .text-white;
+            border-bottom: 1px solid $secondary;
+        }
+
+        .dropdown-subtitle {
+            @extend .dropdown-title;
+            @extend .bg-secondary;
+            @extend .text-white;
+            border-top:  1px solid $secondary;
+        }
+
+        .dropdown-item {
+            @extend .p-0;
+            @extend .d-flex;
+            @extend .align-items-center;
+            @extend .cursor-pointer;
+            white-space: initial;
+            color: $white !important;
+
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                @extend .px-16;
+                @extend .py-8;
+            }
+            input {
+                @extend .pr-12;
+            }
+
+            .icon {
+                @extend .mr-8;
+            }
+
+            &:active, &:hover {
+                @extend .bg-secondary;
+                @extend .text-accent;
+            }
+
+            &.active {
+                &, &:hover {
+                    @extend .bg-accent-light;
+                }
+            }
+
+            &.dropdown-item-large {
+                @extend .py-20;
+            }
+
+            .ripple {
+                background: rgba(0,0,0,0.06);
+            }
+        }
+
+        &.dropdown-with-title {
+            @extend .pt-0;
+        }
+
+        a.dropdown-item {
+            @extend .text-white;
+            &, &:active, &:hover {
+                @extend .text-accent;
+            }
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid;
+            border-color:  $secondary;
+        }
+    }
+
+    &.show {
+        .icon-click {
+            .icon {
+                @extend .text-accent;
+            }
+        }
+    }
+}
+
+.dropdown-custom {
+    &.disabled {
+        & > button {
+            @extend .bg-slate;
+            opacity: .7;
+        }
+    }
+
+    & > button {
+        @extend .bg-accent;
+        border: 1px solid;
+        @extend .text-accent;
+        @extend .rounded;
+        @extend .cursor-pointer;
+        @extend .px-8;
+        min-height: 40px;
+        height: auto;
+        transition: .3s;
+
+        &:focus {
+            border-color: $accent;
+        }
+    }
+
+    &.dropdown-custom-md {
+        & > button {
+            min-height: 36px;
+        }
+    }
+
+    &.dropdown-custom-sm {
+        & > button {
+            min-height: 32px;
+        }
+    }
+
+    &.dropdown-custom-xs {
+        & > button {
+            min-height: 28px;
+        }
+    }
+
+    .tag-list {
+        @extend .d-flex;
+        @extend .align-items-center;
+        @extend .flex-wrap;
+        @extend .p-0;
+        @extend .m-0;
+        @extend .w-100;
+
+        li {
+            @extend .mr-8;
+            @extend .my-4;
+            @extend .bg-light;
+            @extend .py-4;
+            @extend .px-8;
+            @extend .rounded;
+            @extend .d-flex;
+            @extend .align-items-center;
+            // @extend .text-small;
+            // @extend .text-truncate-1;
+            max-width: 200px;
+
+            .ic-cross-4 {
+                @extend .ml-10;
+                @extend .cursor-pointer;
+            }
+
+            &.with-input {
+                @extend .p-0;
+                @extend .bg-white;
+
+                input {
+                    height: 28px;
+                }
+            }
+        }
+    }
+}
+
+// to fix the container=body dropdown z-index
+bs-dropdown-container {
+    z-index: 1051 !important;
+    left: 23px !important;
+}

@@ -1,0 +1,31 @@
+@import '../styles/colors';
+
+.card {
+    margin: 20px;
+    border: 1px solid $secondary-light;
+    border-radius: 10px;
+    background-color: $black;
+    overflow: hidden;
+
+    .card-header, .card-footer{
+        background-color: $black;
+        border-radius: inherit;
+    }
+
+    .card-header{
+        border-bottom: 1px solid $secondary;
+        border-radius: unset;
+    }
+    .card-footer{
+        border-top: 1px solid $secondary;
+        border-radius: unset;
+    }
+
+    .card-body {
+        @extend .p-16;
+
+        &.clear-padding {
+            @extend .p-0;
+        }
+    }
+}

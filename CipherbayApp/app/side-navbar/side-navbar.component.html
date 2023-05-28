@@ -1,0 +1,74 @@
+<div class="nav-wrapper" [class.open]="isSidebarOpen" (click)="onOutClick($event)">
+  <nav class="navbar navbar-side" role="navigation">
+    <div class="nav-title">
+      <button class="btn nav-close" (click)="closeSidebar()">
+        <i class="fi fi-rr-cross"></i>
+      </button>
+      <div class="logo">
+        <a href="/" class="anchor-reset">
+          <img src="../../../assets/favicon1.png" class="logo-img" alt="cipherbay" />
+          <span>cipherbay</span>
+        </a>
+      </div>
+    </div>
+    <div class="nav-content">
+      <ul class="nav-links p-0 m-0">
+        <li class="nav-link">
+          <a routerLink="/home" routerLinkActive="activePage" class="anchor-reset">
+            <i class="bi bi-house"></i>
+            <span>home</span>
+          </a>
+        </li>
+        <li class="nav-link">
+          <a routerLink="/convert" routerLinkActive="activePage" class="anchor-reset">
+            <i class="bi bi-arrow-left-right"></i>
+            <span>convert</span>
+          </a>
+        </li>
+        <li class="nav-link">
+          <a routerLink="/docs" routerLinkActive="activePage" class="anchor-reset">
+            <i class="bi bi-file-earmark-text"></i>
+            <span>docs</span>
+          </a>
+        </li>
+        <li class="nav-link">
+          <a routerLink="/feedback" routerLinkActive="activePage" class="anchor-reset">
+            <i class="bi bi-chat-quote"></i>
+            <span>feedback</span>
+          </a>
+        </li>
+        <li class="d-flex align-items-center gap-2 nav-link mx-16 my-10">
+          <span class="text-secondary-light text-nowrap">Related links</span>
+          <hr class=" w-100 d-block">
+        </li>
+        <li class="nav-link">
+          <a href="https://github.com/SyedAli310/cipherbay-frontend-angular" target="_blank" class="anchor-reset justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-github"></i>
+              <span class="text-link">github repo</span>
+            </div>
+            <i class="bi bi-box-arrow-up-right text-primary"></i>
+          </a>
+        </li>
+        <li class="nav-link">
+          <a routerLink="/admin" target="_blank" class="anchor-reset justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-person-lock"></i>
+              <span class="text-link">admin panel</span>
+            </div>
+            <i class="bi bi-box-arrow-up-right text-primary"></i>
+          </a>
+        </li>
+        <li class="nav-link">
+          <a routerLink="/legacy" target="_blank" class="anchor-reset justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-clock-history"></i>
+              <span class="text-link">legacy view</span>
+            </div>
+            <i class="bi bi-box-arrow-up-right text-primary"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

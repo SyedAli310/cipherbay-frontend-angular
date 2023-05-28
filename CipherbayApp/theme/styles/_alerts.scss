@@ -1,0 +1,91 @@
+@import './colors';
+
+.alert {
+    position: fixed;
+    bottom: 3rem;
+    right: 2rem;
+    /* transform: translateX(-50%); */
+    width: 350px;
+    height: auto;
+    background-color: #1b1b1b;
+    color: white;
+    /* border: 1.5px solid #296fa8; */
+    border-radius: 5px;
+    z-index: 999999999;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1rem;
+    line-height: 1.5;
+    // font-size: larger;
+    box-shadow: 2px 4px 8px 0px #000;
+    animation: alertAppear 0.3s ease forwards;
+
+    &.is-success {
+        border: 1.5px solid $accent;
+        // color: $accent;
+        @extend .text-white;
+    }
+    &.is-error {
+        border: 1.5px solid $danger;
+        // color: $danger;
+        @extend .text-white;
+    }
+    &.is-warning {
+        border: 1.5px solid #ff9800;
+        // color: #ff9800;
+        @extend .text-white;
+    }
+    &.is-info {
+        border: 1.5px solid $primary;
+        // color: $primary;
+        @extend .text-white;
+    }
+
+    & .alert-msg {
+    text-rendering: optimizeSpeed;
+    // font-weight: bolder;
+    }
+    
+    & .alert-close-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -0.75rem;
+    right: -0.75rem;
+    width: 24px;
+    height: 24px;
+    font-size: auto;
+    color: $danger;
+    border: 1px solid $secondary-light;
+    cursor: pointer;
+    background-color: inherit;
+    border-radius: 4px;
+    transition: all ease 300ms;
+    }
+    & .alert-close-btn span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: all ease 300ms;
+    }
+    & .alert-close-btn:hover {
+    color: $danger-light;
+    background-color: inherit;
+    }
+}
+
+@keyframes alertAppear {
+    from {
+        right: -300px;
+        opacity: 0;
+    }
+    to {
+        right: 2rem;
+        opacity: 1;
+    }
+}

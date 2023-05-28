@@ -1,0 +1,37 @@
+@import '../styles/colors';
+
+.btn {
+    position: relative;
+    background-color: $SECONDARY__GREY__COLOR;
+    padding: 0.5rem 1rem;
+    color: $WHITE__COLOR;
+    border: 1px solid $SECONDARY__GREY__COLOR;
+    /* border: none; */
+    border-radius: 5px;
+    font-size: larger;
+    cursor: pointer;
+    transition: all ease 300ms;
+  }
+  .btn.btn-sm {
+    padding: 0.125rem 0.5rem;
+    font-size: smaller;
+  }
+  .btn.btn-md {
+    padding: 0.25rem 0.725rem;
+    font-size: medium;
+  }
+  .btn:hover {
+    border: 1px solid $WHITE__COLOR;
+  }
+  
+  .btn:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .btn:active {
+    transform: translateY(2.5px);
+  }
+
+.btn-rounded {
+    @extend .rounded-16;
+}

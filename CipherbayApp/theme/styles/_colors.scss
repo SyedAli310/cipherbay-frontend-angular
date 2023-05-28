@@ -1,0 +1,67 @@
+// Color Values------------------------------
+$accent: #00d398;                        //
+$accent-light:  rgb(0, 242, 174,.75);    //
+$white: #fff;                            //
+$white-light: rgb(197, 196, 196);        //
+$black: #000;                            //
+$black-sec: #121212;                     //
+$black-ter: #242424;                     //
+$slate: #b5b5b5;                         //
+$secondary: #3c3c3c;                     //
+$secondary-light: #818181;               //
+$danger: #f14668;                        //
+$danger-light: #df4967;                  //
+$primary: #296fa8;                       //
+$primary-light: #396b94;                 //
+//-------------------------------------------
+
+$delay: 0.5s;
+$MAIN__BG__COLOR: #1b1b1b;
+$MAIN__ACCENT__COLOR: #4169e1;
+$SECONDARY__GREY__COLOR: #404040;
+$PRIMARY__GREY__COLOR: #353535;
+$SUCCESS__COLOR: #48c78e;
+$ERROR__COLOR: #f44336;
+$WHITE__COLOR: #fff;
+$LIGHT__WHITE__COLOR: #dfdfdf;
+$BLACK__COLOR: #000;
+
+
+
+// Colors Names------------------------------
+$colors: (
+    "primary": $primary,
+    "primary-light": $primary-light,
+    "accent": $accent,
+    "accent-light": $accent-light,
+    "secondary":$secondary, 
+    "secondary-light":$secondary-light, 
+    "danger": $danger, 
+    "danger-light": $danger-light,
+    "white": $white, 
+    "white-light": $white-light, 
+    "black": $black, 
+    "black-sec": $black-sec, 
+    "black-ter": $black-ter, 
+    "slate": $slate, 
+);
+//-------------------------------------------
+
+@each $color-name, $color-value in $colors {
+
+    //Bext color
+    .text-#{$color-name} {
+        color: $color-value !important;
+    }
+
+    //Background color
+    .bg-#{$color-name} {
+        background-color: $color-value !important;
+    }
+
+    //Border color
+    .border-#{$color-name} {
+        border-color: $color-value !important;
+    }
+}
+

@@ -1,0 +1,51 @@
+// tag styles 
+.tag {
+    border: 1px solid $white;
+    user-select: none;
+    border-radius: 4px;
+    background-color: $black;
+    color: $white;
+    font-size: small;
+    @extend .px-2;
+    @extend .py-1;
+    @extend .d-inline-flex;
+    @extend .align-items-center;
+    gap: 0.25rem;
+
+    &.tag-circle {
+      border-radius: 100%;
+      width: 25px;
+      height: 25px;
+    }
+
+    &.tag-slate {
+      border: 1px solid $slate;
+    }
+    
+    &.tag-black {
+      border: 1px solid $black;
+    }
+    
+    &.tag-secondary {
+      border: 1px solid $secondary;
+      @extend .bg-black-sec;
+    }
+    
+    &.tag-accent {
+      border: 1px solid $accent;
+    }
+    
+    &.tag-danger {
+      border: 1px solid $danger;
+    }
+  
+    &.tag-warning {
+      border: 1px solid $warning;
+    }
+    
+    &.tag-primary {
+      border: 1px solid $primary;
+    }
+  }
+  
+// tag styles end 

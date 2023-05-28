@@ -1,0 +1,38 @@
+@import '../styles/colors';
+
+.tooltip {
+    // @extend .d-block;
+    --bs-tooltip-bg: #3c3c3c !important; 
+    &.show {
+        opacity: 1;
+    }
+
+    .tooltip-inner {
+        @extend .px-16;
+        @extend .py-12;
+        color: $white-light;
+        max-width: 400px !important;
+        font-size: smaller;
+        // border: 0.5px solid $secondary;
+    }
+    // //tooltip placement top styles for arrow
+    // &.bs-tooltip-top .arrow::before, &.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+    //     border-top-color: $secondary;
+    //     border-width: 7px;
+    // }
+    // //tooltip placement right styles for arrow
+    // &.bs-tooltip-right .arrow::before {
+    //     border-right-color: $secondary;
+    // }
+    // //tooltip placement bottom styles for arrow
+    // &.bs-tooltip-bottom .arrow::before {
+    //     border-bottom-color: $secondary;
+    // }
+    // //tooltip placement left styles for arrow
+    // &.bs-tooltip-left .arrow::before {
+    //     border-left-color: $secondary;
+    //     border-width: 7px 0px 7px 7px;
+    // }
+}
+
+
