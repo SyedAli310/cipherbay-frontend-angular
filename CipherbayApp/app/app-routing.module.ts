@@ -4,13 +4,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { ConvertPageComponent } from './convert-page';
 import { HomePageComponent } from './home-page';
 import { NotFoundPageComponent } from './not-found-page';
+import { UserDocsComponent } from './user-docs';
+import { UserFeedbackComponent } from './user-feedback';
 
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
-  { path: 'convert', component: ConvertPageComponent },
+  { path: 'convert', component: ConvertPageComponent, 
+    children: [
+      // { path: '', redirectTo: 'encode', pathMatch: 'full' },
+      { path: 'encode', component: ConvertPageComponent, data: {mode: 'encode'} },
+      { path: 'decode', component: ConvertPageComponent, data: {mode: 'decode'} }
+    ]
+  },
+  { path: 'feedback', component: UserFeedbackComponent },
+  { path: 'docs', component: UserDocsComponent },
   {
     path: 'admin',
     loadChildren: () =>

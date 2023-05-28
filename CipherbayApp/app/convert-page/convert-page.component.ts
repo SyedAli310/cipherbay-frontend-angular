@@ -5,6 +5,7 @@ import { LoaderService } from '../shared';
 import { SchemeView } from '../SchemeView';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgSelectComponent } from '@ng-select/ng-select';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-convert-page',
@@ -22,12 +23,14 @@ export class ConvertPageComponent implements OnInit {
   isLoading: boolean = false;
   hasError: boolean = false;
   selectedSchemeName: string = 'scheme_zevqnm-wavv';
+  conversionMode: string = 'encode';
 
   constructor(
     private el: ElementRef,
     private cipherBayService: CipherbayService,
     private loaderService: LoaderService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route:ActivatedRoute,
   ) {
     this.schemes = [];
   }
@@ -49,6 +52,13 @@ export class ConvertPageComponent implements OnInit {
     // console.log(this.conversionOutput);
 
     this.selectedSchemeName = this.selectedScheme.name;
+
+    const conversionMode = this.route.snapshot.data['mode'];
+    console.log(conversionMode);
+    
+    if(conversionMode) {
+      this.setConversion(conversionMode);
+    }
   }
 
   get inputText() {

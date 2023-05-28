@@ -16,6 +16,9 @@ import { LoginPopupComponent } from './login-popup';
 import { SpinnerComponent } from './spinner';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './shared/modules/shared.module';
+import { UserFeedbackComponent } from './user-feedback/user-feedback.component';
+import { UserDocsComponent } from './user-docs/user-docs.component';
+import { BuyMeACoffeeComponent } from './buy-me-a-coffee/buy-me-a-coffee.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { SharedModule } from './shared/modules/shared.module';
     SchemeModalComponent,
     SpinnerComponent,
     LoginPopupComponent,
+    UserFeedbackComponent,
+    UserDocsComponent,
+    BuyMeACoffeeComponent,
   ],
   imports: [
     BrowserModule,

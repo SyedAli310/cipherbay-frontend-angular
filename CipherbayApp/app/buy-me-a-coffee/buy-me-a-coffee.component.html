@@ -1,0 +1,16 @@
+<div class="modal-header border-0" [@slideInAnimation]>
+    <h4 class="text-warning py-10">
+        <i class=" bi bi-cup-hot text-warning"></i>
+    </h4>
+    <h4 class="text-slate hover-danger cursor-pointer" (click)="close()">
+        <i class="bi bi-x-circle"></i>
+    </h4>
+</div>
+<div class="modal-body">
+    <div class="d-flex justify-content-center align-items-center flex-column" [@slideInAnimation]>
+        <img src="../../assets/bmc_qr.png" alt="bmc-qr" height="100" width="100" class="mt-20 rounded">
+        <p>Scan the QR code</p>
+        <p class="text-slate my-10">or</p>
+        <a href="https://www.buymeacoffee.com/czuar"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=czuar&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
+    </div>
+</div>
