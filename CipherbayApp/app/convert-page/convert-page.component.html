@@ -4,7 +4,7 @@
       <p class="text-large text-slate mr-4">Scheme</p>
       <div class="position-relative" title="{{selectedScheme.alias}}">
         <ng-select class="ng-select form-control d-flex align-items-center bg-dark pr-30 border-secondary text-accent"
-          style="width: 150px;"
+          style="width: 175px;"
           [items]="schemes"
           [disabled]="schemes.length == 0"
           bindLabel="alias"
@@ -23,11 +23,11 @@
     <div class="d-flex align-items-center gap-2 border rounded py-8 px-12 overflow-hidden">
       <p class="text-large text-slate mr-4">Mode</p>
       <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-sm py-8 bg-dark" [ngClass]="{ ' text-accent border-accent': conversionMethod === 'encode' }"
+        <button class="btn btn-sm py-8 bg-dark px-16" [ngClass]="{ ' text-accent border-accent': conversionMethod === 'encode' }"
           conversion="encode" (click)="setConversion('encode')">
           encode
         </button>
-        <button class="btn btn-sm py-8 bg-dark" [ngClass]="{ ' text-accent border-accent': conversionMethod === 'decode' }"
+        <button class="btn btn-sm py-8 bg-dark px-16" [ngClass]="{ ' text-accent border-accent': conversionMethod === 'decode' }"
           conversion="decode" (click)="setConversion('decode')">
           decode
         </button>
