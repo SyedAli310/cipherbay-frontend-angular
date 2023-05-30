@@ -11,6 +11,8 @@ export class LoginPopupComponent implements OnInit {
 
   // @Input() isOpen!: boolean;
   isOpen: boolean = false;
+  isLoginLoading: boolean = false;
+  errorText = ''
   @Output() closeLoginPopup = new EventEmitter();
   constructor(private uiService: UiService) {
     this.uiService.isLoginPopupOpen.subscribe(
@@ -22,6 +24,19 @@ export class LoginPopupComponent implements OnInit {
 
   activateTab(tab: HTMLDivElement) {
     this.currentViewedTab = tab.dataset['tab'] as string;
+  }
+
+  login() {
+    this.isLoginLoading = true;
+    this.errorText = '';
+    this.sleep(2100).then(() => {
+      this.errorText = 'Login attempt failed'
+      this.isLoginLoading = false;
+    })
+  }
+
+  sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   close(event: any) {

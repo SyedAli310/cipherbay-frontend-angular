@@ -1,45 +1,44 @@
-<div
-  class="login-popup-wrapper fix-full-screen"
-  [class.open]="isOpen"
-  (click)="close($event)"
->
+<div class="login-popup-wrapper fix-full-screen" [class.open]="isOpen" (click)="close($event)">
   <div class="login-popup">
     <div class="popup-title">
-      <div
-        class="tab login-tab"
-        #login_tab
-        [attr.data-tab]="'login'"
-        [class.active]="currentViewedTab === 'login'"
-        (click)="activateTab(login_tab)"
-      >
-        <i class="fi fi-rr-sign-in-alt"></i> login
+      <div class="tab login-tab border-right border-secondary" #login_tab [attr.data-tab]="'login'"
+        [class.active]="currentViewedTab === 'login'" (click)="activateTab(login_tab)">
+        <i class="bi bi-box-arrow-in-right"></i> login
       </div>
-      <div
-        class="tab join-tab"
-        #join_tab
-        [attr.data-tab]="'join'"
-        [class.active]="currentViewedTab === 'join'"
-        (click)="activateTab(join_tab)"
-      >
-        <i class="fi fi-rr-user-add"></i> join
+      <div class="tab join-tab" #join_tab [attr.data-tab]="'join'" [class.active]="currentViewedTab === 'join'"
+        (click)="activateTab(join_tab)">
+        <i class="bi bi-person-add"></i> join
       </div>
     </div>
     <div class="tab-view-wrap" [attr.data-viewed]="currentViewedTab">
-      <div
-        class="tab-view login-view"
-        [class.active]="currentViewedTab === 'login'"
-      >
-        <div class="dev-msg">
-          <small><i>coming soon (login)</i></small>
+      <div class="tab-view login-view" [class.active]="currentViewedTab === 'login'">
+        <div class="px-20 text-center">
+          <h5 class="mb-20 text-white-light">Login to your account</h5>
+          <form class="w-100">
+            <div class="form-group">
+              <input type="email" name="email" id="email" placeholder="enter email/username" class="form-control bg-dark" required>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" id="password" placeholder="enter password" class="form-control bg-dark" required>
+            </div>
+            <button type="submit" class="btn px-20 text-accent bg-black text-small" (click)="login()" style="width: 80px;">
+              <ng-container *ngIf="isLoginLoading; else loginButtonText">
+                <div class="spinner-border spinner-border-sm" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </ng-container>
+              <ng-template #loginButtonText>
+                <p>login</p>
+              </ng-template>
+            </button>
+          </form>
+          <p class="text-small text-danger mt-10">{{errorText}}</p>
         </div>
       </div>
-      <div
-        class="tab-view join-view"
-        [class.active]="currentViewedTab === 'join'"
-      >
-        <div class="dev-msg">
-          <small><i>coming soon (join)</i></small>
-        </div>
+      <div class="tab-view join-view text-center" [class.active]="currentViewedTab === 'join'">
+        <i class="bi bi-chat-left-quote text-xx-large text-danger"></i>
+        <p class="text-info text-large">Cipherbay accounts are currently <span class="text-light font-bold text-nowrap">invite only</span></p>
+        <p class="text-small text-secondary-light">To request for an account, reach out to the <a href="mailto:alizaidi310@gmail.com" class="text-primary on-hover-underline">Admin</a> stating your usage needs.</p>
       </div>
     </div>
   </div>
