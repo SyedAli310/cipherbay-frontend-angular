@@ -8,6 +8,8 @@ import { UiService } from 'CipherbayApp/app/services/ui.service';
 })
 export class LoginPopupComponent implements OnInit {
   currentViewedTab: string = 'login';
+  logoId: string = '1';
+  logoCrawl: any;
 
   // @Input() isOpen!: boolean;
   isOpen: boolean = false;
@@ -37,6 +39,19 @@ export class LoginPopupComponent implements OnInit {
 
   sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  startCrawl() {
+    if (this.logoCrawl) {
+      this.stopCrawl();
+    }
+    this.logoCrawl = setInterval(() => {
+      this.logoId = this.logoId === '1' ? '2' : '1';
+    }, 250);
+  }
+
+  stopCrawl() {
+    clearInterval(this.logoCrawl);
   }
 
   close(event: any) {

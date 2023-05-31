@@ -25,7 +25,7 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       new Promise(() => {
-        if (window.location.href.match(/admin/))
+        if (window.location.href.match(/admin/))          
           window.location.href = 'https://cipherbay-api.vercel.app/panel/dash';
       }),
   },

@@ -13,6 +13,9 @@
     <div class="tab-view-wrap" [attr.data-viewed]="currentViewedTab">
       <div class="tab-view login-view" [class.active]="currentViewedTab === 'login'">
         <div class="px-20 text-center">
+          <div class="mx-auto mb-12" (mouseenter)="startCrawl()" (mouseleave)="stopCrawl()">
+              <img src="../../../assets/favicon{{ logoId }}.png" alt="logo" height="35" />
+          </div>
           <h5 class="mb-20 text-white-light">Login to your account</h5>
           <form class="w-100">
             <div class="form-group">

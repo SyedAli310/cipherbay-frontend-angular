@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 import { CipherbayService } from 'CipherbayApp/app/services/cipherbay.service';
-import { LoaderService } from '../shared';
+import { LoaderService, PromptService } from '../shared';
 import { SchemeView } from '../SchemeView';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgSelectComponent } from '@ng-select/ng-select';
@@ -24,6 +24,7 @@ export class ConvertPageComponent implements OnInit {
   hasError: boolean = false;
   selectedSchemeName: string = 'scheme_zevqnm-wavv';
   conversionMode: string = 'encode';
+  isSchemesLoading: boolean = false;
 
   constructor(
     private el: ElementRef,
@@ -31,6 +32,7 @@ export class ConvertPageComponent implements OnInit {
     private loaderService: LoaderService,
     private formBuilder: FormBuilder,
     private route:ActivatedRoute,
+    private promptService: PromptService
   ) {
     this.schemes = [];
   }
@@ -38,24 +40,29 @@ export class ConvertPageComponent implements OnInit {
   @ViewChild('schemeNgSelect') schemeNgSelect: NgSelectComponent;
 
   ngOnInit(): void {
-    this.loaderService.showLoader();
-    this.cipherBayService.getSchemes().subscribe(
-      (data: any) => {
-        this.schemes = data.schemes;
-        this.loaderService.hideLoader();
-      },
-      (error: any) => {
-        // console.log(error);
-        this.loaderService.hideLoader();
-      }
-    );
-    // console.log(this.conversionOutput);
-
+    this.getAllSchemes();
     this.selectedSchemeName = this.selectedScheme.name;
   }
 
   get inputText() {
     return this.mainConversionForm.get('inputText');
+  }
+
+  getAllSchemes() {
+    this.loaderService.showLoader();
+    this.isSchemesLoading = true;
+    this.cipherBayService.getSchemes().subscribe(
+      (data: any) => {
+        this.schemes = data.schemes;
+        this.loaderService.hideLoader();
+        this.isSchemesLoading = false;
+      },
+      (error: any) => {
+        this.promptService.error('Oh no, There was an error getting schemes');
+        this.loaderService.hideLoader();
+        this.isSchemesLoading = false;
+      }
+    );
   }
 
   mainConversionForm = this.formBuilder.group({
