@@ -1,0 +1,65 @@
+<div class="container mt-40">
+    <div class="d-flex align-items-center gap-2 justify-content-between mb-12">
+        <h3 class="d-flex align-items-start gap-2">Schemes <i class="bi bi-info-circle text-small"></i></h3>
+        <div class="tag tag-black text-secondary-light" *ngIf="schemeData"
+            ngbTooltip="{{schemeData.schemes_count}} schemes added" placement="left">{{schemeData.schemes_count}} added
+        </div>
+    </div>
+    <p class="text-secondary-light" *ngIf="schemeData; else loaderTemplateBlock">{{schemeData?.info || schemeInfo}}</p>
+
+    <div class="grid-masonry mt-20">
+        <ng-container *ngIf="schemeData; else loaderTemplateCards">
+            <div class="masonry-item mb-30" *ngFor="let scheme of allSchemes" [@slideInAnimation]>
+                <div class="masonry-item-inner">
+                    <div class="card m-0">
+                        <div class="card-body">
+                            <h5 class="text-white mb-8">{{scheme.alias}}</h5>
+                            <p class="text-white-light text-small">code : <span
+                                    class="text-white">{{scheme.name}}</span>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+<ng-template #loaderTemplateCards>
+    <div class="masonry-item mb-30" [@slideInAnimation]>
+        <div class="masonry-item-inner">
+            <div class="card m-0">
+                <div class="card-body">
+                    <ngx-skeleton-loader appearance="line" animation="pulse" [theme]="{'background-color': '#1b1b1b'}"
+                        count="2">
+                    </ngx-skeleton-loader>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="masonry-item mb-30" [@slideInAnimation]>
+        <div class="masonry-item-inner">
+            <div class="card m-0">
+                <div class="card-body">
+                    <ngx-skeleton-loader appearance="line" animation="pulse" [theme]="{'background-color': '#1b1b1b'}"
+                        count="2">
+                    </ngx-skeleton-loader>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="masonry-item mb-30" [@slideInAnimation]>
+        <div class="masonry-item-inner">
+            <div class="card m-0">
+                <div class="card-body">
+                    <ngx-skeleton-loader appearance="line" animation="pulse" [theme]="{'background-color': '#1b1b1b'}"
+                        count="2">
+                    </ngx-skeleton-loader>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ng-template #loaderTemplateBlock>
+    <ngx-skeleton-loader appearance="line" animation="pulse" [theme]="{'background-color': '#242424'}" count="1">
+    </ngx-skeleton-loader>
+</ng-template>

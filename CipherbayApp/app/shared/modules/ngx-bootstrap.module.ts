@@ -9,6 +9,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
     imports: [
         TypeaheadModule.forRoot(),
@@ -21,6 +24,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
         CollapseModule.forRoot(),
         TimepickerModule.forRoot(),
         AccordionModule.forRoot(),
+        NgbTooltipModule
     ],
     exports: [
         TypeaheadModule,
@@ -33,6 +37,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
         CollapseModule,
         TimepickerModule,
         AccordionModule,
+        NgbTooltipModule,
     ],
     providers: [],
     declarations: [],

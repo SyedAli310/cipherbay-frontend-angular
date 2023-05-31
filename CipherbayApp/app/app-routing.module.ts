@@ -6,8 +6,7 @@ import { HomePageComponent } from './home-page';
 import { NotFoundPageComponent } from './not-found-page';
 import { UserDocsComponent } from './user-docs';
 import { UserFeedbackComponent } from './user-feedback';
-
-
+import { AllSchemesComponent } from './all-schemes';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,6 +20,7 @@ const routes: Routes = [
   },
   { path: 'feedback', component: UserFeedbackComponent },
   { path: 'docs', component: UserDocsComponent },
+  { path: 'schemes', component: AllSchemesComponent },
   {
     path: 'admin',
     loadChildren: () =>
