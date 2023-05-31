@@ -1,9 +1,11 @@
 <div class="container mt-40">
-    <div class="d-flex align-items-center gap-2 justify-content-between mb-12">
-        <h3 class="d-flex align-items-start gap-2">Schemes <i class="bi bi-info-circle text-small"></i></h3>
-        <div class="tag tag-black text-secondary-light" *ngIf="schemeData"
-            ngbTooltip="{{schemeData.schemes_count}} schemes added" placement="left">{{schemeData.schemes_count}} added
-        </div>
+    <div class="mb-12">
+        <h3 class="d-flex align-items-start gap-2">
+            <span>Schemes</span>
+            <span class="tag tag-black text-secondary-light" *ngIf="schemeData"
+                ngbTooltip="{{schemeData.schemes_count}} schemes added" placement="right">{{schemeData?.schemes_count}}
+            </span>
+        </h3>
     </div>
     <p class="text-secondary-light" *ngIf="schemeData; else loaderTemplateBlock">{{schemeData?.info || schemeInfo}}</p>
 
@@ -16,7 +18,7 @@
                             <h5 class="text-white mb-8">{{scheme.alias}}</h5>
                             <p class="text-white-light text-small">code : <span
                                     class="text-white">{{scheme.name}}</span>
-                                </p>
+                            </p>
                         </div>
                     </div>
                 </div>

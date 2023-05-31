@@ -52,13 +52,6 @@ export class ConvertPageComponent implements OnInit {
     // console.log(this.conversionOutput);
 
     this.selectedSchemeName = this.selectedScheme.name;
-
-    const conversionMode = this.route.snapshot.data['mode'];
-    console.log(conversionMode);
-    
-    if(conversionMode) {
-      this.setConversion(conversionMode);
-    }
   }
 
   get inputText() {
