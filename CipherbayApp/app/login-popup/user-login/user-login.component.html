@@ -1,26 +1,41 @@
 <div class="px-20 text-center">
-<div class="mx-auto mb-12" (mouseenter)="startCrawl()" (mouseleave)="stopCrawl()">
-    <img src="../../../assets/favicon{{ logoId }}.png" alt="logo" height="35" />
-</div>
-<h5 class="mb-20 text-white-light">Login to your account</h5>
-<form class="w-100">
-    <div class="form-group">
-    <input type="email" name="email" id="email" placeholder="email" class="form-control bg-black-sec" required>
+    <div class="mx-auto mb-12" (mouseenter)="startCrawl()" (mouseleave)="stopCrawl()">
+        <img src="../../../assets/favicon{{ logoId }}.png" alt="logo" height="35" />
     </div>
-    <div class="form-group">
-    <input type="password" name="password" id="password" placeholder="password" class="form-control bg-black-sec" required>
-    </div>
-    <button type="submit" class="btn px-20 py-6 text-accent bg-black-sec text-small d-flex align-items-center justify-content-center gap-1 mx-auto" (click)="login()" style="width: 80px;">
-    <ng-container *ngIf="isLoginLoading; else loginButtonText">
-        <div class="spinner-border spinner-border-sm" role="status">
-        <span class="visually-hidden">Loading...</span>
+    <h5 class="mb-20 text-white-light">Login to your account</h5>
+    <form class="w-100" [formGroup]="loginForm">
+        <div class="form-group">
+            <input type="email" name="email" id="email" formControlName="email" placeholder="email" class="form-control bg-black-sec" required>
+            <p *ngFor="let validation of validationMessages.email" class="text-start">
+                <span class="text-danger text-small"
+                      *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                    {{validation.message}}
+                </span>
+            </p>
         </div>
-    </ng-container>
-    <ng-template #loginButtonText>
-        <i class="bi bi-box-arrow-in-right"></i>
-        <p>login</p>
-    </ng-template>
-    </button>
-</form>
-<p class="text-small text-danger mt-10">{{errorText}}</p>
+        <div class="form-group">
+            <input type="password" name="password" formControlName="password" id="password" placeholder="password"
+                class="form-control bg-black-sec" required>
+                <p *ngFor="let validation of validationMessages.password" class="text-start">
+                    <span class="text-danger text-small"
+                          *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                        {{validation.message}}
+                    </span>
+                </p>
+        </div>
+        <button type="submit"
+            class="btn px-20 py-6 text-accent bg-black-sec text-small d-flex align-items-center justify-content-center gap-1 mx-auto"
+            (click)="login()" style="width: 80px;">
+            <ng-container *ngIf="isLoginLoading; else loginButtonText">
+                <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </ng-container>
+            <ng-template #loginButtonText>
+                <i class="bi bi-box-arrow-in-right"></i>
+                <p>login</p>
+            </ng-template>
+        </button>
+    </form>
+    <p class="text-small text-danger mt-10">{{errorText}}</p>
 </div>

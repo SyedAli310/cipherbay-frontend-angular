@@ -1,4 +1,4 @@
-<div class="login-popup-wrapper fix-full-screen" [class.open]="isOpen" (click)="close($event)">
+<div class="login-popup-wrapper fix-full-screen" [class.open]="isOpen">
   <div class="login-popup">
     <div class="popup-title">
       <div class="tab login-tab border-right border-secondary"
@@ -9,6 +9,9 @@
         (click)="activateTab(loginRegisterView.Register)">
         <i class="bi bi-person-add"></i> join
       </div>
+      <button class="modal-close" (click)="close($event)">
+        <i class="bi bi-x text-danger"></i>
+      </button>
     </div>
 
     <div class="tab-view-wrap" [attr.data-viewed]="currentViewedTab">

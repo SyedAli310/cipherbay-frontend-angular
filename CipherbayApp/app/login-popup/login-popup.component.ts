@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { UiService } from '../services/ui.service';
-import { AuthService } from '../services';
 import { LoginRegisterView } from './models';
 import { slideInXAnimation, slideOutXAnimation } from '../shared';
 
@@ -24,18 +23,20 @@ export class LoginPopupComponent implements OnInit {
  
   errorText = ''
   @Output() closeLoginPopup = new EventEmitter();
-  constructor(private uiService: UiService,
-    private authService: AuthService) {
+  constructor(private uiService: UiService) {
     this.uiService.isLoginPopupOpen.subscribe(
       (isLoginPopupOpen) => (this.isOpen = isLoginPopupOpen)
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
 
   activateTab(tabView) {
     this.currentViewedTab = tabView;
   }
+
 
   login() {
     this.isLoginLoading = true;
@@ -54,11 +55,11 @@ export class LoginPopupComponent implements OnInit {
 
   close(event: any) {
     const el = event.target;
-    if (
-      el.classList.contains('open') &&
-      !el.classList.contains('login-popup')
-    ) {
+    // if (
+    //   el.classList.contains('open') &&
+    //   !el.classList.contains('login-popup')
+    // ) {
       this.uiService.closeLoginPopup();
-    }
+    // }
   }
 }

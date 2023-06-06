@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Observable, of, BehaviorSubject } from 'rxjs';
 
@@ -7,17 +8,19 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 })
 export class UiService {
   public isLoginPopupOpen = new BehaviorSubject<boolean>(false);
-
-  constructor() {}
+  fromAuthGuard: boolean = false;
+  constructor(public router: Router) {}
 
   // login popup handlers
-  openLoginPopup() {
+  openLoginPopup(fromAuthGuard: boolean = false) {
     this.isLoginPopupOpen.next(true);
+    this.fromAuthGuard = fromAuthGuard;
   }
   closeLoginPopup() {
-    console.log('closeLoginPopup');
-
     this.isLoginPopupOpen.next(false);
+    if(this.fromAuthGuard) {
+      this.router.navigate(['/home'])
+    }
   }
 
   // other handlers

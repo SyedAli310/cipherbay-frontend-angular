@@ -12,9 +12,10 @@ import { ApiService, PromptService } from '../shared';
 )
 export class AuthService {
     BASE_URL: string = 'https://cipherbay-api.vercel.app';
-    BASE_API_URL: string = `${this.BASE_URL}/api/v1/`;
-    // BASE_URL: string = 'http://localhost:5000/api/v1/';
-    // API_KEY: string = 'nRwgKaP8GVzSybkzriiTCxRuQaRJ59kj';
+    // BASE_URL: string = 'http://localhost:5000';
+    BASE_API_URL: string = `${this.BASE_URL}/api/v1`;
+    currentUser: any = {};
+
     constructor(private apiService: ApiService, public router: Router, private promptService: PromptService) {
     }
 
@@ -27,6 +28,7 @@ export class AuthService {
         if (removeToken == null) {
             // this.router.navigate(['log-in']); [todo]
             this.promptService.info('Logged out successfully');
+            this.router.navigate(['/home'])
         }
     }
 
@@ -38,6 +40,15 @@ export class AuthService {
         return localStorage.getItem('access_token');
     }
 
+    setToken(token) {
+        localStorage.setItem('access_token', token);
+        this.getUserStatus().subscribe(data => {
+            if(data.auth) {
+                this.currentUser = data.user;
+            }
+        })
+    }
+
     get isLoggedIn(): boolean {
         let authToken = localStorage.getItem('access_token');
         return authToken !== null ? true : false;
@@ -45,6 +56,6 @@ export class AuthService {
  
     // User profile
     getUserStatus(): Observable<any> {
-        return this.apiService.get(`${this.BASE_URL}/user-profile`).pipe(map((data) => data || {}));
+        return this.apiService.get(`${this.BASE_URL}/check-user-status`).pipe(map((data) => data || {}));
     }
 }

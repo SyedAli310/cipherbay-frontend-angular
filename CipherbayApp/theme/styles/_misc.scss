@@ -860,7 +860,7 @@ fa-icon {
 }
 
 .login-popup-wrapper{
-  background-color: rgba(0,0,0,0.35) !important;
+  background-color: rgba(0,0,0,0.85) !important;
   display: none;
   justify-content: center;
   align-items: flex-start;
@@ -869,6 +869,8 @@ fa-icon {
   }
 
   & .login-popup{
+    position: relative;
+
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -879,14 +881,15 @@ fa-icon {
       margin-block: 100px;
       border: 1px solid $WHITE__COLOR;
       box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
-      border-radius: 8px;
+      // border-radius: 8px;
       background-color: $PRIMARY__GREY__COLOR;
-      overflow-y: scroll;
+      // overflow-y: scroll;
       transform: translateX(15%);
       opacity: 0;
       pointer-events: none;
       animation: slide-down 0.5s ease forwards;
       transition: all 0.5s ease 500ms;
+
       &::-webkit-scrollbar{
           display: none;
       }
@@ -924,6 +927,21 @@ fa-icon {
           right: 0;
           z-index: 1;
           background-color: inherit;
+          & .modal-close {
+            position: absolute;
+            right: -0.75rem;
+            top: -0.75rem;
+            border-radius: 50%;
+            height: 25px;
+            width: 25px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            border: 1px solid $SECONDARY__GREY__COLOR;
+            background-color: $black-sec;
+          }
           & .tab{
               position: relative;
               flex: 1;

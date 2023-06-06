@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.isLoggedIn !== true) {
       this.promptService.error("Access not allowed!");
-      this.uiService.openLoginPopup()
+      this.uiService.openLoginPopup(true)
 
     //   this.router.navigate(['log-in'])
     }

@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { UiService } from 'CipherbayApp/app/services/ui.service';
+import { AuthService } from '../services';
 
 @Component({
   selector: 'app-header-main',
@@ -26,7 +27,8 @@ export class HeaderMainComponent implements OnInit {
 
   @ViewChild('dropdownToggle') dropdownToggle?: ElementRef;
   @ViewChild('dropdownWraper') dropdownWraper?: ElementRef;
-  constructor(private renderer: Renderer2, private uiService: UiService) {
+  currentUser: any;
+  constructor(private renderer: Renderer2, private uiService: UiService, private authService: AuthService) {
     this.renderer.listen('window', 'click', (e: Event) => {
       if (
         e.target !== this.dropdownToggle?.nativeElement &&
@@ -38,7 +40,20 @@ export class HeaderMainComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.getUserStatus().subscribe(data => {
+      if(data.auth) {
+        this.currentUser = data.loggedInUser;
+      } else {
+        this.currentUser = null;
+      }
+    })
+  }
+
+  onLogout() {
+    this.authService.userLogout();
+    window.location.reload();
+  }
 
   startCrawl() {
     if (this.logoCrawl) {

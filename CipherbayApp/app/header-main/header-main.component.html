@@ -11,10 +11,29 @@
       </a>
     </div>
 
-    <button class="btn py-4 border border-accent bg-black text-small" (click)="onLoginClick()">
+    <button class="btn py-4 border border-accent bg-black text-small" (click)="onLoginClick()" *ngIf="!currentUser; else loggedInTemplate">
       <i class="bi-person mr-4"></i>
       login
     </button>
+    <ng-template #loggedInTemplate>
+       <div class="dropdown" placement="bottom right" dropdown>
+            <span aria-haspopup="true" aria-controls="dropdown-menu" dropdownToggle>
+              <button class="text-accent d-flex align-items-center btn bg-black-sec btn-md" style="border-radius: 16px;">
+                <i class="bi bi-person mr-4"></i>
+                {{currentUser.firstName}}
+                <i class="bi bi-caret-down-fill text-small ml-8 mt-4 text-secondary"></i>
+              </button>
+            </span>
+            <ul *dropdownMenu class="dropdown-menu dropdown-menu-right px-10" role="menu" aria-labelledby="button-menu-dividers" (click)="$event.stopPropagation()">
+                <li class="">
+                  <a class="text-danger btn btn-md w-100 bg-dark" (click)="onLogout()">
+                    <i class="bi bi-box-arrow-in-right mr-4"></i>
+                    logout
+                  </a>
+                </li>
+            </ul>
+        </div>
+    </ng-template>
 
     <!-- <div class="dropdown" placement="bottom right" dropdown>
       <button class="btn btn-sm px-12" aria-label="Main Menu" aria-haspopup="true" aria-controls="dropdown-menu" dropdownToggle>

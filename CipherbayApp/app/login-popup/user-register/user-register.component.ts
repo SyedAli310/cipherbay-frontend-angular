@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 export class UserRegisterComponent implements OnInit {
   logoCrawl: any;
   logoId: string = '1';
-  isInviteOnly: boolean = false;
+  isInviteOnly: boolean = true;
   isLoginLoading: boolean = false;
   errorText = ''
 
@@ -31,7 +31,6 @@ export class UserRegisterComponent implements OnInit {
 
   login() {
     this.isLoginLoading = true;
-    this.errorText = '';
     this.sleep(2100).then(() => {
       this.errorText = 'Login attempt failed'
       this.isLoginLoading = false;
