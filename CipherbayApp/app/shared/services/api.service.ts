@@ -3,7 +3,9 @@ import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/comm
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ApiService {
     private httpOptions: any;
     constructor(private httpClient: HttpClient) {

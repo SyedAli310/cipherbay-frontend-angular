@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -23,6 +23,9 @@ import { UserFeedbackComponent } from './user-feedback/user-feedback.component';
 import { UserDocsComponent } from './user-docs/user-docs.component';
 import { BuyMeACoffeeComponent } from './buy-me-a-coffee/buy-me-a-coffee.component';
 import { AllSchemesComponent } from './all-schemes/all-schemes.component';
+import { AuthInterceptor, AuthService } from './auth';
+import { UserLoginComponent } from './login-popup/user-login/user-login.component';
+import { UserRegisterComponent } from './login-popup/user-register/user-register.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { AllSchemesComponent } from './all-schemes/all-schemes.component';
     UserDocsComponent,
     BuyMeACoffeeComponent,
     AllSchemesComponent,
+    UserLoginComponent,
+    UserRegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,15 @@ import { AllSchemesComponent } from './all-schemes/all-schemes.component';
     NgxSkeletonLoaderModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    AuthService, 
+    { provide: LOCALE_ID, useValue: 'en-IN'},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

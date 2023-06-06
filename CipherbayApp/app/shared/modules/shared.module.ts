@@ -19,6 +19,7 @@ import { CustomDatePipe } from '../pipes';
 
 import { MomentModule } from 'ngx-moment';
 import { EventEmiterService } from '../services';
+import { AuthService } from 'CipherbayApp/app/services';
 
 @NgModule({
     imports: [
@@ -51,7 +52,7 @@ import { EventEmiterService } from '../services';
         // SearchComponent,
         // EmptyViewComponent,
     ],
-    providers: [],
+    providers: [AuthService],
 })
 export class SharedModule {
     static forRoot(): ModuleWithProviders<SharedModule> {
@@ -59,7 +60,8 @@ export class SharedModule {
             ngModule: SharedModule,
             providers: [
                 // ConfirmDialogService,
-                EventEmiterService
+                EventEmiterService,
+                AuthService
             ],
         };
     }

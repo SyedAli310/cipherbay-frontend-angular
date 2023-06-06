@@ -1,22 +1,31 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
-import { UiService } from 'CipherbayApp/app/services/ui.service';
+
+import { UiService } from '../services/ui.service';
+import { AuthService } from '../services';
+import { LoginRegisterView } from './models';
+import { slideInXAnimation, slideOutXAnimation } from '../shared';
 
 @Component({
   selector: 'app-login-popup',
-  templateUrl: './login-popup.component.html'
+  templateUrl: './login-popup.component.html',
+  animations: [
+    slideInXAnimation,
+    slideOutXAnimation
+  ]
 })
 export class LoginPopupComponent implements OnInit {
-  currentViewedTab: string = 'login';
+  loginRegisterView = LoginRegisterView;
+  currentViewedTab = LoginRegisterView.Login;
   logoId: string = '1';
-  logoCrawl: any;
 
   // @Input() isOpen!: boolean;
   isOpen: boolean = false;
   isLoginLoading: boolean = false;
+ 
   errorText = ''
   @Output() closeLoginPopup = new EventEmitter();
-  constructor(private uiService: UiService) {
+  constructor(private uiService: UiService,
+    private authService: AuthService) {
     this.uiService.isLoginPopupOpen.subscribe(
       (isLoginPopupOpen) => (this.isOpen = isLoginPopupOpen)
     );
@@ -24,8 +33,8 @@ export class LoginPopupComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  activateTab(tab: HTMLDivElement) {
-    this.currentViewedTab = tab.dataset['tab'] as string;
+  activateTab(tabView) {
+    this.currentViewedTab = tabView;
   }
 
   login() {
@@ -41,18 +50,7 @@ export class LoginPopupComponent implements OnInit {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  startCrawl() {
-    if (this.logoCrawl) {
-      this.stopCrawl();
-    }
-    this.logoCrawl = setInterval(() => {
-      this.logoId = this.logoId === '1' ? '2' : '1';
-    }, 250);
-  }
 
-  stopCrawl() {
-    clearInterval(this.logoCrawl);
-  }
 
   close(event: any) {
     const el = event.target;

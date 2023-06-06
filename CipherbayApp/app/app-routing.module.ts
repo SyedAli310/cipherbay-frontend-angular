@@ -7,6 +7,7 @@ import { NotFoundPageComponent } from './not-found-page';
 import { UserDocsComponent } from './user-docs';
 import { UserFeedbackComponent } from './user-feedback';
 import { AllSchemesComponent } from './all-schemes';
+import { AuthGuard } from './auth';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'feedback', component: UserFeedbackComponent },
   { path: 'docs', component: UserDocsComponent },
   { path: 'schemes', component: AllSchemesComponent },
+  { path: 'test-auth', component: AllSchemesComponent, canActivate:[AuthGuard] },
   {
     path: 'admin',
     loadChildren: () =>

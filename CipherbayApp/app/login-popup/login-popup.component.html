@@ -1,48 +1,22 @@
 <div class="login-popup-wrapper fix-full-screen" [class.open]="isOpen" (click)="close($event)">
   <div class="login-popup">
     <div class="popup-title">
-      <div class="tab login-tab border-right border-secondary" #login_tab [attr.data-tab]="'login'"
-        [class.active]="currentViewedTab === 'login'" (click)="activateTab(login_tab)">
+      <div class="tab login-tab border-right border-secondary"
+        [class.active]="currentViewedTab === loginRegisterView.Login" (click)="activateTab(loginRegisterView.Login)">
         <i class="bi bi-person"></i> login
       </div>
-      <div class="tab join-tab" #join_tab [attr.data-tab]="'join'" [class.active]="currentViewedTab === 'join'"
-        (click)="activateTab(join_tab)">
+      <div class="tab join-tab" [class.active]="currentViewedTab === loginRegisterView.Register"
+        (click)="activateTab(loginRegisterView.Register)">
         <i class="bi bi-person-add"></i> join
       </div>
     </div>
+
     <div class="tab-view-wrap" [attr.data-viewed]="currentViewedTab">
-      <div class="tab-view login-view" [class.active]="currentViewedTab === 'login'">
-        <div class="px-20 text-center">
-          <div class="mx-auto mb-12" (mouseenter)="startCrawl()" (mouseleave)="stopCrawl()">
-              <img src="../../../assets/favicon{{ logoId }}.png" alt="logo" height="35" />
-          </div>
-          <h5 class="mb-20 text-white-light">Login to your account</h5>
-          <form class="w-100">
-            <div class="form-group">
-              <input type="email" name="email" id="email" placeholder="enter email/username" class="form-control bg-black-sec" required>
-            </div>
-            <div class="form-group">
-              <input type="password" name="password" id="password" placeholder="enter password" class="form-control bg-black-sec" required>
-            </div>
-            <button type="submit" class="btn px-20 py-6 text-accent bg-black-sec text-small d-flex align-items-center justify-content-center gap-1 mx-auto" (click)="login()" style="width: 80px;">
-              <ng-container *ngIf="isLoginLoading; else loginButtonText">
-                <div class="spinner-border spinner-border-sm" role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </div>
-              </ng-container>
-              <ng-template #loginButtonText>
-                <i class="bi bi-box-arrow-in-right"></i>
-                <p>login</p>
-              </ng-template>
-            </button>
-          </form>
-          <p class="text-small text-danger mt-10">{{errorText}}</p>
-        </div>
+      <div class="tab-view" *ngIf="currentViewedTab === loginRegisterView.Login" [@slideInXAnimation]>
+        <app-user-login></app-user-login>
       </div>
-      <div class="tab-view join-view text-center" [class.active]="currentViewedTab === 'join'" >
-        <i class="bi bi-chat-left-quote text-xx-large text-danger"></i>
-        <p class="text-info text-large">Cipherbay accounts are currently <span class="text-light font-bold text-nowrap">invite only</span></p>
-        <p class="text-small text-secondary-light">To request for an account, reach out to the <a href="mailto:alizaidi310@gmail.com?subject=Requesting access for Cipherbay&body=Name: %0d%0aState your usage needs here:" class="text-primary on-hover-underline">Admin</a> stating your usage needs.</p>
+      <div class="tab-view" *ngIf="currentViewedTab === loginRegisterView.Register" [@slideOutXAnimation]>
+        <app-user-register></app-user-register>
       </div>
     </div>
   </div>

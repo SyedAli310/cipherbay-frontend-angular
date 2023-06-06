@@ -1,0 +1,46 @@
+<ng-container #inviteOnly *ngIf="isInviteOnly; else userRegisterTemplate">
+    <i class="bi bi-chat-left-quote text-xx-large text-danger"></i>
+    <p class="text-info text-large">Cipherbay accounts are currently <span class="text-light font-bold text-nowrap">invite
+        only</span></p>
+    <p class="text-small text-secondary-light">To request for an account, reach out to the <a
+        href="mailto:alizaidi310@gmail.com?subject=Requesting access for Cipherbay&body=Name: %0d%0aState your usage needs here:"
+        class="text-primary on-hover-underline">Admin</a> stating your usage needs.</p>
+  </ng-container>
+  <ng-template #userRegisterTemplate>
+    <div class="px-20 text-center">
+      <div class="mx-auto mb-12" (mouseenter)="startCrawl()" (mouseleave)="stopCrawl()">
+        <img src="../../../assets/favicon{{ logoId }}.png" alt="logo" height="35" />
+    </div>
+    <h5 class="mb-20 text-white-light">Create an account</h5>
+      <form class="w-100">
+       <div class="row">
+          <div class="form-group col-sm-6">
+            <input type="text" placeholder="first name" class="form-control bg-black-sec" required>
+          </div>
+          <div class="form-group col-sm-6">
+            <input type="text" placeholder="last name" class="form-control bg-black-sec" required>
+          </div>
+       </div>
+        <div class="form-group">
+          <input type="email" placeholder="email" class="form-control bg-black-sec" required>
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="password" class="form-control bg-black-sec" required>
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="confirm password" class="form-control bg-black-sec" required>
+        </div>
+        <button type="submit" class="btn px-20 py-6 text-accent bg-black-sec text-small d-flex align-items-center justify-content-center gap-1 mx-auto" (click)="login()" style="width: 80px;">
+          <ng-container *ngIf="isLoginLoading; else registerButtonText">
+            <div class="spinner-border spinner-border-sm" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </ng-container>
+          <ng-template #registerButtonText>
+            <i class="bi bi-box-arrow-in-right"></i>
+            <p>register</p>
+          </ng-template>
+        </button>
+      </form>
+    </div>
+  </ng-template>
