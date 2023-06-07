@@ -13,7 +13,8 @@ export class ApiService {
             'Content-Type': 'application/json; charset=utf-8',
             "Accept": "application/json",
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "*"
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Allow-Credentials": "true"
         }) };
     }
 
@@ -22,17 +23,17 @@ export class ApiService {
     }
 
     post(path: string, body: Object = {}): Observable<any> {
-        return this.httpClient.post(`${path}`, JSON.stringify(body), this.httpOptions)
+        return this.httpClient.post(`${path}`, JSON.stringify(body))
             .pipe(catchError(this.handleError));
     }
 
     put(path: string, body: Object = {}): Observable<any> {
-        return this.httpClient.put(`${path}`, JSON.stringify(body), this.httpOptions)
+        return this.httpClient.put(`${path}`, JSON.stringify(body))
             .pipe(catchError(this.handleError));
     }
 
     patch(path: string, body: Object = {}): Observable<any> {
-        return this.httpClient.patch(`${path}`, JSON.stringify(body), this.httpOptions)
+        return this.httpClient.patch(`${path}`, JSON.stringify(body))
             .pipe(catchError(this.handleError));
     }
 
