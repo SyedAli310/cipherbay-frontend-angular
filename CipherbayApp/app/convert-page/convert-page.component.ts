@@ -72,7 +72,7 @@ export class ConvertPageComponent implements OnInit {
   handleSubmit(outputLoader: HTMLDivElement) {
     const input = this.mainConversionForm.get('inputText')?.value.trim();
     if (!input) {
-      alert('Please enter some text to convert');
+      this.promptService.info('Please enter some text to convert');
       return;
     }
     const scheme = this.selectedScheme.name;
