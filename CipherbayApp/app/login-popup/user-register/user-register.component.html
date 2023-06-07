@@ -14,26 +14,56 @@
         <img src="../../../assets/favicon{{ logoId }}.png" alt="logo" height="35" />
     </div>
     <h5 class="mb-20 text-white-light">Create an account</h5>
-      <form class="w-100">
+      <form class="w-100" [formGroup]="registerForm">
        <div class="row">
           <div class="form-group col-sm-6">
-            <input type="text" placeholder="first name" class="form-control bg-black-sec" required>
+            <input type="text" placeholder="first name" formControlName="firstName" class="form-control bg-black-sec" required>
+            <p *ngFor="let validation of validationMessages.firstName" class="text-start">
+              <span class="text-danger text-small"
+                    *ngIf="registerForm.get('firstName').hasError(validation.type) && (registerForm.get('firstName').dirty || registerForm.get('firstName').touched)">
+                  {{validation.message}}
+              </span>
+            </p>
           </div>
           <div class="form-group col-sm-6">
-            <input type="text" placeholder="last name" class="form-control bg-black-sec" required>
+            <input type="text" placeholder="last name" formControlName="lastName" class="form-control bg-black-sec" required>
+            <p *ngFor="let validation of validationMessages.lastName" class="text-start">
+              <span class="text-danger text-small"
+                    *ngIf="registerForm.get('lastName').hasError(validation.type) && (registerForm.get('lastName').dirty || registerForm.get('lastName').touched)">
+                  {{validation.message}}
+              </span>
+            </p>
           </div>
        </div>
         <div class="form-group">
-          <input type="email" placeholder="email" class="form-control bg-black-sec" required>
+          <input type="email" placeholder="email" formControlName="email" class="form-control bg-black-sec" required>
+          <p *ngFor="let validation of validationMessages.email" class="text-start">
+            <span class="text-danger text-small"
+                  *ngIf="registerForm.get('email').hasError(validation.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+                {{validation.message}}
+            </span>
+          </p>
         </div>
         <div class="form-group">
-          <input type="password" placeholder="password" class="form-control bg-black-sec" required>
+          <input type="password" placeholder="password" formControlName="password" (change)="registerForm.get('password').updateValueAndValidity()" class="form-control bg-black-sec" required>
+          <!-- <p *ngFor="let validation of validationMessages.password" class="text-start">
+            <span class="text-danger text-small"
+                  *ngIf="registerForm.get('password').hasError(validation.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+                {{validation.message}}
+            </span>
+          </p> -->
         </div>
         <div class="form-group">
-          <input type="password" placeholder="confirm password" class="form-control bg-black-sec" required>
+          <input type="password" placeholder="confirm password" formControlName="confirmPassword" (change)="registerForm.get('password').updateValueAndValidity()" class="form-control bg-black-sec" required>
+          <p *ngFor="let validation of validationMessages.confirmPassword" class="text-start">
+            <span class="text-danger text-small"
+                  *ngIf="registerForm.get('confirmPassword').hasError(validation.type) && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched)">
+                {{validation.message}}
+            </span>
+          </p>
         </div>
-        <button type="submit" class="btn px-20 py-6 text-accent bg-black-sec text-small d-flex align-items-center justify-content-center gap-1 mx-auto" (click)="login()" style="width: 80px;">
-          <ng-container *ngIf="isLoginLoading; else registerButtonText">
+        <button type="submit" class="btn px-20 py-6 text-accent bg-black-sec text-small d-flex align-items-center justify-content-center gap-1 mx-auto" (click)="register()" style="width: 80px; height: 30px;">
+          <ng-container *ngIf="isRegisterLoading; else registerButtonText">
             <div class="spinner-border spinner-border-sm" role="status">
               <span class="visually-hidden">Loading...</span>
             </div>
