@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { map, Observable } from 'rxjs';
 
-import { ApiService, PromptService } from '../shared';
+import { ApiService, BASE_URL, PromptService } from '../shared';
 
 @Injectable(
     {
@@ -11,8 +11,7 @@ import { ApiService, PromptService } from '../shared';
 }
 )
 export class AuthService {
-    BASE_URL: string = 'https://cipherbay-api.vercel.app';
-    // BASE_URL: string = 'http://localhost:5000';
+    BASE_URL: string = BASE_URL
     BASE_API_URL: string = `${this.BASE_URL}/api/v1`;
     currentUser: any = {};
 

@@ -9,7 +9,10 @@ import { catchError } from 'rxjs/operators';
 export class ApiService {
     private httpOptions: any;
     constructor(private httpClient: HttpClient) {
-        this.httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' }) };
+        this.httpOptions = { headers: new HttpHeaders({ 
+            'Content-Type': 'application/json; charset=utf-8',
+            "Accept": "application/json",
+        }) };
     }
 
     get<T>(path: string, params: HttpParams = new HttpParams()): Observable<any> {

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BASE_URL } from '../shared';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CipherbayService {
-  BASE_URL: string = 'https://cipherbay-api.vercel.app/api/v1/';
-  // BASE_URL: string = 'http://localhost:5000/api/v1/';
+  BASE_URL: string = `${BASE_URL}/api/v1/`;
   API_KEY: string = 'nRwgKaP8GVzSybkzriiTCxRuQaRJ59kj';
   constructor(private _http: HttpClient) {}
 
