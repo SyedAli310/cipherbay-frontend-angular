@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -15,11 +16,11 @@ export class AuthService {
     BASE_API_URL: string = `${this.BASE_URL}/api/v1`;
     currentUser: any = {};
 
-    constructor(private apiService: ApiService, public router: Router, private promptService: PromptService) {
+    constructor(private _httpClient: HttpClient, public router: Router, private promptService: PromptService) {
     }
 
     userLogin(loginCreds): Observable<any> {
-        return this.apiService.post(`${this.BASE_API_URL}/auth/login`, loginCreds).pipe(map(data => data));
+        return this._httpClient.post(`${this.BASE_API_URL}/auth/login`, loginCreds).pipe(map(data => data));
     }
 
     userLogout() {
@@ -32,7 +33,7 @@ export class AuthService {
     }
 
     userRegister(userDetails): Observable<any> {
-        return this.apiService.post(`${this.BASE_API_URL}/auth/register`, userDetails).pipe(map(data => data));
+        return this._httpClient.post(`${this.BASE_API_URL}/auth/register`, userDetails).pipe(map(data => data));
     }
 
     getToken() {
@@ -55,6 +56,6 @@ export class AuthService {
  
     // User profile
     getUserStatus(): Observable<any> {
-        return this.apiService.get(`${this.BASE_URL}/check-user-status`).pipe(map((data) => data || {}));
+        return this._httpClient.get(`${this.BASE_URL}/check-user-status`).pipe(map((data) => data || {}));
     }
 }
