@@ -9,13 +9,12 @@
     .show .dropdown-menu {
         opacity: 1;
         transform-origin: top center;
-        background-color: $black-ter !important;
     }
 
     .dropdown-menu {
         opacity: 0;
         animation: menu-3 200ms 50ms forwards ease-in-out;
-        background-color: $black-ter !important;
+        background-color: $black-sec;
         @extend .mt-1;
         border: 1px solid $secondary !important;
         border-radius: 4px !important;
@@ -38,7 +37,7 @@
 
     .dropdown-menu, &.dropdown-menu {
         @extend .text-white;
-        @extend .bg-black-ter;
+        @extend .bg-black-sec;
         box-shadow: 0 0 4px 0 rgba($black,0.12), 0 4px 4px 0 rgba($black,0.24);
         border: 0;
         border-radius: 4px;

@@ -1,7 +1,7 @@
 <div class="header-main">
   <div class="container">
-    <button class="btn btn-md hamburger" (click)="openSideNav()">
-      <fa-icon class="icon-lg" [icon]="hamburger"></fa-icon>
+    <button class="btn btn-md hamburger" (click)="openSideNav()" style="width: 30px; height: 30px; border-radius: 100%;">
+      <i class="bi bi-list"></i>
       <!--       <i class="fi fi-rr-menu-burger"></i> -->
     </button>
     <div class="logo" (mouseenter)="startCrawl()" (mouseleave)="stopCrawl()">
@@ -18,15 +18,17 @@
     <ng-template #loggedInTemplate>
        <div class="dropdown" placement="bottom right" dropdown>
             <span aria-haspopup="true" aria-controls="dropdown-menu" dropdownToggle>
-              <button class="text-accent d-flex align-items-center btn bg-black-sec btn-md" style="border-radius: 16px;">
+              <button class=" d-flex align-items-center btn bg-black-sec btn-md text-small text-lowercase" style="border-radius: 16px;">
                 <i class="bi bi-person mr-4"></i>
                 {{currentUser.firstName}}
                 <i class="bi bi-caret-down-fill text-small ml-8 mt-4 text-secondary"></i>
               </button>
             </span>
             <ul *dropdownMenu class="dropdown-menu dropdown-menu-right px-10" role="menu" aria-labelledby="button-menu-dividers" (click)="$event.stopPropagation()">
-                <li class="">
-                  <a class="text-danger btn btn-md w-100 bg-dark" (click)="onLogout()">
+              <p class="my-10 text-small text-slate">Hi, {{currentUser.firstName}} {{currentUser.lastName}}</p>
+              <li class="dropdown-divider"></li>
+                <li class="d-flex justify-content-center">
+                  <a class="text-danger btn btn-sm bg-black-sec border-danger on-hover-bg" (click)="onLogout()">
                     <i class="bi bi-box-arrow-in-right mr-4"></i>
                     logout
                   </a>

@@ -5,8 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './not-found-page.component.html'
 })
 export class NotFoundPageComponent implements OnInit {
-
   constructor() { }
+
+  get randomPercentage() {
+    return Math.floor(Math.random() * 100)
+  }
 
   ngOnInit(): void {
   }
