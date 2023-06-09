@@ -1,7 +1,7 @@
 <div class="not-found-wrapper container">
   <svg
-    width="820"
-    height="846"
+    width="1000"
+    height="1024"
     viewBox="0 0 820 846"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -714,31 +714,37 @@
       </g>
     </g>
   </svg>
-  <div class="text-wrapper px-12">
+  <div class="text-wrapper px-20 border border-secondary">
     <h2 class="text-title d-flex gap-2 my-10">
       <i class="bi bi-exclamation-octagon-fill text-danger"></i>
       <span class="text-danger">No such page</span>
     </h2>
-    <div class="text-body">
+    <div class="text-body w-100">
       <div class="alien-msg text-white-light text-small">
         <h6 class="text-light">
           there is a 
-          <span class="text-xx-large"> {{randomPercentage}}<i class="bi bi-percent"></i> </span>
+          <span class="text-xx-large"> {{randomPercentageValue}}<i class="bi bi-percent"></i> </span>
           chance that,
         </h6>
-        the page you're looking for seem to have been abducted by alien ciphers
+        the page you're looking for has been abducted by alien ciphers
       </div>
-      <div class="alien-sign mt-10">
-        <i>&mdash;cipherLord</i>
-        <span>👽</span>
+      <div class="d-flex align-items-center justify-content-between mt-10">
+        <a routerLink="/home" class="btn btn-sm anchor-reset">
+          <span class="text-light mr-4">&#8592;</span>
+          <span class="text-light">return to base</span>
+        </a>
+        <div class="alien-sign mt-10">
+          <i>&mdash;cipherLord</i>
+          <span>👽</span>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="cta-button-wrapper container">
+<!-- <div class="cta-button-wrapper container">
   <a routerLink="/home" class="btn btn-md anchor-reset">
     <span>&#8592;</span>
     <span>return to base</span>
   </a>
-</div>
+</div> -->

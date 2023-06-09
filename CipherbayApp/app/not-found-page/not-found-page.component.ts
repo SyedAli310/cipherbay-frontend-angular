@@ -7,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
 export class NotFoundPageComponent implements OnInit {
   constructor() { }
 
-  get randomPercentage() {
-    return Math.floor(Math.random() * 100)
+  randomPercentageValue: number = 0;
+
+  randomPercentage() {
+    this.randomPercentageValue = Math.floor(Math.random() * 100)
   }
 
   ngOnInit(): void {
+    this.randomPercentage();
   }
 
 }
