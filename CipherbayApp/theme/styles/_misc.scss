@@ -740,7 +740,7 @@ fa-icon {
       background: $MAIN__BG__COLOR;
       border-radius: 0.5rem;
       padding: 0.5rem 1rem;
-      font-size: 1.25rem;
+      // font-size: 1.25rem;
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -748,20 +748,20 @@ fa-icon {
       border-color: $MAIN__ACCENT__COLOR;
       letter-spacing: 0.1em;
       transition: all 0.3s ease;
-      & i.fi {
-        color: $MAIN__ACCENT__COLOR;
+      & i.bi {
+        // color: $MAIN__ACCENT__COLOR;
         transition: all 0.3s ease;
       }
       &:hover {
         background: $MAIN__ACCENT__COLOR;
         border-color: $WHITE__COLOR;
       }
-      &:hover > i.fi {
+      &:hover > i.bi {
         color: $WHITE__COLOR;
       }
-      &:hover > i.fi:not(.user-icon) {
+      &:hover > i.bi:not(.user-icon) {
         display: inline-block;
-        transform: translateX(2.5px);
+        transform: translateX(5px);
       }
     }
   }
