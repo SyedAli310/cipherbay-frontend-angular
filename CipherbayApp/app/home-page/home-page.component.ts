@@ -2,29 +2,24 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { faArrowRight, faUser } from '@fortawesome/free-solid-svg-icons';
 import { UiService } from 'CipherbayApp/app/services/ui.service';
-import { slideInAnimation, slideInXAnimation, slideOutXAnimation } from '../shared';
+import { CIPHER_TAGLINES, slideInAnimation, appearAnimation, slideOutAnimation } from '../shared';
 
 @Component({
   selector: 'app-home-page',
-  templateUrl: './home-page.component.html'
+  templateUrl: './home-page.component.html',
+  animations: [slideInAnimation, slideOutAnimation, appearAnimation]
 })
 export class HomePageComponent implements OnInit {
-  // icons
-  faArrowRight = faArrowRight;
-  faUser = faUser;
-  animatedText: string = 'ciphers are cool';
-  textArray = [
-    'ciphers are cool',
-    'ciphers are hot',
-    'ciphers are awesome',
-    'ciphers are sexy',
-    'ciphers are trendy',
-  ];
+  animatedText: string = 'Hi Cipher Lords 👽';
+  taglines = CIPHER_TAGLINES;
 
-  constructor(private uiService: UiService) {}
+  constructor(private uiService: UiService) { }
 
   ngOnInit(): void {
-    this.textLoop();
+    setTimeout(() => {
+      this.textLoop();
+      this.animatedText = 'ciphers are cool'
+    },2500)
   }
 
   textLoop() {
@@ -42,7 +37,7 @@ export class HomePageComponent implements OnInit {
     return text.split('').reverse().join('');
   }
   changeText(): string {
-    return this.textArray[Math.floor(Math.random() * this.textArray.length)];
+    return this.taglines[Math.floor(Math.random() * this.taglines.length)];
   }
 
   onLoginClick() {

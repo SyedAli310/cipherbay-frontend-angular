@@ -1,121 +1,117 @@
 <div class="container">
-  <ng-container>
-    <div class="selects">
-      <div class="d-flex align-items-center gap-2 border rounded py-8 px-12">
-        <p class="text-large text-slate mr-4">Scheme</p>
-        <div class="position-relative d-flex align-items-center" title="{{selectedScheme.alias}}" *ngIf="!isSchemesLoading; else schemesLoading">
-          <ng-select class="ng-select form-control d-flex align-items-center bg-dark pr-30 border-secondary text-accent"
-            style="width: 175px;"
-            [items]="schemes"
-            [disabled]="schemes.length == 0"
-            bindLabel="alias"
-            bindValue="name"
-            [closeOnSelect]="true"
-            [clearable]="false"
-            [multiple] = "false"  
-            placeholder="search scheme"
-            [(ngModel)]="selectedSchemeName"
-            placeholder="search scheme"
-            (change)="onSchemeChange($event)"
-            #schemeNgSelect>
-          </ng-select>
-          <i class="bi bi-chevron-down position-absolute end-0 top-50 translate-middle text-slate cursor-pointer" (click)="openNgSelect(schemeNgSelect)"></i>
-        </div>
-      </div>
-      <div class="d-flex align-items-center gap-2 border rounded py-8 px-12 overflow-hidden">
-        <p class="text-large text-slate mr-4">Mode</p>
-        <div class="d-flex align-items-center gap-2">
-          <button class="btn btn-sm py-8 bg-dark px-16" [ngClass]="{ ' text-accent border-accent': conversionMethod === 'encode' }"
-            conversion="encode" (click)="setConversion('encode')">
-            encode
-          </button>
-          <button class="btn btn-sm py-8 bg-dark px-16" [ngClass]="{ ' text-accent border-accent': conversionMethod === 'decode' }"
-            conversion="decode" (click)="setConversion('decode')">
-            decode
-          </button>
-        </div>
+  <div class="d-flex justify-content-between mt-30 mb-40">
+    <div class="d-flex align-items-center gap-2 border rounded py-8 px-12" *ngIf="conversionMethod === 'encode'" [@appearAnimation]>
+      <p class="text-large text-slate mr-4">Scheme</p>
+      <div class="position-relative d-flex align-items-center" title="{{selectedScheme.alias}}" *ngIf="!isSchemesLoading; else schemesLoading">
+        <ng-select class="ng-select form-control d-flex align-items-center bg-dark pr-30 border-secondary text-accent"
+          style="width: 175px;"
+          [items]="schemes"
+          [disabled]="schemes.length == 0"
+          bindLabel="alias"
+          bindValue="name"
+          [closeOnSelect]="true"
+          [clearable]="false"
+          [multiple] = "false"  
+          placeholder="search scheme"
+          [(ngModel)]="selectedSchemeName"
+          placeholder="search scheme"
+          (change)="onSchemeChange($event)"
+          #schemeNgSelect>
+        </ng-select>
+        <i class="bi bi-chevron-down position-absolute end-0 top-50 translate-middle text-slate cursor-pointer" (click)="openNgSelect(schemeNgSelect)"></i>
       </div>
     </div>
-    <form id="main-form" [formGroup]="mainConversionForm" (ngSubmit)="handleSubmit(output_loader)">
-      <fieldset class="input-div">
-        <legend>
-          <span id="dyn-legend-method">{{ conversionMethod }}</span>
-          <span style="color: white" id="dyn-inp-div-scheme">
-            {{
-            conversionMethod === "decode" ? "" : " / " + selectedScheme.alias
-            }}</span>
-        </legend>
-        <input id="input-text" name="input-text" formControlName="inputText" placeholder="enter {{
-            conversionMethod === 'encode' ? 'string' : 'cipher'
-          }} to {{ conversionMethod }}" autocomplete="off" />
-  
-        <button type="submit" class="d-flex align-items-center justify-content-center">
-         <i class="bi bi-arrow-right text-small"></i>
-        </button>
-      </fieldset>
-    </form>
-    <!-- ---------------------------------------OUTPUT------------------------------------------------ -->
-    <fieldset id="output" [class.red-border]="hasError">
-      <div class="loader" [class.d-none]="!isLoading" #output_loader>
-        <app-spinner [text]="'converting'"></app-spinner>
+    <div class="d-flex align-items-center gap-2 border rounded py-8 px-12 overflow-hidden ml-auto" [@appearAnimation]>
+      <p class="text-large text-slate mr-4">Mode</p>
+      <div class="d-flex align-items-center gap-2">
+        <a class="btn btn-sm py-8 bg-dark px-16" conversion="encode" routerLink="/encode" routerLinkActive="text-accent border-accent">
+          encode
+        </a>
+        <a class="btn btn-sm py-8 bg-dark px-16" conversion="decode" routerLink="/decode" routerLinkActive="text-accent border-accent">
+          decode
+        </a>
       </div>
-      <button class="btn btn-md output-reset-btn" (click)="resetOutput($event)">
-        reset
-      </button>
+    </div>
+  </div>
+  <form id="main-form" [formGroup]="mainConversionForm" (ngSubmit)="handleSubmit(output_loader)">
+    <fieldset class="input-div">
       <legend>
-        output
-        <span style="color: white" id="dyn-legend-scheme" *ngIf="conversionOutput.schemeUsed || hasError">
+        <span id="dyn-legend-method">{{ conversionMethod }}</span>
+        <span style="color: white" id="dyn-inp-div-scheme">
           {{
-          hasError
-          ? " / Error"
-          : conversionOutput
-          ? "/ " + conversionOutput.schemeUsed.alias
-          : ""
+          conversionMethod === "decode" ? "" : " / " + selectedScheme.alias
+          }}</span>
+      </legend>
+      <input id="input-text" name="input-text" formControlName="inputText" placeholder="enter {{
+          conversionMethod === 'encode' ? 'string' : 'cipher'
+        }} to {{ conversionMethod }}" autocomplete="off" />
+
+      <button type="submit" class="d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-right text-small"></i>
+      </button>
+    </fieldset>
+  </form>
+  <!-- ---------------------------------------OUTPUT------------------------------------------------ -->
+  <fieldset id="output" [class.red-border]="hasError">
+    <div class="loader" [class.d-none]="!isLoading" #output_loader>
+      <app-spinner [text]="'converting'"></app-spinner>
+    </div>
+    <button class="btn btn-md output-reset-btn" (click)="resetOutput($event)">
+      reset
+    </button>
+    <legend>
+      output
+      <span style="color: white" id="dyn-legend-scheme" *ngIf="conversionOutput.schemeUsed || hasError">
+        {{
+        hasError
+        ? " / Error"
+        : conversionOutput
+        ? "/ " + conversionOutput.schemeUsed.alias
+        : ""
+        }}
+      </span>
+    </legend>
+    <div id="text-inp">
+      <h3 id="text-inp-head">Input</h3>
+      <div id="text-inp-body">
+        <span>{{
+          conversionMethod === "encode"
+          ? conversionOutput.text
+          : conversionOutput.code
+          }}</span>
+        <button #cpy_btn class="btn btn-sm copy-btn" title="copy" *ngIf="conversionOutput.text || conversionOutput.code"
+          (click)="
+            copyToClipboard(
+              conversionOutput.text || conversionOutput.code,
+              cpy_btn
+            )
+          ">
+          copy
+        </button>
+      </div>
+    </div>
+    <div id="text-out">
+      <h3 id="text-out-head">Result</h3>
+      <div id="text-out-body">
+        <span [class.red-color]="hasError">
+          {{
+          conversionMethod === "encode"
+          ? conversionOutput.encoded
+          : conversionOutput.decoded
           }}
         </span>
-      </legend>
-      <div id="text-inp">
-        <h3 id="text-inp-head">Input</h3>
-        <div id="text-inp-body">
-          <span>{{
-            conversionMethod === "encode"
-            ? conversionOutput.text
-            : conversionOutput.code
-            }}</span>
-          <button #cpy_btn class="btn btn-sm copy-btn" title="copy" *ngIf="conversionOutput.text || conversionOutput.code"
-            (click)="
-              copyToClipboard(
-                conversionOutput.text || conversionOutput.code,
-                cpy_btn
-              )
-            ">
-            copy
-          </button>
-        </div>
+        <button #cpy_btn class="btn btn-sm copy-btn" title="copy"
+          *ngIf="conversionOutput.encoded || conversionOutput.decoded" (click)="
+            copyToClipboard(
+              conversionOutput.encoded || conversionOutput.decoded,
+              cpy_btn
+            )
+          ">
+          copy
+        </button>
       </div>
-      <div id="text-out">
-        <h3 id="text-out-head">Result</h3>
-        <div id="text-out-body">
-          <span [class.red-color]="hasError">
-            {{
-            conversionMethod === "encode"
-            ? conversionOutput.encoded
-            : conversionOutput.decoded
-            }}
-          </span>
-          <button #cpy_btn class="btn btn-sm copy-btn" title="copy"
-            *ngIf="conversionOutput.encoded || conversionOutput.decoded" (click)="
-              copyToClipboard(
-                conversionOutput.encoded || conversionOutput.decoded,
-                cpy_btn
-              )
-            ">
-            copy
-          </button>
-        </div>
-      </div>
-    </fieldset>
-  </ng-container>
+    </div>
+  </fieldset>
 </div>
 
 <app-scheme-modal [isOpen]="isSchemeModalOpen" [schemes]="schemes" [selectedScheme]="selectedScheme"

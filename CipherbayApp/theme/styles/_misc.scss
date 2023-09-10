@@ -1029,7 +1029,7 @@ fa-icon {
     align-items: flex-start;
     padding: 0.25rem 0.75rem;
     // margin: 0 auto;
-    border-radius: 6px;
+    border-radius: 6px 6px 6px 0px;
     background-color: $PRIMARY__GREY__COLOR !important;
     color: white;
     line-height: 1.5;
@@ -1368,7 +1368,7 @@ fa-icon {
   & .navbar-side {
     position: fixed;
     background-color: $BLACK__COLOR;
-    width: 20rem;
+    width: 16.5rem;
     height: 100vh;
     transform: translateX(-100%);
     visibility: hidden;

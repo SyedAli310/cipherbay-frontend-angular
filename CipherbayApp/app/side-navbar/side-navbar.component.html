@@ -20,9 +20,15 @@
           </a>
         </li>
         <li class="nav-link">
-          <a routerLink="/convert" routerLinkActive="activePage" class="anchor-reset">
-            <i class="bi bi-arrow-left-right"></i>
-            <span>convert</span>
+          <a routerLink="/encode" routerLinkActive="activePage" class="anchor-reset">
+            <i class="bi bi-lock"></i>
+            <span>encode</span>
+          </a>
+        </li>
+        <li class="nav-link">
+          <a routerLink="/decode" routerLinkActive="activePage" class="anchor-reset">
+            <i class="bi bi-unlock"></i>
+            <span>decode</span>
           </a>
         </li>
         <li class="nav-link">
@@ -75,14 +81,6 @@
           </a>
         </li>
       </ul>
-      <!-- href="https://www.buymeacoffee.com/czuar" target="_blank" -->
-      <div class="position-absolute w-75 p-8" style="bottom: 1.25rem; left: 50%; transform: translateX(-50%);">
-        <button class="btn w-100 btn-md bg-warning text-dark text-large d-flex align-items-center justify-content-center gap-2" style="font-weight: 500; border-radius: 18px ;"
-          (click)="openBuyMeACoffeeModal()">
-          <img src="../../assets/bmc.svg" alt="buy-me-a-coffee" height="25">
-          <span>Buy me a Coffee</span>
-        </button>
-      </div>
     </div>
   </nav>
 </div>

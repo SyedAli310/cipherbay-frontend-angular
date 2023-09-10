@@ -12,13 +12,8 @@ import { AuthGuard } from './auth';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
-  { path: 'convert', component: ConvertPageComponent, 
-    children: [
-      // { path: '', redirectTo: 'encode', pathMatch: 'full' },
-      { path: 'encode', component: ConvertPageComponent, data: {mode: 'encode'} },
-      { path: 'decode', component: ConvertPageComponent, data: {mode: 'decode'} }
-    ]
-  },
+  { path: 'encode', component: ConvertPageComponent, data: { mode: 'encode' } },
+  { path: 'decode', component: ConvertPageComponent, data: { mode: 'decode' } },
   { path: 'feedback', component: UserFeedbackComponent },
   { path: 'docs', component: UserDocsComponent },
   { path: 'schemes', component: AllSchemesComponent },

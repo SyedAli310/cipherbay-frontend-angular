@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { appearAnimation } from '../shared';
 
 @Component({
   selector: 'app-not-found-page',
-  templateUrl: './not-found-page.component.html'
+  templateUrl: './not-found-page.component.html',
+  animations: [appearAnimation]
 })
 export class NotFoundPageComponent implements OnInit {
   constructor() { }

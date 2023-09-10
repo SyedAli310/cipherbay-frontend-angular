@@ -8,6 +8,14 @@ export const slideInAnimation = trigger(
     ])
 ]
 )
+export const slideOutAnimation = trigger(
+    'slideOutAnimation', [
+    transition(':leave', [
+        style({ transform: 'translateY(20%)', opacity: 0 }),
+        animate('200ms', style({ transform: 'translateY(-20%)', opacity: 1 }))
+    ])
+]
+)
 
 export const appearAnimation = trigger(
     'appearAnimation', [

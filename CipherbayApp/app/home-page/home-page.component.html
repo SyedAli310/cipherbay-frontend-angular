@@ -1,24 +1,24 @@
 <div class="container">
   <div class="hero-main">
-    <div class="animated-text">
+    <div class="animated-text" [@appearAnimation] [@slideInAnimation]>
       <div class="glitch" [attr.data-text]="animatedText">
         {{ animatedText }}
       </div>
       <p class="subtitle">CIPHER BAY</p>
     </div>
     <div class="cta-btns">
-      <a class="btn btn-sm anchor-reset" [routerLink]="['/convert']">
+      <a class="btn btn-sm anchor-reset" [routerLink]="['/encode']">
         get started
         <i class="bi bi-arrow-right"></i>
       </a>
     </div>
-    <small class="credits">
+    <!-- <small class="credits">
       animation by
       <a href="https://codepen.io/elisabethdiang/pen/WNbBxXq" target="_blank"
         >Elisabéth</a
       >
       &bull; modified by
       <a href="https://github.com/SyedAli310" target="_blank">syedali</a>
-    </small>
+    </small> -->
   </div>
 </div>

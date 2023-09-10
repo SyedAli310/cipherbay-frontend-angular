@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 import { CipherbayService } from 'CipherbayApp/app/services/cipherbay.service';
-import { LoaderService, PromptService } from '../shared';
+import { appearAnimation, LoaderService, PromptService } from '../shared';
 import { SchemeView } from '../SchemeView';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgSelectComponent } from '@ng-select/ng-select';
@@ -9,7 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-convert-page',
-  templateUrl: './convert-page.component.html'
+  templateUrl: './convert-page.component.html',
+  animations: [appearAnimation]
 })
 export class ConvertPageComponent implements OnInit {
 
@@ -31,7 +32,7 @@ export class ConvertPageComponent implements OnInit {
     private cipherBayService: CipherbayService,
     private loaderService: LoaderService,
     private formBuilder: FormBuilder,
-    private route:ActivatedRoute,
+    private route: ActivatedRoute,
     private promptService: PromptService
   ) {
     this.schemes = [];
@@ -40,6 +41,10 @@ export class ConvertPageComponent implements OnInit {
   @ViewChild('schemeNgSelect') schemeNgSelect: NgSelectComponent;
 
   ngOnInit(): void {
+    if (this.route.data['value'].mode && this.route.data['value'].mode.length) {
+      this.setConversion(this.route.data['value'].mode);
+    }
+
     this.getAllSchemes();
     this.selectedSchemeName = this.selectedScheme.name;
   }
