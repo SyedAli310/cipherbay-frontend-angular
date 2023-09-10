@@ -1,27 +1,35 @@
 <div class="container">
-  <div class="d-flex justify-content-between mt-30 mb-40">
-    <div class="d-flex align-items-center gap-2 border rounded py-8 px-12" *ngIf="conversionMethod === 'encode'" [@appearAnimation]>
-      <p class="text-large text-slate mr-4">Scheme</p>
-      <div class="position-relative d-flex align-items-center" title="{{selectedScheme.alias}}" *ngIf="!isSchemesLoading; else schemesLoading">
-        <ng-select class="ng-select form-control d-flex align-items-center bg-dark pr-30 border-secondary text-accent"
-          style="width: 175px;"
-          [items]="schemes"
-          [disabled]="schemes.length == 0"
-          bindLabel="alias"
-          bindValue="name"
-          [closeOnSelect]="true"
-          [clearable]="false"
-          [multiple] = "false"  
-          placeholder="search scheme"
-          [(ngModel)]="selectedSchemeName"
-          placeholder="search scheme"
-          (change)="onSchemeChange($event)"
-          #schemeNgSelect>
-        </ng-select>
-        <i class="bi bi-chevron-down position-absolute end-0 top-50 translate-middle text-slate cursor-pointer" (click)="openNgSelect(schemeNgSelect)"></i>
-      </div>
+  <div class="d-flex justify-content-between mt-30 mb-40 gap-2 flex-wrap">
+    <div class="d-flex align-items-center gap-2 border border-secondary rounded py-8 px-12" [@appearAnimation]>
+      <ng-container *ngIf="conversionMethod === 'encode'">
+        <p class="text-large text-slate mr-4">Scheme</p>
+        <div class="position-relative d-flex align-items-center" title="{{selectedScheme.alias}}" *ngIf="!isSchemesLoading; else schemesLoading">
+          <ng-select class="ng-select form-control d-flex align-items-center bg-dark pr-30 border-secondary text-accent"
+            style="width: 175px;"
+            [items]="schemes"
+            [disabled]="schemes.length == 0"
+            bindLabel="alias"
+            bindValue="name"
+            [closeOnSelect]="true"
+            [clearable]="false"
+            [multiple] = "false"  
+            placeholder="search scheme"
+            [(ngModel)]="selectedSchemeName"
+            placeholder="search scheme"
+            (change)="onSchemeChange($event)"
+            #schemeNgSelect>
+          </ng-select>
+          <i class="bi bi-chevron-down position-absolute end-0 top-50 translate-middle text-slate cursor-pointer" (click)="openNgSelect(schemeNgSelect)"></i>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="conversionMethod !== 'encode'">
+        <div class="text-small text-slate mr-4 d-flex align-items-center gap-2" title="While decoding the cipher, the scheme is auto detected and used">
+          <i class="bi bi-info-circle text-small"></i>
+          <p>Scheme is auto detected</p>
+        </div>
+      </ng-container>
     </div>
-    <div class="d-flex align-items-center gap-2 border rounded py-8 px-12 overflow-hidden ml-auto" [@appearAnimation]>
+    <div class="d-flex align-items-center gap-2 border border-secondary rounded py-8 px-12 overflow-hidden " [@appearAnimation]>
       <p class="text-large text-slate mr-4">Mode</p>
       <div class="d-flex align-items-center gap-2">
         <a class="btn btn-sm py-8 bg-dark px-16" conversion="encode" routerLink="/encode" routerLinkActive="text-accent border-accent">
@@ -114,9 +122,9 @@
   </fieldset>
 </div>
 
-<app-scheme-modal [isOpen]="isSchemeModalOpen" [schemes]="schemes" [selectedScheme]="selectedScheme"
+<!-- <app-scheme-modal [isOpen]="isSchemeModalOpen" [schemes]="schemes" [selectedScheme]="selectedScheme"
   (closeModalEvent)="handleModalClose()" (selectSchemeEvent)="handleSelectScheme($event)">
-</app-scheme-modal>
+</app-scheme-modal> -->
 
 <ng-template #schemesLoading>
   <ngx-skeleton-loader appearance="line" animation="pulse" [theme]="{'background-color': 'grey', 'width': '175px', 'margin': '0px'}" count="1">

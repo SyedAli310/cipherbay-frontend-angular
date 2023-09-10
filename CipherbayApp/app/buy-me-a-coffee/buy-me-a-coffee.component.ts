@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 import { slideInAnimation } from '../shared';
 
@@ -12,14 +12,20 @@ import { slideInAnimation } from '../shared';
   ]
 })
 export class BuyMeACoffeeComponent implements OnInit {
+  @ViewChild("buyMeACoffeModalTemplate") buyMeACoffeModalTemplate: TemplateRef<any>;
+  buyMeACoffeModalRef: BsModalRef;
 
-  constructor(private modalRef: BsModalRef) { }
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit(): void {
   }
 
+  openBuyMeACoffeeModal() {
+    this.buyMeACoffeModalRef = this.modalService.show(this.buyMeACoffeModalTemplate, {class: 'modal-lg vertical-center', ignoreBackdropClick: true})
+  }
+
   close() {
-    this.modalRef.hide();
+    this.buyMeACoffeModalRef.hide();
   }
 
 }

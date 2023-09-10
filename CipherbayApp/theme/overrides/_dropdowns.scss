@@ -14,7 +14,7 @@
     .dropdown-menu {
         opacity: 0;
         animation: menu-3 200ms 50ms forwards ease-in-out;
-        background-color: $black-sec;
+        background-color: $black-sec !important;
         @extend .mt-1;
         border: 1px solid $secondary !important;
         border-radius: 4px !important;
