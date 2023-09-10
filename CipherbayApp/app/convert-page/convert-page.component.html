@@ -1,4 +1,5 @@
 <div class="container">
+  <!-- scheme/mode selection -->
   <div class="d-flex justify-content-between mt-30 mb-40 gap-2 flex-wrap">
     <div class="d-flex align-items-center gap-2 border border-secondary rounded py-8 px-12" [@appearAnimation]>
       <ng-container *ngIf="conversionMethod === 'encode'">
@@ -41,6 +42,8 @@
       </div>
     </div>
   </div>
+
+  <!-- input view -->
   <form id="main-form" [formGroup]="mainConversionForm" (ngSubmit)="handleSubmit(output_loader)">
     <fieldset class="input-div">
       <legend>
@@ -59,7 +62,8 @@
       </button>
     </fieldset>
   </form>
-  <!-- ---------------------------------------OUTPUT------------------------------------------------ -->
+
+  <!-- iutput view -->
   <fieldset id="output" [class.red-border]="hasError">
     <div class="loader" [class.d-none]="!isLoading" #output_loader>
       <app-spinner [text]="'converting'"></app-spinner>
@@ -87,7 +91,7 @@
           ? conversionOutput.text
           : conversionOutput.code
           }}</span>
-        <button #cpy_btn class="btn btn-sm copy-btn" title="copy" *ngIf="conversionOutput.text || conversionOutput.code"
+        <button #cpy_btn class="btn btn-sm copy-btn text-small" title="copy" *ngIf="conversionOutput.text || conversionOutput.code"
           (click)="
             copyToClipboard(
               conversionOutput.text || conversionOutput.code,
@@ -108,7 +112,7 @@
           : conversionOutput.decoded
           }}
         </span>
-        <button #cpy_btn class="btn btn-sm copy-btn" title="copy"
+        <button #cpy_btn class="btn btn-sm copy-btn text-small" title="copy"
           *ngIf="conversionOutput.encoded || conversionOutput.decoded" (click)="
             copyToClipboard(
               conversionOutput.encoded || conversionOutput.decoded,
@@ -121,10 +125,6 @@
     </div>
   </fieldset>
 </div>
-
-<!-- <app-scheme-modal [isOpen]="isSchemeModalOpen" [schemes]="schemes" [selectedScheme]="selectedScheme"
-  (closeModalEvent)="handleModalClose()" (selectSchemeEvent)="handleSelectScheme($event)">
-</app-scheme-modal> -->
 
 <ng-template #schemesLoading>
   <ngx-skeleton-loader appearance="line" animation="pulse" [theme]="{'background-color': 'grey', 'width': '175px', 'margin': '0px'}" count="1">

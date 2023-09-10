@@ -177,10 +177,10 @@ export class ConvertPageComponent implements OnInit {
       clearTimeout(x);
     }
     navigator.clipboard.writeText(value).then(() => {
-      el.innerHTML = '&#x2713; copied';
-      el.classList.add('success');
+      el.innerHTML = '<span class="text-accent"><i class="bi bi-check2 text-accent"></i> copied</span>';
+      // el.classList.add('border border-accent');
       x = setTimeout(() => {
-        el.classList.remove('success');
+      // el.classList.remove('border border-accent');
         el.innerHTML = 'copy';
       }, 2000);
     });
@@ -190,9 +190,9 @@ export class ConvertPageComponent implements OnInit {
     const resetBtn = e.target as HTMLButtonElement;
     this.conversionOutput = {};
     // show success message
-    resetBtn.classList.add('success');
+    resetBtn.innerHTML = `<i class="bi bi-check2 text-accent"></i>`;
     setTimeout(() => {
-      resetBtn.classList.remove('success');
+      resetBtn.innerHTML = `reset`;
     }, 2000);
   }
 

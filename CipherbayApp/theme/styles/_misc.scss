@@ -534,21 +534,13 @@ fa-icon {
   position: absolute !important;
   right: 1rem;
   top: 0.25rem;
-  &.success::before{
-    content: '\2713';
-    position: absolute;
-    right: 110%;
-    top: 50%;
-    transform: translateY(-50%);
-    color: $SUCCESS__COLOR;
-  }
 }
 .red-border {
   border: 1.5px solid $ERROR__COLOR !important;
 }
 .copy-btn {
   position: absolute !important;
-  top: 0.5rem;
+  top: -0.75rem;
   right: 0.5rem;
   display: flex;
   align-items: center;
@@ -562,10 +554,9 @@ fa-icon {
   opacity: 0;
   visibility: hidden;
   transform: translateX(20%);
-  &.success {
-    color: $SUCCESS__COLOR;
-    border-color: $SUCCESS__COLOR;
-  }
+}
+.copy-btn:hover {
+  background-color: $MAIN__BG__COLOR;
 }
 
 #output legend {
