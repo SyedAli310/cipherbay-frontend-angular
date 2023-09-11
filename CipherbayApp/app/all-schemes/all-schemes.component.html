@@ -7,23 +7,50 @@
             </span>
         </h3>
     </div>
-    <p class="text-secondary-light" *ngIf="schemeData; else loaderTemplateBlock">{{schemeData?.info || schemeInfo}}</p>
+    <p class="text-secondary-light mb-30" *ngIf="schemeData; else loaderTemplateBlock">{{schemeData?.info || schemeInfo}}</p>
 
-    <div class="grid-masonry my-20">
-        <ng-container *ngIf="schemeData; else loaderTemplateCards">
-            <div class="masonry-item mb-30" *ngFor="let scheme of allSchemes" [@slideInAnimation]>
-                <div class="masonry-item-inner">
-                    <div class="card m-0">
-                        <div class="card-body">
-                            <h5 class="text-white mb-8">{{scheme.alias}}</h5>
-                            <p class="text-white-light text-small">code : <span class="text-white">{{scheme.name}}</span>
-                            </p>
+    <div class="d-flex align-items-center justify-content-between mb-40">
+        <input type="search" class="form-control bg-black-sec py-8 text-light" placeholder="search scheme alias or name" [(ngModel)]="searchQuery" (input)="searchSchemes()" style="width: 300px;">
+        <div class="btn-group">
+            <button class="btn btn-outline-secondary mb-0" ngbTooltip="List view" container="body" (click)="setLayoutView(layoutView.LIST)" [ngClass]="{'text-accent bg-black-sec': currentLayoutView === layoutView.LIST, 'bg-black-sec': currentLayoutView !== layoutView.LIST}">
+                <i class="bi bi-list"></i>
+            </button>
+            <button class="btn btn-outline-secondary mb-0" ngbTooltip="Grid view" container="body" (click)="setLayoutView(layoutView.GRID)" [ngClass]="{'text-accent bg-black-sec': currentLayoutView === layoutView.GRID, 'bg-black-sec': currentLayoutView !== layoutView.GRID}">
+            <i class="bi bi-grid"></i>
+            </button>
+        </div>
+    </div>
+
+    <ng-container *ngIf="currentLayoutView === layoutView.LIST" [@appearAnimation]>
+        <div class="my-20">
+            <ng-container *ngIf="schemeData; else loaderTemplateCards">
+                <div class="mb-30" *ngFor="let scheme of searchedSchemes" [@slideInAnimation]>
+                    <div class="border-bottom pb-10 mb-10 d-flex align-items-center justify-content-between gap-2 flex-wrap">
+                        <h5 class="text-white mb-8">{{scheme.alias}}</h5>
+                        <p class="text-white-light text-small">added {{getSince(scheme.createdAt)}}</p>
+                        <!-- <p class="text-white-light text-small">added by {{scheme.createdByName}}</p> -->
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="currentLayoutView === layoutView.GRID" [@appearAnimation]>
+        <div class="grid-masonry my-20">
+            <ng-container *ngIf="schemeData; else loaderTemplateCards">
+                <div class="masonry-item mb-30" *ngFor="let scheme of searchedSchemes" [@slideInAnimation]>
+                    <div class="masonry-item-inner">
+                        <div class="card m-0">
+                            <div class="card-body">
+                                <h5 class="text-white mb-8">{{scheme.alias}}</h5>
+                                <p class="text-white-light text-small">added {{getSince(scheme.createdAt)}}</p>
+                                <!-- <p class="text-white-light text-small">added by {{scheme.createdByName}}</p> -->
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </ng-container>
-    </div>
+            </ng-container>
+        </div>
+    </ng-container>
 </div>
 <ng-template #loaderTemplateCards>
     <div class="masonry-item mb-30" [@slideInAnimation]>
